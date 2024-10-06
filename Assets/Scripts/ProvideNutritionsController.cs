@@ -14,6 +14,8 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     [SerializeField] private Slider consumeBar;
 
     [SerializeField] private GameObject needNutritionsAnnoucement;
+
+    [SerializeField] private ObjectInforsController objectInforsDisplay;
     public GameObject NeedNutritionsAnnoucement
     {
        get { return needNutritionsAnnoucement; }
@@ -96,9 +98,15 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     {
         double progressValue = 0;
 
-        do { 
+        do {
 
-            progressValue = (DateTime.Now - lastTimeProvidedNutritions).TotalHours / maxHourForNextProvidingNutritions;
+            double consumedTime = (DateTime.Now - lastTimeProvidedNutritions).TotalHours;
+
+            double remainTime = maxHourForNextProvidingNutritions - consumedTime;
+
+            //objectInforsDisplay.DisplayConsumingTime((float)remainTime);
+
+            progressValue =  consumedTime / maxHourForNextProvidingNutritions;
 
             if (consumeBar != null) {
 

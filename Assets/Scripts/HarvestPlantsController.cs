@@ -8,6 +8,10 @@ public class HarvestPlantsController : MonoBehaviour
     [SerializeField] private GameObject harvestingAnnocement;
 
     [SerializeField] private GameObject needWaterAnnocement;
+
+    [SerializeField] private BagMenu userBag;
+
+    [SerializeField] private Item itemCollected;
     public void ActiveClickEvents()
     {
         if(harvestingAnnocement.activeSelf)
@@ -21,7 +25,14 @@ public class HarvestPlantsController : MonoBehaviour
     }
 
     public void ActiveEventAfterHarvestingPlants() {
+
         Debug.Log("harvest products");
+
+        if (userBag != null && itemCollected != null) {
+
+            userBag.AddItem(itemCollected.GetClone());
+
+        }
     }
 
     

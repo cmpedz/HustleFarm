@@ -20,6 +20,8 @@ public class ObjectDeathController : MonoBehaviour
 
     [SerializeField] private Image sprite;
 
+    [SerializeField] private ObjectInforsController objectInfors;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +79,11 @@ public class ObjectDeathController : MonoBehaviour
         {
             double hoursLackOfNutritionsDurations = (DateTime.Now - provideNutritionsController.LastTimeProvideNutritions).TotalHours;
 
-            return hoursLackOfNutritionsDurations <= maxHoursCanSurviveInBadStatus;
+            double remainTime = maxHoursCanSurviveInBadStatus - hoursLackOfNutritionsDurations;
+
+            objectInfors.DisplayTimeSurviveRemainInBadStatus((float)remainTime);
+
+            return remainTime > 0;
         }
 
         return true;
