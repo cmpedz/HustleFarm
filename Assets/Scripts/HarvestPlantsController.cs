@@ -12,6 +12,8 @@ public class HarvestPlantsController : MonoBehaviour
     [SerializeField] private BagMenu userBag;
 
     [SerializeField] private Item itemCollected;
+
+    [SerializeField] private ItemReceiveNotificationSetUp itemReceiveNotification;
     public void ActiveClickEvents()
     {
         if(harvestingAnnocement.activeSelf)
@@ -28,10 +30,20 @@ public class HarvestPlantsController : MonoBehaviour
 
         Debug.Log("harvest products");
 
+        int quantitiesItemReceived = itemReceiveNotification.QuantitiesReceived;
+
         if (userBag != null && itemCollected != null) {
 
-            userBag.AddItem(itemCollected.GetClone());
+            for(int i = 0; i < quantitiesItemReceived; i++)
+            {
+                userBag.AddItem(itemCollected.GetClone());
+            }
 
+            if(itemReceiveNotification != null )
+            {
+                itemReceiveNotification.NotifyItemReceived(itemCollected.GetItemSprite(), true);
+            }
+           
         }
     }
 
