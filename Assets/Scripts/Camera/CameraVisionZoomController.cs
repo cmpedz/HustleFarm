@@ -18,6 +18,8 @@ public class CameraVisionZoomController : MonoBehaviour
 
     private const float MIN_ORTHO_SIZE = 3f;
 
+    [SerializeField] private CameraMovementController cameraMovement;
+
     void Start()
     {
         virtualCamera.m_Lens.OrthographicSize = targetOrthoSize;
@@ -35,6 +37,9 @@ public class CameraVisionZoomController : MonoBehaviour
         if (targetOrthoSize < MIN_ORTHO_SIZE) targetOrthoSize = MIN_ORTHO_SIZE;
 
         virtualCamera.m_Lens.OrthographicSize = targetOrthoSize;
+
+        cameraMovement.SetNewPositionForCamera(cameraMovement.transform.position, targetOrthoSize * 2);
+
     }
 
     public void ZoomOut()
@@ -44,6 +49,9 @@ public class CameraVisionZoomController : MonoBehaviour
         if (targetOrthoSize > MAX_ORTHO_SIZE) targetOrthoSize = MAX_ORTHO_SIZE;
 
         virtualCamera.m_Lens.OrthographicSize = targetOrthoSize;
+
+        cameraMovement.SetNewPositionForCamera(cameraMovement.transform.position, targetOrthoSize * 2);
+
     }
 
 

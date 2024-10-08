@@ -50,18 +50,43 @@ public class CameraMovementController : MonoBehaviour
 
         float cameraHeightInUnits = Camera.main.orthographicSize * 2;
 
+        SetNewPositionForCamera(newCameraPos, cameraHeightInUnits);
+
+
+    }
+
+    public void SetNewPositionForCamera(Vector3 newCameraPos, float cameraHeightInUnits) {
+
+
         float cameraWidthInUnits = cameraHeightInUnits * Camera.main.aspect;
 
-        bool isOverComeVerticalBorder = newCameraPos.y + cameraHeightInUnits/2 > topLeftLimitPoint.position.y || newCameraPos.y - cameraHeightInUnits / 2 < bottomRightLimitPoint.position.y;
+        Debug.Log("check camera height : " + cameraHeightInUnits + ", camera width : " + cameraWidthInUnits);
 
-        bool isOverComeHozirontalBorder = newCameraPos.x - cameraWidthInUnits/2 < topLeftLimitPoint.position.x || newCameraPos.x + cameraWidthInUnits / 2 > bottomRightLimitPoint.position.x;
+        if(newCameraPos.y + cameraHeightInUnits / 2 > topLeftLimitPoint.position.y)
+        {
+            newCameraPos.y = topLeftLimitPoint.position.y - cameraHeightInUnits/2;
+        }
 
-        if (!isOverComeHozirontalBorder && !isOverComeVerticalBorder) { 
+        if (newCameraPos.y - cameraHeightInUnits / 2 < bottomRightLimitPoint.position.y)
+        {
+            newCameraPos.y = bottomRightLimitPoint.position.y + cameraHeightInUnits / 2;
+        }
 
-            transform.position = newCameraPos;
+        if (newCameraPos.x - cameraWidthInUnits / 2 < topLeftLimitPoint.position.x) {
+
+            newCameraPos.x = topLeftLimitPoint.position.x + cameraWidthInUnits / 2;
+
+        }
+
+        if (newCameraPos.x + cameraWidthInUnits / 2 > bottomRightLimitPoint.position.x)
+        {
+
+            newCameraPos.x = bottomRightLimitPoint.position.x - cameraWidthInUnits / 2;
 
         }
 
 
+
+        transform.position = newCameraPos;
     }
 }
