@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -30,6 +31,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     }
 
     [SerializeField] private float maxHourForNextProvidingNutritions;
+
 
     protected bool isTakenCare;
     public bool IsTakenCare
@@ -68,6 +70,8 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     void Start()
     {
         lastTimeProvidedNutritions = DateTime.Now;
+
+        needNutritionsAnnoucement.SetActive(true);
     }
 
 

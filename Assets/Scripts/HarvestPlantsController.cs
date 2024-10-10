@@ -14,6 +14,8 @@ public class HarvestPlantsController : MonoBehaviour
     [SerializeField] private Item itemCollected;
 
     [SerializeField] private ItemReceiveNotificationSetUp itemReceiveNotification;
+
+   
     public void ActiveClickEvents()
     {
         if(harvestingAnnocement.activeSelf)

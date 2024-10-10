@@ -6,11 +6,9 @@ public class PouringWaterController : ProvideNutritionsController
 {
 
     [SerializeField] private GameObject harvestingAnnocement;
-
-    [SerializeField] private GameObject needWaterAnnocement;
     public override bool CheckConditionsProvidingNutritions()
     {
-        return !isTakenCare && needWaterAnnocement.activeSelf;
+        return !isTakenCare && NeedNutritionsAnnoucement.activeSelf;
     }
 
     public override void EventAfterCompletingConsumingNutritions()

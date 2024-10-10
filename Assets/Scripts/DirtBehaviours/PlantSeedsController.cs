@@ -56,7 +56,7 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
 
           plantedSeed.transform.parent = transform;
 
-          plantedSeed.transform.position = new Vector3(0, 0, 0);
+          plantedSeed.transform.position = plantingPos.position;
 
           plantedSeed.transform.localScale = new Vector3(1, 1, 1);
 
