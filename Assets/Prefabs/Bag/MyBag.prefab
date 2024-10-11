@@ -252,13 +252,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4428297986427945582}
+  - {fileID: 7443932276969138810}
   m_Father: {fileID: 1323127230756761882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -190}
+  m_SizeDelta: {x: 0, y: -178.75912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2718762069370161640
 MonoBehaviour:
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 5791907451930773828}
---- !u!1001 &7028721873070095062
+--- !u!1001 &4301316103252906690
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -428,13 +428,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6549465895107080455}
     m_Modifications:
-    - target: {fileID: 157790900821067122, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
-      propertyPath: quantitiesDisplay
-      value: 
-      objectReference: {fileID: 6484780629656295832}
     - target: {fileID: 2982659257316623190, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_Name
-      value: ItemBag(Food Rice) Variant
+      value: FoodItem(Food Rice) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_Pivot.x
@@ -486,15 +482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -502,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -80
+      value: 9.379555
       objectReference: {fileID: 0}
     - target: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -521,19 +517,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
---- !u!224 &4428297986427945582 stripped
+--- !u!224 &7443932276969138810 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6701198756555126968, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
-  m_PrefabInstance: {fileID: 7028721873070095062}
+  m_PrefabInstance: {fileID: 4301316103252906690}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6484780629656295832 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4068325866942440270, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
-  m_PrefabInstance: {fileID: 7028721873070095062}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

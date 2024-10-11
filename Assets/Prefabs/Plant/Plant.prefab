@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6058451430540707894}
   - component: {fileID: 3475828226346780630}
   - component: {fileID: 6953201552002062457}
+  - component: {fileID: 2699331141639789243}
   m_Layer: 5
   m_Name: PLant
   m_TagString: Untagged
@@ -117,6 +118,28 @@ MonoBehaviour:
   provideNutritionsEffect: {fileID: 4038177616477791685}
   maxHourForNextProvidingNutritions: 0.0008333334
   harvestingAnnocement: {fileID: 1358499120777815137}
+--- !u!114 &2699331141639789243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311054169498773015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b850fef6acd9e19418a261ce6f191662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSpanToHours: 0
+  maxHoursCanSurviveInBadStatus: 0.05
+  provideNutritionsController: {fileID: 6953201552002062457}
+  lifeActivities:
+  - {fileID: 3475828226346780630}
+  - {fileID: 6953201552002062457}
+  - {fileID: 2699331141639789243}
+  deathSymbols: {r: 0.836478, g: 0.43057656, b: 0.0184129, a: 0}
+  sprite: {fileID: 6058451430540707894}
+  objectInfors: {fileID: 0}
 --- !u!1 &2424595891725294072
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,6 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Transform plantingPos;
 
     [SerializeField] private GameObject arrow;
-
-    [SerializeField] private DirtStatusControllerSystem dirtStatus;
     public GameObject Arrow
     {
         get { return arrow; }
@@ -72,9 +70,9 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
 
                 PlantSeed(seedProvided);
 
-                dirtStatus.ActiveSymbolOfEmptyDirt(false);
+                DirtStatusControllerSystem.Instance.ActiveSymbolOfEmptyDirt(false);
 
-                dirtStatus.RemoveDirtFromEmptyDirts(this);
+                DirtStatusControllerSystem.Instance.RemoveDirtFromEmptyDirts(this);
                 
             }
         }

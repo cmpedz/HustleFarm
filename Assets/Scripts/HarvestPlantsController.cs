@@ -10,6 +10,7 @@ public class HarvestPlantsController : MonoBehaviour
     [SerializeField] private GameObject needWaterAnnocement;
 
     [SerializeField] private BagMenu userBag;
+    public BagMenu UserBag { get { return userBag; } set {  userBag = value; } }
 
     [SerializeField] private Item itemCollected;
 

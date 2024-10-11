@@ -93,6 +93,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 33eaa39e73946874ebe6a671e75b496c, type: 2}
     - target: {fileID: 4913702624940680023, guid: d2713ae5ec22a304489216948567485c, type: 3}
+      propertyPath: itemHolder
+      value: 
+      objectReference: {fileID: 6228346746986245398, guid: 6d78075a417b9364fbc54e57ebe665b2, type: 3}
+    - target: {fileID: 4913702624940680023, guid: d2713ae5ec22a304489216948567485c, type: 3}
       propertyPath: itemSpriteDisplay
       value: 
       objectReference: {fileID: 8800040277747663188}
@@ -102,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 4068325866942440270}
     - target: {fileID: 8026795210340541811, guid: d2713ae5ec22a304489216948567485c, type: 3}
       propertyPath: m_Name
-      value: ItemBag(Food Rice) Variant
+      value: FoodItem(Food Rice) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
       propertyPath: m_text

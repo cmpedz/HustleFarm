@@ -11,6 +11,12 @@ public class DirtStatusControllerSystem : MonoBehaviour
     [SerializeField] private GameObject terminateFunctionButton;
 
     [SerializeField] private GameObject seedProvided;
+    public GameObject SeedProvided
+    {
+        get { return seedProvided; }
+
+        set { seedProvided = value; }
+    }
 
     private static DirtStatusControllerSystem instance;
     public static DirtStatusControllerSystem Instance
@@ -18,7 +24,6 @@ public class DirtStatusControllerSystem : MonoBehaviour
         get { return instance; }
         private set { instance = value; }
     }
-
     private DirtStatusControllerSystem() { }
     // Start is called before the first frame update
     void Start()
@@ -53,13 +58,6 @@ public class DirtStatusControllerSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) {
-
-            ActiveSymbolOfEmptyDirt(true);
-
-            ProvideSeedForEmptyDirt(seedProvided);
-
-        }
         
     }
 
@@ -67,12 +65,12 @@ public class DirtStatusControllerSystem : MonoBehaviour
            emptyDirts.Remove(dirt);
     }
 
-    public void ProvideSeedForEmptyDirt(GameObject seed)
+    public void ProvideSeedForEmptyDirt()
     {
         foreach (PlantSeedsController emptyDirt in emptyDirts)
         {
 
-            if (emptyDirt != null && seedProvided != null) emptyDirt.SeedProvided = seed;
+            if (emptyDirt != null && seedProvided != null) emptyDirt.SeedProvided = SeedProvided;
 
         }
     }
@@ -80,6 +78,11 @@ public class DirtStatusControllerSystem : MonoBehaviour
     public void ActiveSymbolOfEmptyDirt(bool active) {
 
         Debug.Log("active symbol of empty dirt");
+
+        if(active)
+        {
+            ProvideSeedForEmptyDirt();
+        }
 
         foreach (PlantSeedsController emptyDirt in emptyDirts) {
             

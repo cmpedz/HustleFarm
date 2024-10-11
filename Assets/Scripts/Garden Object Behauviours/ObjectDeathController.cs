@@ -81,7 +81,7 @@ public class ObjectDeathController : MonoBehaviour
 
             double remainTime = maxHoursCanSurviveInBadStatus - hoursLackOfNutritionsDurations;
 
-            objectInfors.DisplayTimeSurviveRemainInBadStatus((float)remainTime);
+            //objectInfors.DisplayTimeSurviveRemainInBadStatus((float)remainTime);
 
             return remainTime > 0;
         }
