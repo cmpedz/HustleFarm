@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class ObjectDeathController : MonoBehaviour
 {
-    [SerializeField] private float lifeSpanToHours;
-
-    [SerializeField] private DateTime timeBorn;
+    [SerializeField] private float hoursCanSurvives;
 
     [SerializeField] private float maxHoursCanSurviveInBadStatus;
 
@@ -22,9 +20,13 @@ public class ObjectDeathController : MonoBehaviour
 
     [SerializeField] private ObjectInforsController objectInfors;
 
+    [SerializeField] private DateTime timeBorn;
+
     // Start is called before the first frame update
     void Start()
     {
+        timeBorn = DateTime.Now;
+
         StartCoroutine(CheckDeathStatus());
     }
 
@@ -38,7 +40,7 @@ public class ObjectDeathController : MonoBehaviour
     private IEnumerator CheckDeathStatus()
     {
 
-        while (IsSurviveInBadStatus()) {
+        while (IsSurviveInBadStatus() && !IsOutOfLifeSpan()) {
 
             float NextCheckingDurations = 1;
 
@@ -93,6 +95,6 @@ public class ObjectDeathController : MonoBehaviour
 
         double hoursSurvived = (DateTime.Now - timeBorn).TotalHours;
 
-        return hoursSurvived > lifeSpanToHours;
+        return hoursSurvived > hoursCanSurvives;
     }
 }
