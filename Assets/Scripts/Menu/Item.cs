@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public abstract class Item : MonoBehaviour, IPointerClickHandler
 {
 
-    [SerializeField] private ObjectData itemData;
+    [SerializeField] protected ObjectData itemData;
 
     [SerializeField] private TextMeshProUGUI quantitiesDisplay;
 
@@ -24,8 +24,7 @@ public abstract class Item : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        if(itemSpriteDisplay != null && itemData != null)
-        {
+        if (itemData != null && itemSpriteDisplay != null) {
             itemSpriteDisplay.sprite = itemData.sprite;
         }
     }
@@ -78,7 +77,7 @@ public abstract class Item : MonoBehaviour, IPointerClickHandler
 
         if (this.quantities > 0 && quantitiesDisplay != null)
         {
-            quantitiesDisplay.text = "X " + quantities;
+            quantitiesDisplay.text = "X" + quantities;
         }
 
     }

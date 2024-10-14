@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5044154169129494053
+--- !u!1001 &6807312529420675688
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -88,43 +88,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4913702624940680023, guid: d2713ae5ec22a304489216948567485c, type: 3}
-      propertyPath: itemData
+    - target: {fileID: 4332578839722157937, guid: d2713ae5ec22a304489216948567485c, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 11400000, guid: 33eaa39e73946874ebe6a671e75b496c, type: 2}
-    - target: {fileID: 4913702624940680023, guid: d2713ae5ec22a304489216948567485c, type: 3}
-      propertyPath: itemHolder
-      value: 
-      objectReference: {fileID: 6228346746986245398, guid: 6d78075a417b9364fbc54e57ebe665b2, type: 3}
-    - target: {fileID: 4913702624940680023, guid: d2713ae5ec22a304489216948567485c, type: 3}
-      propertyPath: itemSpriteDisplay
-      value: 
-      objectReference: {fileID: 8800040277747663188}
-    - target: {fileID: 4913702624940680023, guid: d2713ae5ec22a304489216948567485c, type: 3}
-      propertyPath: quantitiesDisplay
-      value: 
-      objectReference: {fileID: 4068325866942440270}
+      objectReference: {fileID: 21300104, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
     - target: {fileID: 8026795210340541811, guid: d2713ae5ec22a304489216948567485c, type: 3}
       propertyPath: m_Name
-      value: FoodItem(Food Rice) Variant
+      value: Food Item (Rice)
       objectReference: {fileID: 0}
     - target: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
-      propertyPath: m_text
-      value: X1
+      propertyPath: m_fontColor.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8026795210340541811, guid: d2713ae5ec22a304489216948567485c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8856193037779743845}
   m_SourcePrefab: {fileID: 100100000, guid: d2713ae5ec22a304489216948567485c, type: 3}
---- !u!114 &4068325866942440270 stripped
+--- !u!114 &2309670418145390339 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
-  m_PrefabInstance: {fileID: 5044154169129494053}
+  m_PrefabInstance: {fileID: 6807312529420675688}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -132,10 +131,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8800040277747663188 stripped
+--- !u!1 &3538854154284355355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8026795210340541811, guid: d2713ae5ec22a304489216948567485c, type: 3}
+  m_PrefabInstance: {fileID: 6807312529420675688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8856193037779743845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538854154284355355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036f78f1817dc494f9e454966ecfcdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 75f3b7549d27caa43a117624a13309c1, type: 2}
+  quantitiesDisplay: {fileID: 2309670418145390339}
+  itemSpriteDisplay: {fileID: 7086422612865977625}
+--- !u!114 &7086422612865977625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4332578839722157937, guid: d2713ae5ec22a304489216948567485c, type: 3}
-  m_PrefabInstance: {fileID: 5044154169129494053}
+  m_PrefabInstance: {fileID: 6807312529420675688}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

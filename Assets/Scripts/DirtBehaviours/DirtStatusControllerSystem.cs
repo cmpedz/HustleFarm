@@ -10,12 +10,19 @@ public class DirtStatusControllerSystem : MonoBehaviour
 
     [SerializeField] private GameObject terminateFunctionButton;
 
-    [SerializeField] private GameObject seedProvided;
-    public GameObject SeedProvided
+    [SerializeField] private HarvestPlantsController seedProvided;
+    public HarvestPlantsController SeedProvided
     {
         get { return seedProvided; }
 
         set { seedProvided = value; }
+    }
+
+    [SerializeField] private SeedsItem seedItemInBagClicked;
+
+    public SeedsItem SeedItemInBagClicked { 
+        get { return seedItemInBagClicked; }
+        set { seedItemInBagClicked = value;}
     }
 
     private static DirtStatusControllerSystem instance;
@@ -24,6 +31,8 @@ public class DirtStatusControllerSystem : MonoBehaviour
         get { return instance; }
         private set { instance = value; }
     }
+
+    [SerializeField] private BagMenu userBag;
     private DirtStatusControllerSystem() { }
     // Start is called before the first frame update
     void Start()
@@ -62,7 +71,19 @@ public class DirtStatusControllerSystem : MonoBehaviour
     }
 
     public void RemoveDirtFromEmptyDirts(PlantSeedsController dirt) {
-           emptyDirts.Remove(dirt);
+        
+        emptyDirts.Remove(dirt);
+
+        if (userBag != null) {
+            userBag.RemoveItem(dirt.SeedProvided.ItemCollected);
+        }
+    }
+
+
+    public void RemoveQuantitiesSeedItemClicked() { 
+        if(seedItemInBagClicked != null && userBag != null) {
+            userBag.RemoveItem(seedItemInBagClicked);
+        }
     }
 
     public void ProvideSeedForEmptyDirt()

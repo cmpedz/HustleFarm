@@ -16,8 +16,8 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
         get { return arrow; }
     }
 
-    [SerializeField] private GameObject seedProvided;
-    public GameObject SeedProvided
+    [SerializeField] private HarvestPlantsController seedProvided;
+    public HarvestPlantsController SeedProvided
     {
         get { return seedProvided;  }
 
@@ -42,11 +42,11 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
         return true;
     }
 
-    private void PlantSeed(GameObject seed) {
+    private void PlantSeed(HarvestPlantsController seed) {
 
           Debug.Log("planted seed");
 
-          GameObject _seed = Instantiate(seed);
+          GameObject _seed = Instantiate(seed.gameObject);
             
           plantedSeed = _seed;
 
@@ -73,6 +73,8 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
                 DirtStatusControllerSystem.Instance.ActiveSymbolOfEmptyDirt(false);
 
                 DirtStatusControllerSystem.Instance.RemoveDirtFromEmptyDirts(this);
+
+                DirtStatusControllerSystem.Instance.RemoveQuantitiesSeedItemClicked();
                 
             }
         }

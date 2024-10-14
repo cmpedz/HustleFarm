@@ -8829,6 +8829,8 @@ MonoBehaviour:
   emptyDirts: []
   terminateFunctionButton: {fileID: 1860633753}
   seedProvided: {fileID: 6228346746986245398, guid: 6d78075a417b9364fbc54e57ebe665b2, type: 3}
+  seedItemInBagClicked: {fileID: 0}
+  userBag: {fileID: 321588880}
 --- !u!4 &249065827
 Transform:
   m_ObjectHideFlags: 0
@@ -8932,33 +8934,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3219747426430395931, guid: 71c231948a235c740a84adf66238ca22, type: 3}
+      propertyPath: itemsAdd.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219747426430395931, guid: 71c231948a235c740a84adf66238ca22, type: 3}
+      propertyPath: itemsAdd.Array.data[0]
+      value: 
+      objectReference: {fileID: 613815288299560595, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
+    - target: {fileID: 3219747426430395931, guid: 71c231948a235c740a84adf66238ca22, type: 3}
+      propertyPath: itemsAdd.Array.data[1]
+      value: 
+      objectReference: {fileID: 613815288299560595, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
+    - target: {fileID: 3219747426430395931, guid: 71c231948a235c740a84adf66238ca22, type: 3}
+      propertyPath: itemsAdd.Array.data[2]
+      value: 
+      objectReference: {fileID: 613815288299560595, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
+    - target: {fileID: 3690117103165246545, guid: 71c231948a235c740a84adf66238ca22, type: 3}
+      propertyPath: bagMenu
+      value: 
+      objectReference: {fileID: 321588880}
     - target: {fileID: 4143819399107975088, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: bagMenu
       value: 
       objectReference: {fileID: 321588880}
     - target: {fileID: 6549465895107080455, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -180.25644
       objectReference: {fileID: 0}
     - target: {fileID: 7443932276969138810, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7443932276969138810, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7443932276969138810, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7443932276969138810, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7443932276969138810, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 7443932276969138810, guid: 71c231948a235c740a84adf66238ca22, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8973,7 +8995,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1357220653394940308, guid: 71c231948a235c740a84adf66238ca22, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c231948a235c740a84adf66238ca22, type: 3}
@@ -10202,7 +10225,7 @@ MonoBehaviour:
   m_Follow: {fileID: 379756747}
   m_Lens:
     FieldOfView: 3
-    OrthographicSize: 5
+    OrthographicSize: 3
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -10328,7 +10351,7 @@ Camera:
   far clip plane: 1000
   field of view: 3
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

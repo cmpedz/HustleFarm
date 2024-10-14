@@ -5,7 +5,16 @@ using static UnityEditor.Progress;
 
 public class BagMenu : Menu<string>
 {
+    public List<Item> itemsAdd = new List<Item>();
+
     private Dictionary<string, Item> bagItems = new Dictionary<string, Item>();
+
+    private void Start()
+    {
+        foreach (Item item in itemsAdd) {
+            AddItem(item);
+        }
+    }
     public override void AddItem(Item item)
     {
         string itemId = item.GetItemId();
@@ -16,13 +25,19 @@ public class BagMenu : Menu<string>
 
             bagItems.GetValueOrDefault(itemId).InscreaseQuantitiesItem(numberIncreasing);
 
-            Destroy(item);
         }
         else
         {
-            bagItems.Add(itemId, item);
+            GameObject _item = Instantiate(item.gameObject);
 
-            item.transform.parent = this.content.transform;
+            bagItems.Add(itemId, _item.GetComponent<Item>());
+
+            _item.transform.parent = this.content.transform;
+
+            if (_item.GetComponent<SeedsItem>() != null) {
+
+                _item.GetComponent<SeedsItem>().UserBag = this;
+            }
         }
     }
 
@@ -45,10 +60,7 @@ public class BagMenu : Menu<string>
                 Destroy(selectedItem.gameObject);
             }
         }
-        else
-        {
-            Destroy(item);
-        }
+     
     }
 
     public override Item GetItem(string itemId)

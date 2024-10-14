@@ -8,16 +8,18 @@ public class SeedsItem : GameObjectHolderItem<HarvestPlantsController>
     {
         if(GetItemHolder() != null)
         {
-            GetItemHolder().UserBag = bagMenu;
+            GetItemHolder().UserBag = UserBag;
 
-            DirtStatusControllerSystem.Instance.SeedProvided = GetItemHolder().gameObject;
+            DirtStatusControllerSystem.Instance.SeedProvided = GetItemHolder();
+
+            DirtStatusControllerSystem.Instance.SeedItemInBagClicked = this;
         }
 
         DirtStatusControllerSystem.Instance.ActiveSymbolOfEmptyDirt(true);
 
-        if(bagMenu != null)
+        if(UserBag != null)
         {
-            bagMenu.gameObject.SetActive(false);
+            UserBag.gameObject.SetActive(false);
         }
     }
 

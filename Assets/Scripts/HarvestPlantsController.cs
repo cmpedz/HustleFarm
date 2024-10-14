@@ -13,6 +13,7 @@ public class HarvestPlantsController : MonoBehaviour
     public BagMenu UserBag { get { return userBag; } set {  userBag = value; } }
 
     [SerializeField] private Item itemCollected;
+    public Item ItemCollected { get {  return itemCollected; }  }
 
     [SerializeField] private ItemReceiveNotificationSetUp itemReceiveNotification;
 

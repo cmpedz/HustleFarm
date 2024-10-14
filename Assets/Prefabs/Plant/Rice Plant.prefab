@@ -10,12 +10,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 311054169498773015, guid: f58a042857c99284fbb9d386608e25d8, type: 3}
       propertyPath: m_Name
-      value: Rice Variant
+      value: Rice Plant
       objectReference: {fileID: 0}
     - target: {fileID: 311054169498773015, guid: f58a042857c99284fbb9d386608e25d8, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3475828226346780630, guid: f58a042857c99284fbb9d386608e25d8, type: 3}
+      propertyPath: itemCollected
+      value: 
+      objectReference: {fileID: 8856193037779743845, guid: 116567d3e2bb3d14a96f712cdaea4124, type: 3}
     - target: {fileID: 5471448502685564066, guid: f58a042857c99284fbb9d386608e25d8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
