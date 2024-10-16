@@ -12,11 +12,11 @@ public class CameraVisionZoomController : MonoBehaviour
 
     private float distanceZoomEachTime = 1;
 
-    private float targetOrthoSize = 4f;
+    [SerializeField] private float targetOrthoSize = 4f;
 
-    private const float MAX_ORTHO_SIZE = 5f;
+    [SerializeField] private float MAX_ORTHO_SIZE;
 
-    private const float MIN_ORTHO_SIZE = 3f;
+    [SerializeField] private float MIN_ORTHO_SIZE;
 
     [SerializeField] private CameraMovementController cameraMovement;
 

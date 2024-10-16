@@ -67,7 +67,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
         
     }
 
-    void Start()
+    protected void Start()
     {
         lastTimeProvidedNutritions = DateTime.Now;
 

@@ -72,5 +72,10 @@ public class BagMenu : Menu<string>
         return null;
     }
 
+    public bool HasItem(string itemId) { 
+    
+        return bagItems.ContainsKey(itemId); 
+    }
+
 
 }
