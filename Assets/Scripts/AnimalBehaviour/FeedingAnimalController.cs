@@ -34,7 +34,7 @@ public class FeedingAnimalController : ProvideNutritionsController
     }
     public override bool CheckConditionsProvidingNutritions()
     {
-
+        Debug.Log("prodvide food for animal");
         return MeetAnimalDemand() && !isTakenCare && NeedNutritionsAnnoucement.activeSelf;
     }
 

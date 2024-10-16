@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,11 +10,15 @@ public class AnimalMovementController : MonoBehaviour
 
     [SerializeField] private float timeRunning;
 
+    [SerializeField] private List<GameObject> objectsCantBeFlipped = new List<GameObject>();
+
     private bool isRunning = false;
     public bool IsRunning
     {
         get { return isRunning; }
     }
+
+    private bool isFlip = false;
 
     [SerializeField] private float timeStanding;
 
@@ -41,7 +46,9 @@ public class AnimalMovementController : MonoBehaviour
     private void ControlAnimalMove() {
 
         if (isRunning) {
+            Debug.Log("check speed move : " + speedMove * Time.deltaTime);
             transform.position += direction * speedMove * Time.deltaTime;
+
         }
     }
 
@@ -75,13 +82,50 @@ public class AnimalMovementController : MonoBehaviour
 
         direction = Random.insideUnitCircle;
 
-        float signPosXOfDirection = direction.x / Mathf.Abs(direction.x);
+        CheckFlippingCondition();
 
-        transform.localScale = new Vector2(transform.localScale.x * -1 * signPosXOfDirection, transform.localScale.y);
     }
 
     public void ReverseDirection(){
+
         direction = new Vector2(direction.x * -1, direction.y * -1);
+
+        CheckFlippingCondition();
+    }
+
+    private void CheckFlippingCondition() {
+
+        Debug.Log("check direction : " + direction);
+
+        if (direction.x > 0 && !isFlip) {
+
+            isFlip = true;
+
+            Flip(180f);
+
+
+        }
+
+        if (direction.x < 0 && isFlip)
+        {
+
+            isFlip = false;
+
+            Flip(0f);
+        }
+
+
+    }
+
+    private void Flip(float angleFlip) {
+
+        Quaternion rotation = Quaternion.Euler(0f, angleFlip, 0f);
+
+        transform.localRotation = rotation;
+
+        foreach(GameObject _object in objectsCantBeFlipped){
+            _object.transform.localRotation = rotation;
+        }
     }
 
 }

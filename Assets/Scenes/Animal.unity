@@ -225,8 +225,6 @@ RectTransform:
   - {fileID: 1638560523}
   - {fileID: 650034296}
   - {fileID: 868418552}
-  - {fileID: 2072265131}
-  - {fileID: 429685324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6182,16 +6180,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429685323}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.019571427, y: 0.019571427, z: 0.019571427}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 23569010}
+  m_Father: {fileID: 1586780059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1, y: 1}
+  m_AnchoredPosition: {x: 11.36, y: -5.88}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &476763418
@@ -6403,7 +6401,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 200}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9171402712159255452}
   m_Father: {fileID: 23569010}
@@ -6427,6 +6425,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMove: 2
   timeRunning: 5
+  objectsCantBeFlipped:
+  - {fileID: 9171402712159255454}
   timeStanding: 3
   direction: {x: 0, y: 0, z: 0}
 --- !u!95 &868418554
@@ -6776,6 +6776,10 @@ PrefabInstance:
       propertyPath: MAX_ORTHO_SIZE
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8425685244124877323, guid: e2424e27adb240f47be9abc63ec128a8, type: 3}
+      propertyPath: MIN_ORTHO_SIZE
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6853,7 +6857,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8313,6 +8317,8 @@ Transform:
   - {fileID: 186390952}
   - {fileID: 1307903095}
   - {fileID: 879415809}
+  - {fileID: 2072265131}
+  - {fileID: 429685324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1638560523 stripped
@@ -8443,16 +8449,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072265130}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.019571427, y: 0.019571427, z: 0.019571427}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 23569010}
+  m_Father: {fileID: 1586780059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -3, y: 1}
+  m_AnchoredPosition: {x: -12.16, y: 6.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2120415659
@@ -8494,7 +8500,7 @@ MonoBehaviour:
   m_Follow: {fileID: 879415809}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 2
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -8737,34 +8743,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 868418552}
     m_Modifications:
-    - target: {fileID: 4044200002699858758, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4044200002699858758, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4044200002699858758, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 868418561}
-    - target: {fileID: 4044200002699858758, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4044200002699858758, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ActiveClickEvent
-      objectReference: {fileID: 0}
-    - target: {fileID: 4044200002699858758, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ProvideNutritionsController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4044200002699858758, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6096899143369909630, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8849,6 +8827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NeedFoodAnnocement
       objectReference: {fileID: 0}
+    - target: {fileID: 8695157238798561167, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
+      propertyPath: clickedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 868418561}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
