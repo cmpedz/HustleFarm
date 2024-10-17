@@ -12,6 +12,8 @@ public class FeedingAnimalController : ProvideNutritionsController
 
     [SerializeField] private SpriteRenderer foodNeedDisplay;
 
+    [SerializeField] private NotificationController notificationController;
+
     new void Start()
     {
         base.Start();
@@ -45,6 +47,8 @@ public class FeedingAnimalController : ProvideNutritionsController
         foodNeed = GetFoodNeed();
 
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
+
+        NeedNutritionsAnnoucement.SetActive(true);
     }
 
     private bool MeetAnimalDemand() {
@@ -52,6 +56,23 @@ public class FeedingAnimalController : ProvideNutritionsController
         if(userBag == null || foodNeed== null) return false;
 
         bool isSatisfiedAnimalDemand = userBag.HasItem(foodNeed.GetItemId());
+
+        if (isSatisfiedAnimalDemand)
+        {
+            userBag.RemoveItem(foodNeed);
+        }
+        else {
+
+            string message = "Not Satisfied Animal Food Demand";
+
+            if (notificationController != null) {
+
+                notificationController.gameObject.SetActive(true);
+
+                notificationController.NotifyMessage(message);
+            }
+            
+        }
 
         return isSatisfiedAnimalDemand;
     }

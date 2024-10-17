@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class AnimalDemandAnnocementController : MonoBehaviour, IPointerClickHandler
+public class AnimalDemandAnnocementController : MonoBehaviour
 {
 
     public UnityEvent clickedEvent;
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("click animal demand annoucement");
+
+    void OnMouseDown(){
+        Debug.Log("mouse down");
         clickedEvent?.Invoke();
     }
 

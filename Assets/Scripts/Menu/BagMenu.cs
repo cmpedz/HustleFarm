@@ -32,7 +32,7 @@ public class BagMenu : Menu<string>
 
             bagItems.Add(itemId, _item.GetComponent<Item>());
 
-            _item.transform.parent = this.content.transform;
+            _item.transform.SetParent( this.content.transform, false);
 
             if (_item.GetComponent<SeedsItem>() != null) {
 

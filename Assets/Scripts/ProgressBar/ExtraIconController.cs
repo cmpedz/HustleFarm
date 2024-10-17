@@ -8,7 +8,7 @@ public class ExtraIconController : MonoBehaviour
     [SerializeField] private Transform pointFollow;
     void Start()
     {
-        
+        transform.position = pointFollow.position;
     }
 
     // Update is called once per frame

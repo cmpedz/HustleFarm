@@ -11,23 +11,10 @@ public class ButtonEventsFactory : MonoBehaviour
 
     [SerializeField] private ProgressBarController progressBarController;
 
-    private static ButtonEventsFactory instance;
-    public static ButtonEventsFactory Instance
-    {
-        get { return instance; }
-    }
+
     void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else {
-            if (instance != this) {
-                Destroy(gameObject);
-            }
-        }
-
+      
     }
 
     // Update is called once per frame
@@ -41,6 +28,7 @@ public class ButtonEventsFactory : MonoBehaviour
         AsyncOperation progressController = SceneManager.LoadSceneAsync(indexScene);
 
         progressScene.SetActive(true);
+
 
         StartCoroutine(LoadingSceneIEnumrator(progressController));
 

@@ -17,25 +17,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5226899083900735276
-RectTransform:
+--- !u!4 &5226899083900735276
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8766811006275279577}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.001, y: 0.022, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6096899143369909630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.001, y: 0.022}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &3668488812682989749
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -138,11 +134,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3390694397855443055, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3390694397855443055, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.168
       objectReference: {fileID: 0}
     - target: {fileID: 3390694397855443055, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -222,13 +218,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1651137094679642319, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8695157238798561167}
+      addedObject: {fileID: 6228258341519773256}
     - targetCorrespondingSourceObject: {fileID: 1651137094679642319, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2190502845294075844}
+      addedObject: {fileID: 4223104103008951576}
+    - targetCorrespondingSourceObject: {fileID: 1651137094679642319, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2718446745094744754}
   m_SourcePrefab: {fileID: 100100000, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
---- !u!224 &6096899143369909630 stripped
-RectTransform:
+--- !u!4 &6096899143369909630 stripped
+Transform:
   m_CorrespondingSourceObject: {fileID: 3390694397855443055, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
   m_PrefabInstance: {fileID: 8904359598986022161}
   m_PrefabAsset: {fileID: 0}
@@ -237,7 +236,34 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1651137094679642319, guid: 6788d16b4ebc1234ea170a729731c0b7, type: 3}
   m_PrefabInstance: {fileID: 8904359598986022161}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8695157238798561167
+--- !u!50 &6228258341519773256
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888238985367981534}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 7
+--- !u!114 &4223104103008951576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,20 +277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProvideNutritionsController, Assembly-CSharp
-        m_MethodName: ActiveClickEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!61 &2190502845294075844
+      m_Calls: []
+--- !u!61 &2718446745094744754
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,7 +310,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00048182905, y: 0.017872583}
+  m_Offset: {x: 0, y: 0.01942202}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -307,5 +321,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13289115, y: 0.08425484}
+  m_Size: {x: 0.13, y: 0.08115596}
   m_EdgeRadius: 0

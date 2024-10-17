@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 21300108, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
     - target: {fileID: 8026795210340541811, guid: d2713ae5ec22a304489216948567485c, type: 3}
       propertyPath: m_Name
-      value: Food Item (Rice) 1
+      value: Food Item (Crop)
       objectReference: {fileID: 0}
     - target: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
       propertyPath: m_fontColor.b
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036f78f1817dc494f9e454966ecfcdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 75f3b7549d27caa43a117624a13309c1, type: 2}
+  itemData: {fileID: 11400000, guid: c48534b6e9912334c9080be0003535e0, type: 2}
   quantitiesDisplay: {fileID: 2309670418145390339}
   itemSpriteDisplay: {fileID: 7086422612865977625}
 --- !u!114 &7086422612865977625 stripped

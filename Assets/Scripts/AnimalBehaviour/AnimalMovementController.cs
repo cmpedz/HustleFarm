@@ -46,7 +46,7 @@ public class AnimalMovementController : MonoBehaviour
     private void ControlAnimalMove() {
 
         if (isRunning) {
-            Debug.Log("check speed move : " + speedMove * Time.deltaTime);
+            
             transform.position += direction * speedMove * Time.deltaTime;
 
         }
@@ -94,8 +94,6 @@ public class AnimalMovementController : MonoBehaviour
     }
 
     private void CheckFlippingCondition() {
-
-        Debug.Log("check direction : " + direction);
 
         if (direction.x > 0 && !isFlip) {
 
