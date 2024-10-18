@@ -67,8 +67,6 @@ public class FeedingAnimalController : ProvideNutritionsController
 
             if (notificationController != null) {
 
-                notificationController.gameObject.SetActive(true);
-
                 notificationController.NotifyMessage(message);
             }
             

@@ -231,6 +231,17 @@ RectTransform:
   m_AnchoredPosition: {x: -0.3729884, y: 0.14812133}
   m_SizeDelta: {x: 800, y: 408.75912}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &93641230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5619686260729726372, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+  m_PrefabInstance: {fileID: 637074424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e68654c9570664495d85f7f9144231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &186390951
 GameObject:
   m_ObjectHideFlags: 0
@@ -6360,6 +6371,107 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880a0240ea61c91428d9acb0fcb7910a, type: 3}
+--- !u!1001 &637074424
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3491336427580649695, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363252898226439129, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_Name
+      value: Notification
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363252898226439129, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
 --- !u!224 &650034296 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4036713251115689691, guid: 5b6bb3664e016594f8f73cbe809988bc, type: 3}
@@ -6663,7 +6775,7 @@ MonoBehaviour:
   - {fileID: 8856193037779743845, guid: 116567d3e2bb3d14a96f712cdaea4124, type: 3}
   userBag: {fileID: 1512414154}
   foodNeedDisplay: {fileID: 9171402712159255453}
-  notificationController: {fileID: 5619686260729726372, guid: 6db4567dec21ad34aa6e3fa5ac731bcd, type: 3}
+  notificationController: {fileID: 93641230}
 --- !u!1001 &879415808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6853,7 +6965,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8677,7 +8789,7 @@ MonoBehaviour:
   m_Follow: {fileID: 879415809}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4
+    OrthographicSize: 2
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -9025,3 +9137,4 @@ SceneRoots:
   - {fileID: 868418552}
   - {fileID: 2033625220}
   - {fileID: 2103564653}
+  - {fileID: 637074424}
