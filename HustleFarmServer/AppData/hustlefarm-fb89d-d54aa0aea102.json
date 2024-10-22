@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "hustlefarm-fb89d",
+  "private_key_id": "d54aa0aea102d9ba0306ac6a52a079f8cf831d93",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDUZUv4oAbz+L0E\nEss3+D8UGA48a9X8GpzW2lFrdTLDuXUhts3b1RVvF6vKAQ/Oj8RQsKuMjlbCm2Kr\nVtrnbqWAAm6zRoMTIiIbJZDRTrmrnX7/Ct23LPqgEv+XBi42ul9nGJwjcGB+qFM+\nAmsltraiSRdQKM2uassjOM+dCdBdwj/0k/8XXNje0SFbEmEyZ+0bSGw/UEDzV+E4\ng1srX0ak+ztl7adBTdKStQ3FCiCX+VduCMt/W4C0DOi2dPv2rp+rll/lmKDyJacp\n5xla7W1GArVK6W+TopcFAx73D4jscKWnvGFbluYd5rj0BfaMdpAnO7Lob4nQHxr+\nimHqGnQDAgMBAAECggEAKd+YpTkjdcj1ts5fuzaZdQQzFk1qQAwdHKyo/ab67aRs\nB8wK9MqjMaY4i5g+/gnQ+dmC0LClQTOyNbZnbNYfEcgo+/YsVELX94Ml9GXxa/ie\nd3i0cm8PMCzer+8bgFWpBmHPMptuornbw29loWdOxVrkmjyZJEhQqS6Dm+G57ynH\nNu30iKAQKgbN68aupyDP0Yv/qIn0VB35btF6neeqIUPs5XOJXZQ1dS5pzCGCZPZS\nY9Ubj8dUi5cFt8i/lJlUaKjdCAMaSxVITKW5db2EB2y3NIz9x4EZAk/3yCVqgd/Q\n9Ir8kGOC0deFEKe6jQcdKLUcTXAehtj0GTO+Zd/eDQKBgQD0hpKqbWVmNyZlUkd8\nRNgqXyjHbx7QOGBfI8iWSAJgbQY4+ZyLkx/g3uu4GQFjmDSUrc1KIiF+Jyk2kBj0\nB60jV3eqPeRgZa1rD6VtHx9ZiQzeCfxGtl/brt/MkWuiQVU/egLiKigjZRPKuCjk\nccHKygqp7Swsl8MVd7+Mw9NCBQKBgQDeXMETi5xFOxRuNx/TfGhSsUT6bTFfplM5\nRUOw/2nHAPvFxslXBPsXlnwhwoQvhYPia3DTUynbBigOYqmX8OPODzQLf9tHVMXB\n3+fG5LIONhreoPz22GOVDwIQJf7U+qbW/9PtCBSYZLWCalSKuUKcpp/164NSnt/w\n1pMLuTCUZwKBgFYwSOoBfUg2EDaOddv7eCYXPIxvQnEqLe3a8wzlfND4HMVgVils\nRkRAzt0pEzBDqeTuDfofZabNrt0olWMOgZx/bBJ5llHUBPhDn4+C9M3eXMa2xlE2\nXztTvFaiu0mJtb6WBwYozdUL/5nop6E954zPAks66eMd6wlaGA5Jx+DxAoGAEkED\nCJu5ZGWJM9MKpc3cso0i4Hv+RZ/dzSHGgM023cNS59V9ycr64eDUp+DUASKwxPGU\n/YQiN3y15RhsW7DGwq+00gzY724iHdxHpqg3hbsjUYtduNXituXYgYLc/JbnA1dV\nCmxTZH8/90jLT+gNc9ap4wJGcY3hTGARCjFVr5kCgYBQWNvAe5wnx/qMNALfzu2j\nQLde0Pv+GSqStXfk47l/jmTFZx4Fkqnv8WmUVGraRKdSosgu4BSX7sobQg4oJIFm\nr25ET/a31somw32/p2++wWlN8JQvHb7luPCA82waebfRUtfb7osjehmgM2vTjhub\nWnLURze8wZyDKvB9hYy68A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "hungmnk2004@hustlefarm-fb89d.iam.gserviceaccount.com",
+  "client_id": "110664255973739870858",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hungmnk2004%40hustlefarm-fb89d.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "eNrPONCdzFBmwKm+0x5lmwzWbo+le6XWpZNWnKundY0=",
+  "Source": "HustleFarmServer",
+  "BasePath": "_content/HustleFarmServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
