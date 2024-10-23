@@ -8,8 +8,12 @@ namespace HustleFarmServer.Controllers.Model
 
         private const string NAME_COLLECTION_GET = "Plants";
 
+        private const string TYPE_ITEM_GACHA = "Type";
+
         private ItemsGachaStorage itemsGachaStorage = ItemsGachaStorage.GetInstance();
-        private async Task GetItemsGachaFromFireBaseAsync()
+
+        private static ItemGachaStorageManager? instance;
+        public async Task GetItemsGachaFromFireBaseAsync()
         {
 
             firestoreDb = FireStoreController.GetInstace().FireStoreDb;
@@ -27,7 +31,7 @@ namespace HustleFarmServer.Controllers.Model
 
                     await FormatItemGachaDataToDictionary(gachaItemDocumentSnapShot, itemGachaDataDictionary);
 
-
+                    AddNewItemIntoItemsGachaStorage(itemGachaDataDictionary);
                 }
             }
 
@@ -36,8 +40,13 @@ namespace HustleFarmServer.Controllers.Model
 
         private void AddNewItemIntoItemsGachaStorage(Dictionary<string, object> itemDatas) {
 
-            if (itemDatas.TryGetValue(ItemsGachaStorage.ITEM_GACHA_RATE, out var rate)) { 
-                
+            if (itemDatas.TryGetValue(ItemsGachaStorage.ITEM_GACHA_RATE, out var rate)) {
+
+                if (itemDatas.TryGetValue(TYPE_ITEM_GACHA, out var itemType)) {
+
+                    itemsGachaStorage.AddNewItemGachaIntoStorage((string)itemType, itemDatas);
+
+                }
             }
         }
 
@@ -66,6 +75,16 @@ namespace HustleFarmServer.Controllers.Model
             }
 
 
+        }
+
+        public static ItemGachaStorageManager GetInstance() { 
+
+            if(instance == null)
+            {
+                instance = new ItemGachaStorageManager();
+            }
+
+            return instance;
         }
 
 

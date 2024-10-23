@@ -55,3 +55,4 @@ D:\Unity(new)\Server\HustleFarmServer\HustleFarmServer\obj\Debug\net8.0\HustleFa
 D:\Unity(new)\Server\HustleFarmServer\HustleFarmServer\obj\Debug\net8.0\ref\HustleFarmServer.dll
 D:\Unity(new)\Server\HustleFarmServer\HustleFarmServer\bin\Debug\net8.0\AppData\hustlefarm-fb89d-firebase-adminsdk-cye4g-9d1d4b112b.json
 D:\Unity(new)\Server\HustleFarmServer\HustleFarmServer\bin\Debug\net8.0\AppData\hustlefarm-fb89d-d54aa0aea102.json
+D:\Unity(new)\Server\HustleFarmServer\HustleFarmServer\obj\Debug\net8.0\HustleFarmServer.sourcelink.json

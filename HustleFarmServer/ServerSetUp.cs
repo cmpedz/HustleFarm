@@ -1,5 +1,6 @@
 ﻿using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using HustleFarmServer.Controllers.Model;
 
 public class ServerSetUp
 {
@@ -12,6 +13,7 @@ public class ServerSetUp
         });
 
         // Other service configurations
+
     }
 
     // Other configurations
