@@ -1,7 +1,7 @@
 ﻿using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
 
-public class Startup
+public class ServerSetUp
 {
     public void ConfigureServices(IServiceCollection services)
     {
