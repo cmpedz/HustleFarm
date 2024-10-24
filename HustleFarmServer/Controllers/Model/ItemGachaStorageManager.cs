@@ -40,14 +40,14 @@ namespace HustleFarmServer.Controllers.Model
 
         private void AddNewItemIntoItemsGachaStorage(Dictionary<string, object> itemDatas) {
 
-            if (itemDatas.TryGetValue(ItemsGachaStorage.ITEM_GACHA_RATE, out var rate)) {
+            
 
                 if (itemDatas.TryGetValue(TYPE_ITEM_GACHA, out var itemType)) {
 
                     itemsGachaStorage.AddNewItemGachaIntoStorage((string)itemType, itemDatas);
 
                 }
-            }
+            
         }
 
         private async Task FormatItemGachaDataToDictionary(DocumentSnapshot itemGachaData, Dictionary<string, object> itemGachaDataDictionary)
