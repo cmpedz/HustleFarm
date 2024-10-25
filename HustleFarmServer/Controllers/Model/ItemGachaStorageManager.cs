@@ -6,19 +6,22 @@ namespace HustleFarmServer.Controllers.Model
     {
         private FirestoreDb? firestoreDb;
 
-        private const string NAME_COLLECTION_GET = "Plants";
-
-        private const string TYPE_ITEM_GACHA = "Type";
 
         private ItemsGachaStorage itemsGachaStorage = ItemsGachaStorage.GetInstance();
 
         private static ItemGachaStorageManager? instance;
+
+        private ItemGachaStorageManager() {
+            GetItemsGachaFromFireBaseAsync().Wait();
+        }
         public async Task GetItemsGachaFromFireBaseAsync()
         {
 
             firestoreDb = FireStoreController.GetInstace().FireStoreDb;
 
-            Query gachaItemsQuery = firestoreDb.Collection(NAME_COLLECTION_GET);
+            string keyPlants = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.Plants);
+
+            Query gachaItemsQuery = firestoreDb.Collection(keyPlants);
 
             QuerySnapshot gachaItemsQuerySnapShot = await gachaItemsQuery.GetSnapshotAsync();
 
@@ -40,9 +43,9 @@ namespace HustleFarmServer.Controllers.Model
 
         private void AddNewItemIntoItemsGachaStorage(Dictionary<string, object> itemDatas) {
 
-            
+                string keyItemType = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.Type);
 
-                if (itemDatas.TryGetValue(TYPE_ITEM_GACHA, out var itemType)) {
+                if (itemDatas.TryGetValue(keyItemType, out var itemType)) {
 
                     itemsGachaStorage.AddNewItemGachaIntoStorage((string)itemType, itemDatas);
 

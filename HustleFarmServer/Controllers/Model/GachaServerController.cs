@@ -26,9 +26,13 @@ namespace HustleFarmServer.Controllers.Model
 
             Dictionary<string, int[]> itemsGachaTypeRange = ItemsGachaRateManager.GetInstance().ItemsGachaTypeRange;
 
+            Dictionary<string, List<object>> itemsGacha = ItemsGachaStorage.GetInstance().GachaItemsDictionary;
+
             ItemGachaStorageManager.GetInstance().GetItemsGachaFromFireBaseAsync().Wait();
 
-            return Ok(JsonSerializer.Serialize(itemsGachaTypeRange, new JsonSerializerOptions()));
+            return Ok(JsonSerializer.Serialize(itemsGachaTypeRange, new JsonSerializerOptions()) + "\n" + 
+                    JsonSerializer.Serialize(itemsGacha, new JsonSerializerOptions())
+                );
         }
 
 

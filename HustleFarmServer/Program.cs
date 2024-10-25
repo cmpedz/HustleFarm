@@ -16,6 +16,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//put this class in here to prepare resource, data before execute reply to clients side requests
+ServerSetUp.ConfigureServices(app.Services);
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

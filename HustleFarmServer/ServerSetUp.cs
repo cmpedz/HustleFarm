@@ -4,7 +4,7 @@ using HustleFarmServer.Controllers.Model;
 
 public class ServerSetUp
 {
-    public void ConfigureServices(IServiceCollection services)
+    public static void ConfigureServices(IServiceProvider service)
     {
         // Initialize Firebase using the service account JSON file
         FirebaseApp.Create(new AppOptions()
@@ -12,9 +12,12 @@ public class ServerSetUp
             Credential = GoogleCredential.GetApplicationDefault()
         });
 
-        // Other service configurations
+        // get data from firebase into model
+        ItemsGachaRateManager.GetInstance();
+
+        ItemGachaStorageManager.GetInstance();
 
     }
 
-    // Other configurations
+    
 }

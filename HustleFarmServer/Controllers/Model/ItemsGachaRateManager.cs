@@ -13,10 +13,6 @@ namespace HustleFarmServer.Controllers.Model
 
         private FireStoreController firestoreDbController = FireStoreController.GetInstace();
 
-        private static readonly string COLLECTIONS_NAME = "GameItemType";
-
-        public static readonly string ITEM_GACHA_RATE = "GachaRate";
-
         private static ItemsGachaRateManager? instance;
 
         private ItemsGachaRateManager(){
@@ -36,7 +32,9 @@ namespace HustleFarmServer.Controllers.Model
         }
         private async Task GetRateOfEachTypeFromFB() {
 
-            Query itemsGachaRateQuery = firestoreDbController.FireStoreDb.Collection(COLLECTIONS_NAME);
+            string keyGameItemType = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.GameItemType);
+
+            Query itemsGachaRateQuery = firestoreDbController.FireStoreDb.Collection(keyGameItemType);
 
             QuerySnapshot itemsGachaRateQuerySnapShots = await itemsGachaRateQuery.GetSnapshotAsync();
 
@@ -48,9 +46,13 @@ namespace HustleFarmServer.Controllers.Model
 
                 Dictionary<string, object> itemsRateToDictionary = itemsRateDcSnapShot.ToDictionary();
 
-                if (itemsRateToDictionary.TryGetValue("Type", out var type)) {
+                string keyItemType = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.Type);
 
-                    if (itemsRateToDictionary.TryGetValue(ITEM_GACHA_RATE, out var rate))
+                if (itemsRateToDictionary.TryGetValue(keyItemType, out var type)) {
+
+                    string keyGachaRate = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.GachaRate);
+
+                    if (itemsRateToDictionary.TryGetValue(keyGachaRate, out var rate))
                     {
 
                         int lastBorder = (int)((double)rate * sumQuantitiesCase) + startBorder;

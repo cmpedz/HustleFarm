@@ -6,6 +6,8 @@ namespace HustleFarmServer.Controllers.Model
     {
         private Dictionary<string, List<object>>? gachaItemsDictionary;
 
+        public Dictionary<string, List<object>>? GachaItemsDictionary;
+
         private static ItemsGachaStorage? instance;
 
 
