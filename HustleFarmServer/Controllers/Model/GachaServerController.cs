@@ -28,10 +28,13 @@ namespace HustleFarmServer.Controllers.Model
 
             Dictionary<string, List<object>> itemsGacha = ItemsGachaStorage.GetInstance().GachaItemsDictionary;
 
+            Dictionary<string, List<string>> itemsGachaId = ItemsGachaStorage.GetInstance().CheckItemExistFlag;
+
             ItemGachaStorageManager.GetInstance().GetItemsGachaFromFireBaseAsync().Wait();
 
             return Ok(JsonSerializer.Serialize(itemsGachaTypeRange, new JsonSerializerOptions()) + "\n" + 
-                    JsonSerializer.Serialize(itemsGacha, new JsonSerializerOptions())
+                    JsonSerializer.Serialize(itemsGacha, new JsonSerializerOptions()) + "\n" +
+                    JsonSerializer.Serialize(itemsGachaId, new JsonSerializerOptions())
                 );
         }
 
