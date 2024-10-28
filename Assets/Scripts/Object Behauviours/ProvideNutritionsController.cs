@@ -10,7 +10,6 @@ using UnityEngine.UI;
 
 public abstract class ProvideNutritionsController : MonoBehaviour
 {
-    public static readonly DateTime DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS = new DateTime(2000, 1, 1);
     // Start is called before the first frame update
     [SerializeField] private Slider consumeBar;
 
@@ -22,15 +21,15 @@ public abstract class ProvideNutritionsController : MonoBehaviour
        get { return needNutritionsAnnoucement; }
     }
 
+    private IProvideNutritionsProcess providingNutritionsProcess;
+
     [SerializeField] private Animator provideNutritionsEffect;
 
-    private DateTime lastTimeProvidedNutritions = DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS;
+    private DateTime lastTimeProvidedNutritions;
     public DateTime LastTimeProvideNutritions
     {
         get { return lastTimeProvidedNutritions; }
     }
-
-    [SerializeField] private float maxHourForNextProvidingNutritions;
 
 
     protected bool isTakenCare;
@@ -69,7 +68,21 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
     protected void Start()
     {
-        lastTimeProvidedNutritions = DateTime.Now;
+        ObjectDataManager objectDataManager = GetComponent<ObjectDataManager>();
+
+        if (objectDataManager != null) {
+
+            IProvideNutritionsProcess provideNutritionsProcess = (IProvideNutritionsProcess) objectDataManager;
+
+            lastTimeProvidedNutritions = provideNutritionsProcess.GetLastTimeProvidingNutrition();
+
+        }
+        else
+        {
+            lastTimeProvidedNutritions = DateTime.Now;
+        }
+
+        
 
         needNutritionsAnnoucement.SetActive(true);
     }
@@ -101,6 +114,8 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     private IEnumerator ConsumeNutritions()
     {
         double progressValue = 0;
+
+        float maxHourForNextProvidingNutritions = providingNutritionsProcess.GetMaxHourForNextProviding();
 
         do {
 

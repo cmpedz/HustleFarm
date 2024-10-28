@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class ObjectDeathController : MonoBehaviour
 {
-    [SerializeField] private float hoursCanSurvives;
-
-    [SerializeField] private float maxHoursCanSurviveInBadStatus;
 
     [SerializeField] private ProvideNutritionsController provideNutritionsController;
 
@@ -20,12 +17,16 @@ public class ObjectDeathController : MonoBehaviour
 
     [SerializeField] private ObjectInforsController objectInfors;
 
-    [SerializeField] private DateTime timeBorn;
+    private IDeathProcess deathProcess;
 
     // Start is called before the first frame update
     void Start()
     {
-        timeBorn = DateTime.Now;
+        PlantsDataManager plantsDataManager = GetComponent<PlantsDataManager>();
+
+        if (plantsDataManager != null) {
+            deathProcess = (IDeathProcess)plantsDataManager;
+        }
 
         StartCoroutine(CheckDeathStatus());
     }
@@ -75,13 +76,13 @@ public class ObjectDeathController : MonoBehaviour
         bool isNotProvidedNutritions = !provideNutritionsController.IsTakenCare;
 
         bool isLastTimeProvideNutritionsDefault = provideNutritionsController.LastTimeProvideNutritions
-            .Equals(ProvideNutritionsController.DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS);
+            .Equals(ObjectDataManager.DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS);
 
         if(isNotProvidedNutritions && !isLastTimeProvideNutritionsDefault)
         {
             double hoursLackOfNutritionsDurations = (DateTime.Now - provideNutritionsController.LastTimeProvideNutritions).TotalHours;
 
-            double remainTime = maxHoursCanSurviveInBadStatus - hoursLackOfNutritionsDurations;
+            double remainTime = deathProcess.GetMaxHoursCanSurviveInBadStatus() - hoursLackOfNutritionsDurations;
 
             //objectInfors.DisplayTimeSurviveRemainInBadStatus((float)remainTime);
 
@@ -93,8 +94,8 @@ public class ObjectDeathController : MonoBehaviour
 
     private bool IsOutOfLifeSpan() {
 
-        double hoursSurvived = (DateTime.Now - timeBorn).TotalHours;
+        double hoursSurvived = (DateTime.Now - deathProcess.GetTimeBorn()).TotalHours;
 
-        return hoursSurvived > hoursCanSurvives;
+        return hoursSurvived > deathProcess.GetLifeSpan();
     }
 }
