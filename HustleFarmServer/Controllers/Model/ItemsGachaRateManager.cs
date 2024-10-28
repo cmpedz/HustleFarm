@@ -4,16 +4,18 @@ namespace HustleFarmServer.Controllers.Model
 {
     public class ItemsGachaRateManager
     {
-        private Dictionary<string, int[]> itemsGachaTypeRange = [];
+        private Dictionary<string, int[]> itemsGachaRateRange = [];
 
-        public Dictionary<string, int[]> ItemsGachaTypeRange
+        public Dictionary<string, int[]> ItemsGachaRateRange
         {
-            get { return itemsGachaTypeRange; }
+            get { return itemsGachaRateRange; }
         }
 
         private FireStoreController firestoreDbController = FireStoreController.GetInstace();
 
         private static ItemsGachaRateManager? instance;
+
+        public static readonly int MAX_RANGE = 10000;
 
         private ItemsGachaRateManager(){
 
@@ -40,7 +42,7 @@ namespace HustleFarmServer.Controllers.Model
 
             int startBorder = 0;
 
-            int sumQuantitiesCase = 10000;
+            int sumQuantitiesCase = MAX_RANGE;
 
             foreach (DocumentSnapshot itemsRateDcSnapShot in itemsGachaRateQuerySnapShots.Documents) {
 
@@ -57,7 +59,7 @@ namespace HustleFarmServer.Controllers.Model
 
                         int lastBorder = (int)((double)rate * sumQuantitiesCase) + startBorder;
 
-                        itemsGachaTypeRange.Add((string)type, [startBorder, lastBorder]);
+                        itemsGachaRateRange.Add((string)type, [startBorder, lastBorder]);
 
                         startBorder = lastBorder;
                     }

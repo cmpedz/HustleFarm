@@ -23,21 +23,68 @@ namespace HustleFarmServer.Controllers.Model
         [HttpGet]
         public IActionResult GiveGachaItemToClientsSide()
         {
+            object itemGachaGet = GetRandomItemGachaFromStorage();
 
-            Dictionary<string, int[]> itemsGachaTypeRange = ItemsGachaRateManager.GetInstance().ItemsGachaTypeRange;
+            if (itemGachaGet != null) {
+
+                string itemGachaToJson = JsonSerializer.Serialize(itemGachaGet, new JsonSerializerOptions());
+
+                return Ok(itemGachaToJson);
+            }
+
+            return Ok("");
+            
+        }
+
+        private object? GetRandomItemGachaFromStorage() {
 
             Dictionary<string, List<object>> itemsGacha = ItemsGachaStorage.GetInstance().GachaItemsDictionary;
 
-            Dictionary<string, List<string>> itemsGachaId = ItemsGachaStorage.GetInstance().CheckItemExistFlag;
+            if (itemsGacha == null) return null;
 
-            ItemGachaStorageManager.GetInstance().GetItemsGachaFromFireBaseAsync().Wait();
+            if (itemsGacha.TryGetValue(GetRandomItemGachaTypeFromStorage(), out List<object>? itemsGachaList)) {
 
-            return Ok(JsonSerializer.Serialize(itemsGachaTypeRange, new JsonSerializerOptions()) + "\n" + 
-                    JsonSerializer.Serialize(itemsGacha, new JsonSerializerOptions()) + "\n" +
-                    JsonSerializer.Serialize(itemsGachaId, new JsonSerializerOptions())
-                );
+                Random random = new Random();
+
+                int indexGet = random.Next(0, itemsGachaList.Count);
+
+                return itemsGachaList[indexGet];
+
+            }
+
+            return null;
         }
 
+        private string? GetRandomItemGachaTypeFromStorage() {
+
+            Dictionary<string, int[]> itemsGachaRateRange = ItemsGachaRateManager.GetInstance().ItemsGachaRateRange;
+
+            Random random = new Random();
+
+            int randomNumberInRateRange = random.Next(0, ItemsGachaRateManager.MAX_RANGE);
+
+            if (itemsGachaRateRange == null) return null;
+
+            foreach (string itemGachaType in itemsGachaRateRange.Keys) {
+
+                if (itemsGachaRateRange.TryGetValue(itemGachaType, out int[]? itemGachaRateRange)) {
+
+                    int startBorder = itemGachaRateRange[0];
+
+                    int lastBorder = itemGachaRateRange[1];
+
+                    if (randomNumberInRateRange >= startBorder && randomNumberInRateRange < lastBorder) {
+
+                        return itemGachaType;
+                    }
+                }
+                
+            }
+
+            return null;
+
+
+        }
 
 
     }
