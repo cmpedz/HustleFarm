@@ -16,7 +16,7 @@ public class ThirdWebSDKMangager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI userWalletAddress;
 
-    [SerializeField] private TextMeshProUGUI textTest;
+    //[SerializeField] private TextMeshProUGUI textTest;
 
 
     void Start()
@@ -48,19 +48,14 @@ public class ThirdWebSDKMangager : MonoBehaviour
 
     public async void ConnectUserWallet() {
 
-        var inAppWalletOptions = new InAppWalletOptions(authprovider: AuthProvider.Google);
-
-        var options = new WalletOptions(
-            provider: WalletProvider.InAppWallet,
-            chainId: 1,
-            inAppWalletOptions: inAppWalletOptions
-        );
+        var options = new WalletOptions(provider: WalletProvider.MetaMaskWallet, chainId: 1);
+        
 
 
         try
         {
 
-            IThirdwebWallet wallet = await ThirdwebManager.Instance.ConnectWallet(options);
+            var wallet = await ThirdwebManager.Instance.ConnectWallet(options);
 
             if (wallet != null)
             {
@@ -68,20 +63,20 @@ public class ThirdWebSDKMangager : MonoBehaviour
 
                 userWalletAddress.text = walletAddress;
 
-                textTest.text = "welcome user";
+                //textTest.text = "welcome user";
             }
             else
             {
-                textTest.text = "wallet is null";
+               // textTest.text = "wallet is null";
             }
 
             
 
         } catch (System.Exception e){
-            textTest.text = "error when connect with user wallet : " + e.StackTrace;
+            //textTest.text = "error when connect with user wallet : " + e.StackTrace;
         }
         finally{
-            textTest.gameObject.SetActive(true);
+            //textTest.gameObject.SetActive(true);
         }
        
           

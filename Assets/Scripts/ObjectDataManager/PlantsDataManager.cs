@@ -3,22 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlantsDataManager : ObjectDataManager, IDeathProcess
 {
     private DateTime timeBorn;
 
-    [SerializeField] private float lifeSpans;
+    public DateTime TimeBorn;
 
-    [SerializeField] private float maxHoursCanSurviveInBadStatus;
+    [SerializeField] private float LifeSpans;
+
+    [SerializeField] private float MaxHoursCanSurviveInBadStatus;
 
     public float GetLifeSpan()
     {
-        return lifeSpans;
+        return LifeSpans;
     }
 
     public float GetMaxHoursCanSurviveInBadStatus()
     {
-        return maxHoursCanSurviveInBadStatus;
+        return MaxHoursCanSurviveInBadStatus;
     }
 
     public DateTime GetTimeBorn()

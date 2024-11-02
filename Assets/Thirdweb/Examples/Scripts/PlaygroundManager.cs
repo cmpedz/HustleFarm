@@ -87,12 +87,14 @@ namespace Thirdweb.Unity.Examples
             InAppWalletButton.onClick.RemoveAllListeners();
             InAppWalletButton.onClick.AddListener(() => InitializeInAppWalletPanel());
 
+            //
             WalletConnectButton.onClick.RemoveAllListeners();
             WalletConnectButton.onClick.AddListener(() =>
             {
                 var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
                 ConnectWallet(options);
             });
+            //
         }
 
         private async void ConnectWallet(WalletOptions options)
@@ -100,7 +102,8 @@ namespace Thirdweb.Unity.Examples
             // Connect the wallet
 
             var internalWalletProvider = options.Provider == WalletProvider.MetaMaskWallet ? WalletProvider.WalletConnectWallet : options.Provider;
-            var currentPanel = WalletPanels.Find(panel => panel.Identifier == internalWalletProvider.ToString());
+            Debug.Log("check interWalletId : " + internalWalletProvider.ToString());
+            var currentPanel = WalletPanels.Find(panel => panel.Identifier == internalWalletProvider.ToString() );
 
             Log(currentPanel.LogText, $"Connecting...");
 
