@@ -42,7 +42,7 @@ public abstract class Item : MonoBehaviour, IPointerClickHandler
 
     public string GetItemId()
     {
-        return itemData.name;
+        return itemData.itemName;
     }
 
     public Sprite GetItemSprite() { 

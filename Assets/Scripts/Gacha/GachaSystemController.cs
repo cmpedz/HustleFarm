@@ -10,6 +10,8 @@ public class GachaSystemController : MonoBehaviour
     private static readonly string SERVER_PROVIDING_GACHA_ITEM_URL = "https://localhost:7218/GachaServer";
 
     [SerializeField] private TextMeshProUGUI result;
+
+    [SerializeField] private GachaItemDisplaySystem itemsDisplaySystem;
     void Start()
     {
         
@@ -18,6 +20,8 @@ public class GachaSystemController : MonoBehaviour
     public void GetRateFromServer(int time) {
 
         this.result.text = "";
+
+        
 
         for (int i = 0; i < time; i++) {
             StartCoroutine(GetRateFromServerCoroutine());
@@ -36,7 +40,16 @@ public class GachaSystemController : MonoBehaviour
         }
         else
         {
-            result.text += getRequest.downloadHandler.text + "\n";
+            string resultText = getRequest.downloadHandler.text;
+
+            result.text +=  resultText + "\n";
+
+            itemsDisplaySystem.DisplayGachaItem(resultText);
+
+            if (!itemsDisplaySystem.gameObject.activeSelf) {
+                itemsDisplaySystem.gameObject.SetActive(true);
+            }
+            
         }
     }
 

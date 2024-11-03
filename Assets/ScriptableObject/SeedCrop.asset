@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4a088f4ab04bb24288cf46187b152d1, type: 3}
-  m_Name: SeedRice
+  m_Name: SeedCrop
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300156, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
-  itemName: Rice
+  sprite: {fileID: 21300164, guid: bb607b3e08eb870419797e86501f8749, type: 3}
+  itemName: Crop

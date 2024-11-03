@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Food Carrot
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300120, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
-  name: Food Carrot
+  itemName: Food Carrot

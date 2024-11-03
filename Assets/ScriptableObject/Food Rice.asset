@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Food Rice
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300104, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
-  name: Food Rice
+  itemName: Food Rice

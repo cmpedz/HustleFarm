@@ -7,5 +7,5 @@ public class ObjectData : ScriptableObject
 {
     [SerializeField] public Sprite sprite;
 
-    [SerializeField] public string name;
+    [SerializeField] public string itemName;
 }
