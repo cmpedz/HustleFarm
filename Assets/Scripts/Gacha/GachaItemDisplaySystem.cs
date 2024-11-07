@@ -43,7 +43,7 @@ public class GachaItemDisplaySystem : MonoBehaviour
 
             gachaItem.ItemSprite = plantSeedSprite;
 
-            gachaItem.transform.parent = content.transform;
+            gachaItem.transform.SetParent(content.transform);
 
             gachaItem.gameObject.SetActive(true);
 

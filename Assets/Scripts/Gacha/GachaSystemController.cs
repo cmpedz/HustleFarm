@@ -4,10 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GachaSystemController : MonoBehaviour
+public class GachaSystemController : ServerRequestController
 {
     // Start is called before the first frame update
-    private static readonly string SERVER_PROVIDING_GACHA_ITEM_URL = "https://localhost:7218/GachaServer";
+    private static readonly string ROUTER_PROVIDING_GACHA_ITEM = "GachaServer";
 
     [SerializeField] private TextMeshProUGUI result;
 
@@ -24,34 +24,24 @@ public class GachaSystemController : MonoBehaviour
         
 
         for (int i = 0; i < time; i++) {
-            StartCoroutine(GetRateFromServerCoroutine());
+            StartCoroutine(ExecuteGetRequestToServer(ROUTER_PROVIDING_GACHA_ITEM));
         }
    
     }
 
-    private IEnumerator GetRateFromServerCoroutine() {
+   
 
-        UnityWebRequest getRequest = UnityWebRequest.Get(SERVER_PROVIDING_GACHA_ITEM_URL);
+    public override void HandleDataRetrievedFromServer(UnityWebRequest request)
+    {
+        string resultText = request.downloadHandler.text;
 
-        yield return getRequest.SendWebRequest();
+        result.text += resultText + "\n";
 
-        if (getRequest.result == UnityWebRequest.Result.ConnectionError || getRequest.result == UnityWebRequest.Result.ProtocolError) {
-            result.text += "error : " + getRequest.error + "\n";
-        }
-        else
+        itemsDisplaySystem.DisplayGachaItem(resultText);
+
+        if (!itemsDisplaySystem.gameObject.activeSelf)
         {
-            string resultText = getRequest.downloadHandler.text;
-
-            result.text +=  resultText + "\n";
-
-            itemsDisplaySystem.DisplayGachaItem(resultText);
-
-            if (!itemsDisplaySystem.gameObject.activeSelf) {
-                itemsDisplaySystem.gameObject.SetActive(true);
-            }
-            
+            itemsDisplaySystem.gameObject.SetActive(true);
         }
     }
-
-    
 }

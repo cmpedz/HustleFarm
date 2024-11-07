@@ -3,24 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectDataManager : MonoBehaviour, IProvideNutritionsProcess
+
+[System.Serializable]
+public class ObjectDataManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public static readonly DateTime DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS = new DateTime(2000, 1, 1);
 
-    private float maxHourForNextProvidingNutritions;
+    public float MaxHourForNextProvidingNutritions;
 
-    private DateTime lastTimeProvidedNutritions = DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS;
+    public DateTime LastTimeProvidedNutritions = DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS;
 
+    public float PointEachDay;
 
-    public DateTime GetLastTimeProvidingNutrition()
-    {
-        return this.lastTimeProvidedNutritions;
-    }
+    public string Type;
 
-    public float GetMaxHourForNextProviding()
-    {
-        return this.maxHourForNextProvidingNutritions;
-    }
+    public string Id;
 }

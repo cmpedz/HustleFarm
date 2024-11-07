@@ -21,15 +21,9 @@ public abstract class ProvideNutritionsController : MonoBehaviour
        get { return needNutritionsAnnoucement; }
     }
 
-    private IProvideNutritionsProcess providingNutritionsProcess;
+    private ObjectDataManager providingNutritionsProcess;
 
     [SerializeField] private Animator provideNutritionsEffect;
-
-    private DateTime lastTimeProvidedNutritions;
-    public DateTime LastTimeProvideNutritions
-    {
-        get { return lastTimeProvidedNutritions; }
-    }
 
 
     protected bool isTakenCare;
@@ -47,7 +41,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
             needNutritionsAnnoucement.SetActive(false);
 
-            lastTimeProvidedNutritions = DateTime.Now;
+            providingNutritionsProcess.LastTimeProvidedNutritions =  DateTime.Now;
 
             if (provideNutritionsEffect != null)
             {
@@ -74,12 +68,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
             IProvideNutritionsProcess provideNutritionsProcess = (IProvideNutritionsProcess) objectDataManager;
 
-            lastTimeProvidedNutritions = provideNutritionsProcess.GetLastTimeProvidingNutrition();
 
-        }
-        else
-        {
-            lastTimeProvidedNutritions = DateTime.Now;
         }
 
         
@@ -115,11 +104,11 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     {
         double progressValue = 0;
 
-        float maxHourForNextProvidingNutritions = providingNutritionsProcess.GetMaxHourForNextProviding();
+        float maxHourForNextProvidingNutritions = providingNutritionsProcess.MaxHourForNextProvidingNutritions;
 
         do {
 
-            double consumedTime = (DateTime.Now - lastTimeProvidedNutritions).TotalHours;
+            double consumedTime = (DateTime.Now - providingNutritionsProcess.LastTimeProvidedNutritions).TotalHours;
 
             double remainTime = maxHourForNextProvidingNutritions - consumedTime;
 

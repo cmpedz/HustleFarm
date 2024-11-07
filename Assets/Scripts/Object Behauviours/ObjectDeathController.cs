@@ -17,16 +17,16 @@ public class ObjectDeathController : MonoBehaviour
 
     [SerializeField] private ObjectInforsController objectInfors;
 
-    private IDeathProcess deathProcess;
+    private PlantsDataManager deathProcess;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlantsDataManager plantsDataManager = GetComponent<PlantsDataManager>();
+  
 
-        if (plantsDataManager != null) {
-            deathProcess = (IDeathProcess)plantsDataManager;
-        }
+        
+            deathProcess = GetComponent<PlantsDataManager>();
+    
 
         StartCoroutine(CheckDeathStatus());
     }
@@ -75,14 +75,14 @@ public class ObjectDeathController : MonoBehaviour
 
         bool isNotProvidedNutritions = !provideNutritionsController.IsTakenCare;
 
-        bool isLastTimeProvideNutritionsDefault = provideNutritionsController.LastTimeProvideNutritions
+        bool isLastTimeProvideNutritionsDefault = deathProcess.LastTimeProvidedNutritions
             .Equals(ObjectDataManager.DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS);
 
         if(isNotProvidedNutritions && !isLastTimeProvideNutritionsDefault)
         {
-            double hoursLackOfNutritionsDurations = (DateTime.Now - provideNutritionsController.LastTimeProvideNutritions).TotalHours;
+            double hoursLackOfNutritionsDurations = (DateTime.Now - deathProcess.LastTimeProvidedNutritions).TotalHours;
 
-            double remainTime = deathProcess.GetMaxHoursCanSurviveInBadStatus() - hoursLackOfNutritionsDurations;
+            double remainTime = deathProcess.MaxHoursCanSurviveInBadStatus - hoursLackOfNutritionsDurations;
 
             //objectInfors.DisplayTimeSurviveRemainInBadStatus((float)remainTime);
 
@@ -94,8 +94,8 @@ public class ObjectDeathController : MonoBehaviour
 
     private bool IsOutOfLifeSpan() {
 
-        double hoursSurvived = (DateTime.Now - deathProcess.GetTimeBorn()).TotalHours;
+        double hoursSurvived = (DateTime.Now - deathProcess.TimeBorn).TotalHours;
 
-        return hoursSurvived > deathProcess.GetLifeSpan();
+        return hoursSurvived > deathProcess.LifeSpans;
     }
 }

@@ -4,28 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlantsDataManager : ObjectDataManager, IDeathProcess
+public class PlantsDataManager : ObjectDataManager
 {
-    private DateTime timeBorn;
-
     public DateTime TimeBorn;
 
-    [SerializeField] private float LifeSpans;
+    public float LifeSpans;
 
-    [SerializeField] private float MaxHoursCanSurviveInBadStatus;
+    public float MaxHoursCanSurviveInBadStatus;
 
-    public float GetLifeSpan()
-    {
-        return LifeSpans;
-    }
 
-    public float GetMaxHoursCanSurviveInBadStatus()
-    {
-        return MaxHoursCanSurviveInBadStatus;
-    }
+    public void CheckPlantData() {
+        Debug.Log("check " + Id +  " data : ");
+        Debug.Log("check plant type : " + Type);
+        Debug.Log("check plant life span : " + LifeSpans);
+        Debug.Log("check Max Hours Can Survive In Bad Status : " + MaxHoursCanSurviveInBadStatus);
+        Debug.Log("check point each day : " + PointEachDay);
 
-    public DateTime GetTimeBorn()
-    {
-        return timeBorn;    
     }
 }
