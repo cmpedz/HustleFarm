@@ -10,4 +10,6 @@ public interface IDeathProcess
     public float GetMaxHoursCanSurviveInBadStatus();
 
     public DateTime GetTimeBorn();
+
+    public void SetTimeBorn(DateTime timeBorn); 
 }

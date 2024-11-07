@@ -3,22 +3,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class PlantsDataManager : ObjectDataManager
+public class PlantsDataManager : ObjectDataManager, IDeathProcess
 {
-    public DateTime TimeBorn;
+    private DateTime timeBorn;
 
-    public float LifeSpans;
+    private float lifeSpans;
 
-    public float MaxHoursCanSurviveInBadStatus;
+    private float maxHoursCanSurviveInBadStatus;
+
+    public float GetLifeSpan()
+    {
+        return lifeSpans;
+    }
+
+    public float GetMaxHoursCanSurviveInBadStatus()
+    {
+        return maxHoursCanSurviveInBadStatus;
+    }
+
+    public DateTime GetTimeBorn()
+    {
+        return timeBorn;
+    }
+
+    public void SetTimeBorn(DateTime timeBorn)
+    {
+        this.timeBorn = timeBorn;
+    }
+
+    public void RetrievePlantDataFromGachaStorageSystem(SerializedPlantData serializedPlantData)
+    {
 
 
-    public void CheckPlantData() {
-        Debug.Log("check " + Id +  " data : ");
-        Debug.Log("check plant type : " + Type);
-        Debug.Log("check plant life span : " + LifeSpans);
-        Debug.Log("check Max Hours Can Survive In Bad Status : " + MaxHoursCanSurviveInBadStatus);
-        Debug.Log("check point each day : " + PointEachDay);
+        this.maxHoursCanSurviveInBadStatus = serializedPlantData.MaxHoursCanSurviveInBadStatus;
+
+        this.maxHourForNextProvidingNutritions = serializedPlantData.MaxHourForNextProvidingNutritions;
+
+        this.Type = serializedPlantData.Type;
+
+        this.PointEachDay = serializedPlantData.PointEachDay;   
+
+        this.lifeSpans = ConvertIntoHourUnitSystem.ConvertStringIntoHourUnit(serializedPlantData.LifeSpan);
+
+        
 
     }
 }
+
+
+
+

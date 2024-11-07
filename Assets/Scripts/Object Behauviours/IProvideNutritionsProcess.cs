@@ -8,4 +8,6 @@ public interface IProvideNutritionsProcess
     public float GetMaxHourForNextProviding();
 
     public DateTime GetLastTimeProvidingNutrition();
+
+    public void SetLastTimeProvidingNutrition(DateTime time);
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public static class ConvertIntoHourUnitSystem
 {
-    public static readonly string DAY = "day";
+    public static readonly string DAY = "days";
 
-    public static readonly string HOUR = "hour";
+    public static readonly string HOUR = "hours";
 
-    public static readonly string SECOND = "second";
+    public static readonly string SECOND = "seconds";
 
-    public static readonly string MINUTE = "minute";
+    public static readonly string MINUTE = "minutes";
 
     private static readonly Dictionary<string, float> EXCHANGE_VALUES = new Dictionary<string, float>
     {
@@ -34,7 +34,7 @@ public static class ConvertIntoHourUnitSystem
 
            string unit = timeIngredients[1];
 
-           return _time;
+           return ConvertTimeIntoHourUnit(_time, unit);
     }
 
     public static float ConvertTimeIntoHourUnit(float time, string unit)

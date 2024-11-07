@@ -9,17 +9,41 @@ public class GachaStorageSystem : ServerRequestController
 {
     // Start is called before the first frame update
     private static readonly string ROUTER_GACHA_ITEMS_STORAGE = "ItemsGachaData";
+
+    private static GachaStorageSystem instance;
+
+    public static GachaStorageSystem Instance
+    {
+        get { return instance; }
+    }
     
-    private Dictionary<string, List<PlantsDataManager>> itemsGachaDictionary = new Dictionary<string, List<PlantsDataManager>>();
+    private Dictionary<string, SerializedPlantData> itemsGachaDictionary = new Dictionary<string, SerializedPlantData>();
+
     void Start()
     {
-        StartCoroutine(ExecuteGetRequestToServer(ROUTER_GACHA_ITEMS_STORAGE));
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            StartCoroutine(ExecuteGetRequestToServer(ROUTER_GACHA_ITEMS_STORAGE));
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public SerializedPlantData RetrieveItemGachaData(string id)
+    {
+        if (!this.itemsGachaDictionary.ContainsKey(id)) return null;
+        return this.itemsGachaDictionary[id];
     }
 
 
@@ -34,22 +58,33 @@ public class GachaStorageSystem : ServerRequestController
 
         foreach (var itemGachaType in itemsGachaJObject)
         {
-            
 
-            if (!itemsGachaDictionary.ContainsKey(itemGachaType.Key)) {
-                itemsGachaDictionary.Add(itemGachaType.Key, new List<PlantsDataManager>());
-            }
-                
+
             foreach (var itemsGacha in itemGachaType.Value)
             {
 
                 Debug.Log("check item gacha data to string : " + itemsGacha.ToString());
 
-                PlantsDataManager plantData = JsonUtility.FromJson<PlantsDataManager>(itemsGacha.ToString());
+                SerializedPlantData plantData = JsonUtility.FromJson<SerializedPlantData>(itemsGacha.ToString());
 
+                string plantId = plantData.Id;
 
-                Debug.Log("check plant data after deserizalized : " + plantData);
+                if (!itemsGachaDictionary.ContainsKey(plantId))
+                {
+
+                    itemsGachaDictionary.Add(plantId, plantData);
+
+                }
+
             }
+                
+                
+        }
+
+        foreach(string itemId in itemsGachaDictionary.Keys)
+        {
+            Debug.Log("check item id : " + itemId);
+            itemsGachaDictionary[itemId].CheckSerializedPlantData();
         }
 
        

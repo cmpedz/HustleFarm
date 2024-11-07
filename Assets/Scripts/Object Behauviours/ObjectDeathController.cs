@@ -22,10 +22,9 @@ public class ObjectDeathController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-  
 
-        
-            deathProcess = GetComponent<PlantsDataManager>();
+        this.deathProcess = GetComponent<PlantsDataManager>();
+
     
 
         StartCoroutine(CheckDeathStatus());
@@ -75,14 +74,14 @@ public class ObjectDeathController : MonoBehaviour
 
         bool isNotProvidedNutritions = !provideNutritionsController.IsTakenCare;
 
-        bool isLastTimeProvideNutritionsDefault = deathProcess.LastTimeProvidedNutritions
+        bool isLastTimeProvideNutritionsDefault = deathProcess.GetLastTimeProvidingNutrition()
             .Equals(ObjectDataManager.DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS);
 
         if(isNotProvidedNutritions && !isLastTimeProvideNutritionsDefault)
         {
-            double hoursLackOfNutritionsDurations = (DateTime.Now - deathProcess.LastTimeProvidedNutritions).TotalHours;
+            double hoursLackOfNutritionsDurations = (DateTime.Now - deathProcess.GetLastTimeProvidingNutrition()).TotalHours;
 
-            double remainTime = deathProcess.MaxHoursCanSurviveInBadStatus - hoursLackOfNutritionsDurations;
+            double remainTime = deathProcess.GetMaxHoursCanSurviveInBadStatus() - hoursLackOfNutritionsDurations;
 
             //objectInfors.DisplayTimeSurviveRemainInBadStatus((float)remainTime);
 
@@ -94,8 +93,8 @@ public class ObjectDeathController : MonoBehaviour
 
     private bool IsOutOfLifeSpan() {
 
-        double hoursSurvived = (DateTime.Now - deathProcess.TimeBorn).TotalHours;
+        double hoursSurvived = (DateTime.Now - deathProcess.GetTimeBorn()).TotalHours;
 
-        return hoursSurvived > deathProcess.LifeSpans;
+        return hoursSurvived > deathProcess.GetLifeSpan();
     }
 }

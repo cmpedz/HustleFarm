@@ -41,7 +41,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
             needNutritionsAnnoucement.SetActive(false);
 
-            providingNutritionsProcess.LastTimeProvidedNutritions =  DateTime.Now;
+            providingNutritionsProcess.SetLastTimeProvidingNutrition( DateTime.Now);
 
             if (provideNutritionsEffect != null)
             {
@@ -104,11 +104,11 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     {
         double progressValue = 0;
 
-        float maxHourForNextProvidingNutritions = providingNutritionsProcess.MaxHourForNextProvidingNutritions;
+        float maxHourForNextProvidingNutritions = providingNutritionsProcess.GetMaxHourForNextProviding();
 
         do {
 
-            double consumedTime = (DateTime.Now - providingNutritionsProcess.LastTimeProvidedNutritions).TotalHours;
+            double consumedTime = (DateTime.Now - providingNutritionsProcess.GetLastTimeProvidingNutrition()).TotalHours;
 
             double remainTime = maxHourForNextProvidingNutritions - consumedTime;
 
