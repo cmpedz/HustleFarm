@@ -9,11 +9,31 @@ public class BagMenu : Menu<string>
 
     private Dictionary<string, Item> bagItems = new Dictionary<string, Item>();
 
+    private static BagMenu instance;
+
+    public static BagMenu Instance
+    {
+        get { 
+            return instance;
+        }
+    }
+
     private void Start()
     {
-        foreach (Item item in itemsAdd) {
-            AddItem(item);
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            foreach (Item item in itemsAdd)
+            {
+                AddItem(item);
+            }
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        
     }
     public override void AddItem(Item item)
     {
@@ -29,6 +49,8 @@ public class BagMenu : Menu<string>
         else
         {
             GameObject _item = Instantiate(item.gameObject);
+
+            DontDestroyOnLoad(_item.gameObject);
 
             bagItems.Add(itemId, _item.GetComponent<Item>());
 

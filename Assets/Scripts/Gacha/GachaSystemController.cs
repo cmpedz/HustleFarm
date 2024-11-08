@@ -12,6 +12,8 @@ public class GachaSystemController : ServerRequestController
     [SerializeField] private TextMeshProUGUI result;
 
     [SerializeField] private GachaItemDisplaySystem itemsDisplaySystem;
+
+    [SerializeField] private PutItemsGachaGetIntoUserBag putItemsGachaGetIntoUserBagSystem;
     void Start()
     {
         
@@ -33,15 +35,19 @@ public class GachaSystemController : ServerRequestController
 
     public override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {
-        string resultText = request.downloadHandler.text;
+        string itemGachaId = request.downloadHandler.text;
 
-        result.text += resultText + "\n";
+        result.text += itemGachaId + "\n";
 
-        itemsDisplaySystem.DisplayGachaItem(resultText);
+        itemsDisplaySystem.DisplayGachaItem(itemGachaId);
 
         if (!itemsDisplaySystem.gameObject.activeSelf)
         {
             itemsDisplaySystem.gameObject.SetActive(true);
+        }
+
+        if (putItemsGachaGetIntoUserBagSystem != null) { 
+            putItemsGachaGetIntoUserBagSystem.PutItemsGachaIntoUserBag(itemGachaId);
         }
     }
 }
