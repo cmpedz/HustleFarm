@@ -12,6 +12,7 @@ public class SerializedPlantData
     public string Type;
     public float MaxHoursCanSurviveInBadStatus;
     public float MaxHourForNextProvidingNutritions;
+    public string LastTimeProvidingNutrition;
 
     public void CheckSerializedPlantData() {
         Debug.Log("check " + Id + " data : ");
@@ -20,6 +21,7 @@ public class SerializedPlantData
         Debug.Log("Type : " + Type);
         Debug.Log("MaxHoursCanSurviveInBadStatus : " + MaxHoursCanSurviveInBadStatus);
         Debug.Log("MaxHourForNextProvidingNutritions : " + MaxHoursCanSurviveInBadStatus);
+        Debug.Log("LastTimeProvidingNutrition : " + LastTimeProvidingNutrition);
 
     }
 }

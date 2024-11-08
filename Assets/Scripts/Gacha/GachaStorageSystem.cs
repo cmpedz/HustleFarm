@@ -67,6 +67,10 @@ public class GachaStorageSystem : ServerRequestController
 
                 SerializedPlantData plantData = JsonUtility.FromJson<SerializedPlantData>(itemsGacha.ToString());
 
+                plantData.LastTimeProvidingNutrition = ObjectDataManager.DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS.ToString();
+
+                
+
                 string plantId = plantData.Id;
 
                 if (!itemsGachaDictionary.ContainsKey(plantId))

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlantsDataManager : ObjectDataManager, IDeathProcess
 {
-    private DateTime timeBorn;
+    private DateTime timeBorn = DateTime.Now;
 
     private float lifeSpans;
 
@@ -44,6 +44,8 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
         this.PointEachDay = serializedPlantData.PointEachDay;   
 
         this.lifeSpans = ConvertIntoHourUnitSystem.ConvertStringIntoHourUnit(serializedPlantData.LifeSpan);
+
+        this.SetLastTimeProvidingNutrition(DateTime.Parse(serializedPlantData.LastTimeProvidingNutrition));
 
         
 

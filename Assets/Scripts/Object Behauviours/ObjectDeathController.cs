@@ -77,6 +77,8 @@ public class ObjectDeathController : MonoBehaviour
         bool isLastTimeProvideNutritionsDefault = deathProcess.GetLastTimeProvidingNutrition()
             .Equals(ObjectDataManager.DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS);
 
+        Debug.Log("check last time provided : " + deathProcess.GetLastTimeProvidingNutrition());
+
         if(isNotProvidedNutritions && !isLastTimeProvideNutritionsDefault)
         {
             double hoursLackOfNutritionsDurations = (DateTime.Now - deathProcess.GetLastTimeProvidingNutrition()).TotalHours;

@@ -21,7 +21,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
        get { return needNutritionsAnnoucement; }
     }
 
-    private ObjectDataManager providingNutritionsProcess;
+    private IProvideNutritionsProcess providingNutritionsProcess;
 
     [SerializeField] private Animator provideNutritionsEffect;
 
@@ -66,9 +66,13 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
         if (objectDataManager != null) {
 
-            IProvideNutritionsProcess provideNutritionsProcess = (IProvideNutritionsProcess) objectDataManager;
+            providingNutritionsProcess = (IProvideNutritionsProcess) objectDataManager;
 
 
+        }
+        else
+        {
+            Debug.Log("object data manager is null");
         }
 
         
