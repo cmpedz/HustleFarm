@@ -27,9 +27,13 @@ namespace HustleFarmServer.Controllers.Model
 
             if (itemGachaGet != null) {
 
-                string itemGachaToJson = JsonSerializer.Serialize(itemGachaGet, new JsonSerializerOptions());
+                Dictionary<string, object> itemGachaToDictionary = (Dictionary<string, object>) itemGachaGet;
 
-                return Ok(itemGachaToJson);
+                if (itemGachaToDictionary.TryGetValue("Id", out var itemId)) {
+                    return Ok(itemId);
+                }
+
+                
             }
 
             return Ok("");

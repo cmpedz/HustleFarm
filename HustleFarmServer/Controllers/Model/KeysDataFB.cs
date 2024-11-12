@@ -12,7 +12,8 @@ namespace HustleFarmServer.Controllers.Model
             GachaRate,
             GachaPoint,
             Type,
-            Id
+            Id,
+            ItemsGacha
         }
 
         private static Dictionary<EKeysDataFB, string> keysDataFBDictionary = new Dictionary<EKeysDataFB, string>()
@@ -27,7 +28,9 @@ namespace HustleFarmServer.Controllers.Model
 
                   {EKeysDataFB.Type, "Type" },
 
-                  { EKeysDataFB.Id, "Id"}
+                  { EKeysDataFB.Id, "Id"},
+
+                  { EKeysDataFB.ItemsGacha, "ItemsGacha"}
         };
 
         public static string GetKeysDataFB(EKeysDataFB key) {

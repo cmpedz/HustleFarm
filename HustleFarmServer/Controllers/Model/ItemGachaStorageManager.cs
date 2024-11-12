@@ -61,20 +61,7 @@ namespace HustleFarmServer.Controllers.Model
             foreach (KeyValuePair<string, object> pair in itemGachaData.ToDictionary())
             {
 
-                if (pair.Value.GetType() == typeof(DocumentReference))
-                {
-
-                    DocumentReference documentReference = (DocumentReference)pair.Value;
-
-                    DocumentSnapshot documentSnapshot = await documentReference.GetSnapshotAsync();
-
-                    await FormatItemGachaDataToDictionary(documentSnapshot, itemGachaDataDictionary);
-                }
-                else
-                {
-                    itemGachaDataDictionary.Add(pair.Key, pair.Value);
-                }
-
+                itemGachaDataDictionary.Add(pair.Key, pair.Value);
             }
 
 

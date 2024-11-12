@@ -8,5 +8,31 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HustleFarmServer.Controllers.Model.ItemsGachaDataController",
+    "Method": "GetItemsGachaData",
+    "RelativePath": "ItemsGachaData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HustleFarmServer.Controllers.Model.UserLoginController",
+    "Method": "HandleUserLogin",
+    "RelativePath": "UserLogin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "HustleFarmServer.Controllers.Model.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
