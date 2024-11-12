@@ -26,14 +26,14 @@ public class GachaSystemController : ServerRequestController
         
 
         for (int i = 0; i < time; i++) {
-            StartCoroutine(ExecuteGetRequestToServer(ROUTER_PROVIDING_GACHA_ITEM));
+            StartCoroutine(SendGetRequest(ROUTER_PROVIDING_GACHA_ITEM));
         }
    
     }
 
    
 
-    public override void HandleDataRetrievedFromServer(UnityWebRequest request)
+    protected override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {
         string itemGachaId = request.downloadHandler.text;
 

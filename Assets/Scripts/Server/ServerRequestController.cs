@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -8,7 +9,7 @@ public abstract class ServerRequestController : MonoBehaviour
     private static readonly string SERVER_URL = "https://localhost:7218";
 
 
-    public  IEnumerator ExecuteGetRequestToServer(string router) { 
+    protected  IEnumerator SendGetRequest(string router) { 
 
             string url = SERVER_URL + "/" + router;
 
@@ -26,7 +27,42 @@ public abstract class ServerRequestController : MonoBehaviour
             }
     }
 
-    public  abstract void HandleDataRetrievedFromServer(UnityWebRequest request);
+    protected IEnumerator SendPostRequest(string router, string jsonData)
+    {
+
+        string url = SERVER_URL + "/" + router;
+
+        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        Debug.Log("check json data : " + jsonData);
+
+        byte[] bodyRaw = Encoding.UTF8.GetBytes("{\"userId\":\"value\"}");
+        Debug.Log("check body raw : " + Encoding.UTF8.GetString(bodyRaw));
+        
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+
+        request.downloadHandler = new DownloadHandlerBuffer();
+
+        request.SetRequestHeader("Content-Type", "application/json");
+
+    
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+        {
+            Debug.LogError("Error when connecting : " + request.error);
+
+        }
+        else
+        {
+            HandleDataRetrievedFromServer(request);
+        }
+
+  
+        
+        
+    }
+
+    protected  abstract void HandleDataRetrievedFromServer(UnityWebRequest request);
 
 
 }

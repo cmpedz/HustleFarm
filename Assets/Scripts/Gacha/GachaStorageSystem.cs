@@ -25,7 +25,7 @@ public class GachaStorageSystem : ServerRequestController
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            StartCoroutine(ExecuteGetRequestToServer(ROUTER_GACHA_ITEMS_STORAGE));
+            StartCoroutine(SendGetRequest(ROUTER_GACHA_ITEMS_STORAGE));
         }
         else
         {
@@ -47,7 +47,7 @@ public class GachaStorageSystem : ServerRequestController
     }
 
 
-    public override void HandleDataRetrievedFromServer(UnityWebRequest request)
+    protected override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {
         string result = request.downloadHandler.text;
 

@@ -35,6 +35,8 @@ public class CustomThirdWebManager : MonoBehaviour
     [field: SerializeField, Header("Change Scene Event")]
     private UnityEvent changeSceneEvent;
 
+    [SerializeField] private UserLoginController userLoginController;
+
     private void Awake()
     {
         InitializePanels();
@@ -67,8 +69,9 @@ public class CustomThirdWebManager : MonoBehaviour
         WalletConnectButton.onClick.RemoveAllListeners();
         WalletConnectButton.onClick.AddListener(() =>
         {
-            var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
-            ConnectWallet(options);
+            //var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
+            //ConnectWallet(options);
+            userLoginController.ConstructUserAccount("user1");
         });
     }
 
@@ -88,6 +91,7 @@ public class CustomThirdWebManager : MonoBehaviour
         //get address 
         var address = await wallet.GetAddress();
         Debug.Log("check address : " + address);
+     
 
         //sign
        /* var message = "Hello World!";
@@ -105,6 +109,7 @@ public class CustomThirdWebManager : MonoBehaviour
 
     
     }
+
 
     private WalletOptions GetWalletOptions(WalletProvider provider)
     {
