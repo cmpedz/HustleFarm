@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &763230771740852345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663693538203125603}
+  - component: {fileID: 7009354675212681129}
+  m_Layer: 0
+  m_Name: ItemStorageSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1663693538203125603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763230771740852345}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 403.4921, y: 233.9777, z: 1.4339685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7009354675212681129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763230771740852345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f15be0482d40f4a8e3c3cd121c825c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsStorage:
+  - Id: Seed Crop
+    item: {fileID: 2982659257316623190, guid: 8396a1d9ad440a043863c3fbfb8f7295, type: 3}
+  - Id: Seed Rice
+    item: {fileID: 2982659257316623190, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
+  - Id: Food Rice
+    item: {fileID: 3538854154284355355, guid: 116567d3e2bb3d14a96f712cdaea4124, type: 3}
+  - Id: Food Crop
+    item: {fileID: 3538854154284355355, guid: 97031fee225d6b34e9ff1e5820966496, type: 3}

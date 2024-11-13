@@ -33,10 +33,10 @@ public abstract class ServerRequestController : MonoBehaviour
         string url = SERVER_URL + "/" + router;
 
         UnityWebRequest request = new UnityWebRequest(url, "POST");
-        Debug.Log("check json data : " + jsonData);
+        
 
-        byte[] bodyRaw = Encoding.UTF8.GetBytes("{\"userId\":\"value\"}");
-        Debug.Log("check body raw : " + Encoding.UTF8.GetString(bodyRaw));
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonData);
+       
         
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
 

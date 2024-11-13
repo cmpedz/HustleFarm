@@ -14,11 +14,17 @@ public class UserLoginController : ServerRequestController
         get { return instance; }
     }
 
+    [SerializeField] private RetrieveUserDataFromServer retrieveUserData;
+
     private void Start()
     {
         if (instance == null) {
+
             instance = this;
 
+            string userWalletId = UserData.Instance.UserId;
+
+            ConstructUserAccount(userWalletId);
         }
         else
         {
@@ -34,7 +40,7 @@ public class UserLoginController : ServerRequestController
 
     public void ConstructUserAccount(string userId)
     {
-        string userIdToJson = "{userId : " + userId + "}";
+        string userIdToJson = "{ \"userId :\"  " + userId + "}";
         StartCoroutine(SendPostRequest(USER_LOGIN_ROUTER ,userIdToJson));
     }
 }
