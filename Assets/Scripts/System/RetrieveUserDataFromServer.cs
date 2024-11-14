@@ -1,18 +1,29 @@
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RetrieveUserDataFromServer : MonoBehaviour
+public class RetrieveUserDataFromServer : Singleton<RetrieveUserDataFromServer>
 {
-    // Start is called before the first frame update
-    void Start()
+    [System.Serializable]
+    public class HandleFunction
     {
-        
-    }
+        public string DataId;
 
-    // Update is called once per frame
-    void Update()
+        //public HandleUserData<IItemData> handleFunction = new HandleBagUserData();
+    }
+    [SerializeField] private List<HandleFunction> handleFucntions = new List<HandleFunction>();
+     public void HandleDataRetrievedFromSever(string data)
     {
-        
+        JObject jsonToObject = JObject.Parse(data);
+
+        foreach(var dataId in jsonToObject)
+        {
+            Debug.Log("check data id : " + dataId);
+
+            Debug.Log("check data : " + dataId.Value);
+
+        }
     }
 }
