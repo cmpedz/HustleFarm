@@ -19,13 +19,11 @@ namespace HustleFarmServer.Controllers.Model
             }
             else
             {
-                string userDataToJson = "";
+                string userDataToJson = "Hello World";
 
                 if(user.UserId != null)
                 {
-                    _userAccountManager.CreateAccount(user.UserId);
-
-                    userDataToJson = _userAccountManager.GetUserData(user.UserId).Result;
+                    userDataToJson = _userAccountManager.CreateAccount(user.UserId).Result;
 
                 }
                 

@@ -21,24 +21,27 @@ namespace HustleFarmServer.Controllers.Model
                this.usersCollections = firestoreDb.Collection(USERS_COLLECTIONS);
 
         }
-        public async void CreateAccount(string userId)
+        public async Task<string> CreateAccount(string userId)
         {
-            QuerySnapshot documentSnapshots = await this.usersCollections.GetSnapshotAsync();
-
-            bool isAccountCreated = documentSnapshots.Documents.Count > 0;
-
-            if (isAccountCreated)
-            {
-                //return;
-            }
 
             DocumentReference user = this.usersCollections.Document(userId);
 
             CollectionReference userData = user.Collection(USERS_DATA_COLLECTIONS);
 
+            QuerySnapshot documentSnapshots = await userData.GetSnapshotAsync();
+
+            bool isAccountCreated = documentSnapshots.Documents.Count > 0;
+
+            if (isAccountCreated)
+            {
+                return GetUserData(userId).Result;
+            }
+
+
+
             await Task.WhenAll([SetUpDataForUserBags(userData), SetUpDataForUserInfors(userData)]);
 
-     
+            return GetUserData(userId).Result;
 
         }
 
