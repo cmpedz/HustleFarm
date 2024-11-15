@@ -24,6 +24,7 @@ public class ItemStorageSystem : Singleton<ItemStorageSystem>
 
         foreach (ItemStorageForm item in itemsStorage) { 
             itemsIndexInStorage.Add(item.Id, index);
+            index++;
         }
     }
 

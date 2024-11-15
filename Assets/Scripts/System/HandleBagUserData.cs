@@ -11,8 +11,10 @@ public class HandleBagUserData : HandleUserData<ItemsBagData>
             userBag.gameObject.SetActive(true);
         }
 
-        foreach(string itemId in data.UserBag)
+        foreach(string itemId in data.Items)
         {
+            Debug.Log("item in bag from firebase : " + itemId);
+
             GameObject item = ItemStorageSystem.Instance.ConvertItemFromItemId(itemId);
 
             userBag.AddItem(item.GetComponent<Item>());

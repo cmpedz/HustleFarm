@@ -34,13 +34,17 @@ public class UserLoginController : ServerRequestController
 
     protected override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {
-        Debug.Log("response from server after constructing user : " + request.downloadHandler.text);
+        Debug.Log("check data retrieved from server : " + request.downloadHandler.text);
+        if (retrieveUserData != null) {
+            retrieveUserData.HandleDataRetrievedFromSever(request.downloadHandler.text);
+        }
     }
 
 
     public void ConstructUserAccount(string userId)
     {
-        string userIdToJson = "{ \"userId :\"  " + userId + "}";
+        string userIdToJson = "{ \"userId\""  + " : "  + "\"" + userId + "\"" + "}";
+        Debug.Log("check user id json formed : " + userIdToJson);
         StartCoroutine(SendPostRequest(USER_LOGIN_ROUTER ,userIdToJson));
     }
 }

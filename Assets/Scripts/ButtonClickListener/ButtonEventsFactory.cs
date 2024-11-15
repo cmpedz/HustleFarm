@@ -29,7 +29,6 @@ public class ButtonEventsFactory : MonoBehaviour
 
         progressScene.SetActive(true);
 
-
         StartCoroutine(LoadingSceneIEnumrator(progressController));
 
         
@@ -41,6 +40,8 @@ public class ButtonEventsFactory : MonoBehaviour
         while (!progressController.isDone) {
 
             const float MAX_PROGRESS_VALUE = 0.9f;
+
+            Debug.Log("check progress value : " + progressController.progress);
 
             float currentProgress = Mathf.Clamp01(progressController.progress / MAX_PROGRESS_VALUE);
 

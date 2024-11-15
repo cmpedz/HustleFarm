@@ -5,36 +5,10 @@ using UnityEngine;
 
 public class BagMenu : Menu<string>
 {
-    public List<Item> itemsAdd = new List<Item>();
 
     private Dictionary<string, Item> bagItems = new Dictionary<string, Item>();
 
-    private static BagMenu instance;
 
-    public static BagMenu Instance
-    {
-        get { 
-            return instance;
-        }
-    }
-
-    private void Start()
-    {
-        if (instance == null) {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            foreach (Item item in itemsAdd)
-            {
-                AddItem(item);
-            }
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-        
-    }
     public override void AddItem(Item item)
     {
         string itemId = item.GetItemId();

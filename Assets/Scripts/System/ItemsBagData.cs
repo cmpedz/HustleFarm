@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemsBagData : IItemData
+public class ItemsBagData 
 {
-    public List<string> UserBag;
+    public List<string> Items;
     
 }
