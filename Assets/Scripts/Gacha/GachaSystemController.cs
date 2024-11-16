@@ -9,7 +9,7 @@ public class GachaSystemController : ServerRequestController
     // Start is called before the first frame update
     private static readonly string ROUTER_PROVIDING_GACHA_ITEM = "GachaServer";
 
-    [SerializeField] private TextMeshProUGUI result;
+    
 
     [SerializeField] private GachaItemDisplaySystem itemsDisplaySystem;
 
@@ -20,8 +20,6 @@ public class GachaSystemController : ServerRequestController
     }
 
     public void GetRateFromServer(int time) {
-
-        this.result.text = "";
 
         
 
@@ -37,7 +35,6 @@ public class GachaSystemController : ServerRequestController
     {
         string itemGachaId = request.downloadHandler.text;
 
-        result.text += itemGachaId + "\n";
 
         itemsDisplaySystem.DisplayGachaItem(itemGachaId);
 

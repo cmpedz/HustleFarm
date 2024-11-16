@@ -41,7 +41,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
         {
             instance = this;
 
-            userBag = FindAnyObjectByType<BagMenu>();
+            userBag = BagMenu.Instance;
 
             terminateFunctionButton = FunctionBarController.Instance
                 .GetFunctionByName(FunctionBarController.EFunctionName.Terminate_Function);
@@ -77,9 +77,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
         
         emptyDirts.Remove(dirt);
 
-        if (userBag != null) {
-            userBag.RemoveItem(dirt.SeedProvided.ItemCollected);
-        }
+
     }
 
 

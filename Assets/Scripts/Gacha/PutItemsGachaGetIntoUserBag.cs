@@ -12,7 +12,7 @@ public class PutItemsGachaGetIntoUserBag : MonoBehaviour
     private BagMenu userBag;
     void Start()
     {
-        userBag = FindFirstObjectByType<BagMenu>();
+        userBag = BagMenu.Instance;
 
         foreach(SeedsItem seeditem in seedItems) { 
                seedItemsDictionary.Add(seeditem.GetItemId(), seeditem);

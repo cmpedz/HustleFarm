@@ -16,6 +16,9 @@ public class UserLoginController : ServerRequestController
 
     [SerializeField] private RetrieveUserDataFromServer retrieveUserData;
 
+    private bool isRetrieveDataEnd = false;
+    public bool IsRetrieveDataEnd { get {  return isRetrieveDataEnd; } }
+
     private void Start()
     {
         if (instance == null) {
@@ -24,7 +27,9 @@ public class UserLoginController : ServerRequestController
 
             string userWalletId = UserData.Instance.UserId;
 
-            ConstructUserAccount(userWalletId);
+            StartCoroutine(ConstructUserAccount(userWalletId));
+
+         
         }
         else
         {
@@ -41,10 +46,15 @@ public class UserLoginController : ServerRequestController
     }
 
 
-    public void ConstructUserAccount(string userId)
+    public IEnumerator ConstructUserAccount(string userId)
     {
         string userIdToJson = "{ \"userId\""  + " : "  + "\"" + userId + "\"" + "}";
+
         Debug.Log("check user id json formed : " + userIdToJson);
-        StartCoroutine(SendPostRequest(USER_LOGIN_ROUTER ,userIdToJson));
+
+        yield return StartCoroutine(SendPostRequest(USER_LOGIN_ROUTER ,userIdToJson));
+
+        isRetrieveDataEnd = true;
+        
     }
 }

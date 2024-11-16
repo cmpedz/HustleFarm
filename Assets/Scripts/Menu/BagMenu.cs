@@ -8,6 +8,21 @@ public class BagMenu : Menu<string>
 
     private Dictionary<string, Item> bagItems = new Dictionary<string, Item>();
 
+    private static BagMenu instance;
+    public static BagMenu Instance {  get { return instance; } }
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public override void AddItem(Item item)
     {
@@ -24,8 +39,6 @@ public class BagMenu : Menu<string>
         {
             GameObject _item = Instantiate(item.gameObject);
 
-            DontDestroyOnLoad(_item.gameObject);
-
             bagItems.Add(itemId, _item.GetComponent<Item>());
 
             _item.transform.SetParent( this.content.transform, false);
@@ -40,6 +53,8 @@ public class BagMenu : Menu<string>
     public override void RemoveItem(Item item)
     {
         string itemId = item.GetItemId();
+
+        Debug.Log("check item id need removed : " + itemId);
 
         if (bagItems.ContainsKey(itemId))
         {

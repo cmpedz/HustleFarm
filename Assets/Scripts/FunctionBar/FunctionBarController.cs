@@ -13,7 +13,8 @@ public class FunctionBarController : Singleton<FunctionBarController>
         Zoom_out,
         Go_Back_Home,
         User_Bag,
-        Terminate_Function
+        Terminate_Function,
+        Gacha
     }
 
     [System.Serializable]

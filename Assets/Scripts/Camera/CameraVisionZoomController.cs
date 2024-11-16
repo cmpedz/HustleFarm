@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraVisionZoomController : MonoBehaviour
 {
@@ -23,6 +24,19 @@ public class CameraVisionZoomController : MonoBehaviour
     void Start()
     {
         virtualCamera.m_Lens.OrthographicSize = targetOrthoSize;
+
+        GameObject zoomOutFunction = FunctionBarController.Instance
+            .GetFunctionByName(FunctionBarController.EFunctionName.Zoom_out);
+
+
+        GameObject zoomInFunction = FunctionBarController.Instance
+            .GetFunctionByName(FunctionBarController.EFunctionName.Zoom_In);
+
+
+        zoomOutFunction.GetComponent<Button>().onClick.AddListener(ZoomOut);
+
+        zoomInFunction.GetComponent<Button>().onClick.AddListener(ZoomIn);
+
     }
 
     // Update is called once per frame
