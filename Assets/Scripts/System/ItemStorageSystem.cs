@@ -18,6 +18,8 @@ public class ItemStorageSystem : Singleton<ItemStorageSystem>
 
     private Dictionary<string, int> itemsIndexInStorage = new Dictionary<string, int>();
 
+  
+
     private void Start()
     {
         int index = 0;
@@ -36,4 +38,7 @@ public class ItemStorageSystem : Singleton<ItemStorageSystem>
 
         return null;
     }
+
+
+
 }

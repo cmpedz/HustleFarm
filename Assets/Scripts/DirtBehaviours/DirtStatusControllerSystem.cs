@@ -41,6 +41,11 @@ public class DirtStatusControllerSystem : MonoBehaviour
         {
             instance = this;
 
+            userBag = FindAnyObjectByType<BagMenu>();
+
+            terminateFunctionButton = FunctionBarController.Instance
+                .GetFunctionByName(FunctionBarController.EFunctionName.Terminate_Function);
+
             foreach (PlantSeedsController dirt in dirts)
             {
                 if (dirt != null) {
