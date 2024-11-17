@@ -14,11 +14,19 @@ namespace HustleFarmServer.Controllers.Model
 
         private readonly string  USERS_DATA_COLLECTIONS = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserData);
 
+        private CollectionReference userDataCollection;
+
+        private List<UserAccountDataManager> userDatasManager = new List<UserAccountDataManager>();
+
         public UserAccountManager()
         {
-               this.firestoreDb =FireStoreController.GetInstace().FireStoreDb;
+            this.firestoreDb =FireStoreController.GetInstace().FireStoreDb;
 
-               this.usersCollections = firestoreDb.Collection(USERS_COLLECTIONS);
+            this.usersCollections = firestoreDb.Collection(USERS_COLLECTIONS);
+
+            userDatasManager.Add(new UserAccountBagDataManager());
+
+            userDatasManager.Add(new UserAccountInforsManager());
 
         }
         public async Task<string> CreateAccount(string userId)
@@ -26,70 +34,52 @@ namespace HustleFarmServer.Controllers.Model
 
             DocumentReference user = this.usersCollections.Document(userId);
 
-            CollectionReference userData = user.Collection(USERS_DATA_COLLECTIONS);
+            this.userDataCollection = user.Collection(USERS_DATA_COLLECTIONS);
 
-            QuerySnapshot documentSnapshots = await userData.GetSnapshotAsync();
+            QuerySnapshot documentSnapshots = await userDataCollection.GetSnapshotAsync();
 
             bool isAccountCreated = documentSnapshots.Documents.Count > 0;
 
             if (isAccountCreated)
             {
-                return GetUserData(userId).Result;
+                return GetUserData().Result;
             }
 
+            List<Task> taskExecuted = new List<Task>(); 
 
-
-            await Task.WhenAll([SetUpDataForUserBags(userData), SetUpDataForUserInfors(userData)]);
-
-            return GetUserData(userId).Result;
-
-        }
-
-        private async Task SetUpDataForUserInfors(CollectionReference userData)
-        {
-            string userBagDocuments = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserBag);
-
-            List<string> initialItem = new List<string>(){ 
-
-                KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Seed_Crop),
-
-                KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Seed_Rice)};
-
-            Dictionary<string, object> data = new Dictionary<string, object>()
+            foreach(var userDataManager in userDatasManager)
             {
-                { "Items",  initialItem}
-            };
+                taskExecuted.Add(userDataManager.SetUpData(userDataCollection));
+            }
 
-            await userData.Document(userBagDocuments).SetAsync(data);
-        }
+            await Task.WhenAll(taskExecuted);
 
-        private async Task SetUpDataForUserBags(CollectionReference userData)
-        {
-            string userInforsDocuments = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserInfors);
-
-            Dictionary<string, object> data = new Dictionary<string, object>()
-            {
-                { "test" , 1}
-            };
-
-            await userData.Document(userInforsDocuments).SetAsync(data);
-
-
+            return GetUserData().Result;
 
         }
 
-        public async Task<string> GetUserData(string userId)
+
+        public async Task<string> GetUserData()
         {
             Dictionary<string, string> userDatasDicionary = new Dictionary<string, string>();
 
-            QuerySnapshot userDatasQuery = await this.usersCollections.Document(userId).Collection(USERS_DATA_COLLECTIONS).GetSnapshotAsync();
+            List<Task> tasksRetrievedUserData = new List<Task>();
 
-            foreach(DocumentSnapshot userData in userDatasQuery)
+            foreach(UserAccountDataManager userDataManager in userDatasManager)
             {
-                string userDataToJson = JsonSerializer.Serialize(userData.ToDictionary(), new JsonSerializerOptions());
+                Task getUserDataTask = Task.Run(() =>
+                {
 
-                userDatasDicionary.Add(userData.Id, userDataToJson);
+                    KeyValuePair<string, string> userDataRetrieved = userDataManager.GetUserData(this.userDataCollection).Result;
+
+                    userDatasDicionary.Add(userDataRetrieved.Key, userDataRetrieved.Value);
+                }
+                );
+
+                tasksRetrievedUserData.Add(getUserDataTask);
             }
+
+            await Task.WhenAll(tasksRetrievedUserData);
 
             return JsonSerializer.Serialize(userDatasDicionary, new JsonSerializerOptions());
         }
