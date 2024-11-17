@@ -1,5 +1,6 @@
 ﻿using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
+using Newtonsoft.Json.Linq;
 using System.Text.Json;
 
 namespace HustleFarmServer.Controllers.Model
@@ -37,7 +38,21 @@ namespace HustleFarmServer.Controllers.Model
 
             return new KeyValuePair<string, string>(this.documentId.ToString(), dataToJson) ;
         }
-    
+
+        public async Task UpdateUSerData(string newJsonData, CollectionReference userData)
+        {
+            Dictionary<string, object> updatedData = new Dictionary<string, object>();
+
+            JObject newData = JObject.Parse(newJsonData);
+
+            foreach(var newDataType in newData)
+            {
+                updatedData.Add(newDataType.Key, newDataType.Value);
+            }
+
+            await userData.Document(this.documentId.ToString()).SetAsync(updatedData);
+
+        }
 
 }
 }

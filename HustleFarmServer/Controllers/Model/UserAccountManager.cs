@@ -1,5 +1,8 @@
 ﻿using Google.Cloud.Firestore;
+using Newtonsoft.Json.Linq;
 using System.Text.Json;
+using System.Text.Json.Nodes;
+
 
 
 namespace HustleFarmServer.Controllers.Model
@@ -16,7 +19,7 @@ namespace HustleFarmServer.Controllers.Model
 
         private CollectionReference userDataCollection;
 
-        private List<UserAccountDataManager> userDatasManager = new List<UserAccountDataManager>();
+        private Dictionary<string, UserAccountDataManager> userDatasManagerDictionary = new Dictionary<string, UserAccountDataManager>();
 
         public UserAccountManager()
         {
@@ -24,9 +27,9 @@ namespace HustleFarmServer.Controllers.Model
 
             this.usersCollections = firestoreDb.Collection(USERS_COLLECTIONS);
 
-            userDatasManager.Add(new UserAccountBagDataManager());
+            userDatasManagerDictionary.Add(KeysDataFB.EKeysDataFB.UserBag.ToString(),new UserAccountBagDataManager());
 
-            userDatasManager.Add(new UserAccountInforsManager());
+            userDatasManagerDictionary.Add(KeysDataFB.EKeysDataFB.UserInfors.ToString(), new UserAccountInforsManager());
 
         }
         public async Task<string> CreateAccount(string userId)
@@ -47,9 +50,10 @@ namespace HustleFarmServer.Controllers.Model
 
             List<Task> taskExecuted = new List<Task>(); 
 
-            foreach(var userDataManager in userDatasManager)
+            foreach(string userDataManagerKey in userDatasManagerDictionary.Keys)
             {
-                taskExecuted.Add(userDataManager.SetUpData(userDataCollection));
+
+                taskExecuted.Add(userDatasManagerDictionary[userDataManagerKey].SetUpData(this.userDataCollection));
             }
 
             await Task.WhenAll(taskExecuted);
@@ -58,6 +62,34 @@ namespace HustleFarmServer.Controllers.Model
 
         }
 
+        public async Task UpdateUsersDataToServer(string jsonData)
+        {
+            JObject userDatas = JObject.Parse(jsonData);
+
+            List<Task> tasksUpdatedData = new List<Task>();
+
+            foreach(var userDataType in userDatas)
+            {
+                 foreach(string userDataManagerKey in userDatasManagerDictionary.Keys)
+                {
+                    if(userDataManagerKey == userDataType.Key)
+                    {
+                        Task taskUpdate = Task.Run(() =>
+                        {
+                            userDatasManagerDictionary[userDataManagerKey].UpdateUSerData(userDataType.Value.ToString(), this.userDataCollection).Wait();
+                        });
+
+                        tasksUpdatedData.Add(taskUpdate);
+                        
+                        break;
+                    }
+                }
+            }
+
+            await Task.WhenAll(tasksUpdatedData);
+        }
+
+
 
         public async Task<string> GetUserData()
         {
@@ -65,10 +97,11 @@ namespace HustleFarmServer.Controllers.Model
 
             List<Task> tasksRetrievedUserData = new List<Task>();
 
-            foreach(UserAccountDataManager userDataManager in userDatasManager)
+            foreach(string userDataManagerKey in userDatasManagerDictionary.Keys)
             {
                 Task getUserDataTask = Task.Run(() =>
                 {
+                    UserAccountDataManager userDataManager = userDatasManagerDictionary[userDataManagerKey];
 
                     KeyValuePair<string, string> userDataRetrieved = userDataManager.GetUserData(this.userDataCollection).Result;
 

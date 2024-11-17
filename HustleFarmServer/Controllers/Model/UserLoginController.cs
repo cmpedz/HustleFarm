@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Text;
 
 namespace HustleFarmServer.Controllers.Model
@@ -24,6 +25,18 @@ namespace HustleFarmServer.Controllers.Model
                 if(user.UserId != null)
                 {
                     userDataToJson = _userAccountManager.CreateAccount(user.UserId).Result;
+
+                    var data = new
+                    {
+                        UserBag = new List<string> {  
+                            KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Seed_Crop),
+
+                            KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Food_Crop)
+                        },
+                        UserInfors = "Test Update Data",
+                    };
+
+                    _userAccountManager.UpdateUsersDataToServer(JsonConvert.SerializeObject(data)).Wait();
 
                 }
                 
