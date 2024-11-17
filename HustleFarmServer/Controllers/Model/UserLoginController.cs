@@ -28,12 +28,16 @@ namespace HustleFarmServer.Controllers.Model
 
                     var data = new
                     {
-                        UserBag = new List<string> {  
+                        UserBag = new
+                        {
+                            Items = new List<string> {
                             KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Seed_Crop),
 
                             KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Food_Crop)
-                        },
-                        UserInfors = "Test Update Data",
+                            }
+                        }
+                        ,
+                        UserInfors = new { test = "Test update data"}
                     };
 
                     _userAccountManager.UpdateUsersDataToServer(JsonConvert.SerializeObject(data)).Wait();

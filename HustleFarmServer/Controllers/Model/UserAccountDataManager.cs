@@ -1,7 +1,11 @@
 ﻿using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text.Json;
+using System.Text.Json.Nodes;
+
 
 namespace HustleFarmServer.Controllers.Model
 {
@@ -9,6 +13,7 @@ namespace HustleFarmServer.Controllers.Model
     {
         private KeysDataFB.EKeysDataFB documentId;
 
+      
         public UserAccountDataManager(KeysDataFB.EKeysDataFB documentId)
         {
             this.documentId = documentId;
@@ -34,7 +39,7 @@ namespace HustleFarmServer.Controllers.Model
 
             DocumentSnapshot dataSnapShot = await dataRetrieved.GetSnapshotAsync();
 
-            string dataToJson = JsonSerializer.Serialize(dataSnapShot.ToDictionary(), new JsonSerializerOptions());
+            string dataToJson = JsonConvert.SerializeObject(dataSnapShot.ToDictionary(), Formatting.Indented);
 
             return new KeyValuePair<string, string>(this.documentId.ToString(), dataToJson) ;
         }
@@ -45,13 +50,29 @@ namespace HustleFarmServer.Controllers.Model
 
             JObject newData = JObject.Parse(newJsonData);
 
-            foreach(var newDataType in newData)
+            foreach (var newDataType in newData)
             {
-                updatedData.Add(newDataType.Key, newDataType.Value);
-            }
 
-            await userData.Document(this.documentId.ToString()).SetAsync(updatedData);
+                try
+                {
 
+                    JArray newDataToJArray = JArray.Parse(newDataType.Value.ToString());
+
+                    object[] newDataToArray = newDataToJArray.ToObject<object[]>();
+
+                    updatedData.Add(newDataType.Key, newDataToArray);
+                }
+                catch (JsonReaderException)
+                {
+
+                    updatedData.Add(newDataType.Key, newDataType.Value);
+                }
+
+
+
+                }
+
+                await userData.Document(this.documentId.ToString()).SetAsync(updatedData);
         }
 
 }
