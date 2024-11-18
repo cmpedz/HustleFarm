@@ -33,10 +33,13 @@ public class GachaSystemController : ServerRequestController
 
     protected override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {
-        string itemGachaId = request.downloadHandler.text;
+
+        string plantId = request.downloadHandler.text;
+
+        string plantIdToSeedId = "Seed " + plantId;
 
 
-        itemsDisplaySystem.DisplayGachaItem(itemGachaId);
+        itemsDisplaySystem.DisplayGachaItem(plantIdToSeedId);
 
         if (!itemsDisplaySystem.gameObject.activeSelf)
         {
@@ -44,7 +47,7 @@ public class GachaSystemController : ServerRequestController
         }
 
         if (putItemsGachaGetIntoUserBagSystem != null) { 
-            putItemsGachaGetIntoUserBagSystem.PutItemsGachaIntoUserBag(itemGachaId);
+            putItemsGachaGetIntoUserBagSystem.PutItemsGachaIntoUserBag(plantIdToSeedId);
         }
     }
 }

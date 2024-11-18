@@ -11,11 +11,21 @@ public class BagMenu : Menu<string>
     private static BagMenu instance;
     public static BagMenu Instance {  get { return instance; } }
 
+    private UpdateUserDataSystem updateUserDataSystem;
+
+    private UserBag userBagData;
+
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
+
+            updateUserDataSystem = UpdateUserDataSystem.Instance;
+
+            userBagData = new UserBag();
+
+            updateUserDataSystem.UpdateUserData(userBagData, UserBag.Id);
 
         }
         else
@@ -27,6 +37,8 @@ public class BagMenu : Menu<string>
     public override void AddItem(Item item)
     {
         string itemId = item.GetItemId();
+
+        userBagData.Items.Add(itemId);
 
         if(bagItems.ContainsKey(itemId))
         {
@@ -70,6 +82,8 @@ public class BagMenu : Menu<string>
 
                 Destroy(selectedItem.gameObject);
             }
+
+            userBagData.Items.Remove(itemId);
         }
      
     }

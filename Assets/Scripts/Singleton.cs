@@ -9,7 +9,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
         get{ return instance; }    
     }
 
-    private void Awake()
+    protected void Awake()
     {
         if (instance == null)
         {

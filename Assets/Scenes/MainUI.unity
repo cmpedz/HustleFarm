@@ -365,6 +365,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &457080028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457080030}
+  - component: {fileID: 457080029}
+  m_Layer: 0
+  m_Name: UpdateUserData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &457080029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457080028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 237040339f84d724d8fd01dd4e70bb02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &457080030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457080028}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 514.40967, y: 222.1446, z: 0.676561}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517208600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1667,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7009354675212681129, guid: 8c2ade6cd017caf47ab92265d6dd3b4b, type: 3}
+      propertyPath: itemsStorage.Array.data[0].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 67a14c4a64d7d96439fced2394baae5c, type: 2}
+    - target: {fileID: 7009354675212681129, guid: 8c2ade6cd017caf47ab92265d6dd3b4b, type: 3}
+      propertyPath: itemsStorage.Array.data[1].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: f3424b436a9e7cf4493253fdc6db537f, type: 2}
+    - target: {fileID: 7009354675212681129, guid: 8c2ade6cd017caf47ab92265d6dd3b4b, type: 3}
+      propertyPath: itemsStorage.Array.data[2].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 75f3b7549d27caa43a117624a13309c1, type: 2}
+    - target: {fileID: 7009354675212681129, guid: 8c2ade6cd017caf47ab92265d6dd3b4b, type: 3}
+      propertyPath: itemsStorage.Array.data[3].itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: c48534b6e9912334c9080be0003535e0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1837,3 +1897,4 @@ SceneRoots:
   - {fileID: 4746862771291031266}
   - {fileID: 544611892}
   - {fileID: 1369830904}
+  - {fileID: 457080030}

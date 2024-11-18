@@ -7,7 +7,7 @@ public class ItemStorageSystem : Singleton<ItemStorageSystem>
     [System.Serializable]
     class ItemStorageForm
     {
-        public string Id;
+        public ObjectData itemData;
 
         public GameObject item;
 
@@ -25,7 +25,7 @@ public class ItemStorageSystem : Singleton<ItemStorageSystem>
         int index = 0;
 
         foreach (ItemStorageForm item in itemsStorage) { 
-            itemsIndexInStorage.Add(item.Id, index);
+            itemsIndexInStorage.Add(item.itemData.itemName, index);
             index++;
         }
     }

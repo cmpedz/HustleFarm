@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SeedRice
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300156, guid: 2700e06d970d112489ff23cfb58c3f78, type: 3}
-  itemName: Rice
+  itemName: Seed Rice

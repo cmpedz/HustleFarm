@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SeedCrop
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300164, guid: bb607b3e08eb870419797e86501f8749, type: 3}
-  itemName: Crop
+  itemName: Seed Crop
