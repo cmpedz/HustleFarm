@@ -10,7 +10,7 @@ namespace HustleFarmServer.Controllers.Model
     [Route("[controller]")]
     public class UserLoginController : ControllerBase
     {
-        private UserAccountManager _userAccountManager = new UserAccountManager();
+        private UserAccountManager _userAccountManager;
         [HttpPost]
         public IActionResult HandleUserLogin([FromBody] User user)
         {
@@ -24,23 +24,10 @@ namespace HustleFarmServer.Controllers.Model
 
                 if(user.UserId != null)
                 {
-                    userDataToJson = _userAccountManager.CreateAccount(user.UserId).Result;
 
-                    var data = new
-                    {
-                        UserBag = new
-                        {
-                            Items = new List<string> {
-                            KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Seed_Crop),
+                    _userAccountManager = new UserAccountManager(user.UserId);
 
-                            KeyItemsInBag.GetItemInBag(KeyItemsInBag.EKeyItemsInBag.Food_Crop)
-                            }
-                        }
-                        ,
-                        UserInfors = new { test = "Test update data"}
-                    };
-
-                    _userAccountManager.UpdateUsersDataToServer(JsonConvert.SerializeObject(data)).Wait();
+                    userDataToJson = _userAccountManager.CreateAccount().Result;
 
                 }
                 

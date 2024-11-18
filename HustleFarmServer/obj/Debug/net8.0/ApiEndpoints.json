@@ -20,6 +20,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HustleFarmServer.Controllers.Model.UserDataUpdateController",
+    "Method": "UpdateUserData",
+    "RelativePath": "UserDataUpdate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userData",
+        "Type": "HustleFarmServer.Controllers.Model.UserData",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HustleFarmServer.Controllers.Model.UserLoginController",
     "Method": "HandleUserLogin",
     "RelativePath": "UserLogin",

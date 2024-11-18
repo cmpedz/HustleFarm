@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -21,7 +22,7 @@ namespace HustleFarmServer.Controllers.Model
 
         private Dictionary<string, UserAccountDataManager> userDatasManagerDictionary = new Dictionary<string, UserAccountDataManager>();
 
-        public UserAccountManager()
+        public UserAccountManager(string userId)
         {
             this.firestoreDb =FireStoreController.GetInstace().FireStoreDb;
 
@@ -31,13 +32,13 @@ namespace HustleFarmServer.Controllers.Model
 
             userDatasManagerDictionary.Add(KeysDataFB.EKeysDataFB.UserInfors.ToString(), new UserAccountInforsManager());
 
-        }
-        public async Task<string> CreateAccount(string userId)
-        {
-
             DocumentReference user = this.usersCollections.Document(userId);
 
             this.userDataCollection = user.Collection(USERS_DATA_COLLECTIONS);
+
+        }
+        public async Task<string> CreateAccount()
+        {
 
             QuerySnapshot documentSnapshots = await userDataCollection.GetSnapshotAsync();
 
@@ -76,7 +77,9 @@ namespace HustleFarmServer.Controllers.Model
                     {
                         Task taskUpdate = Task.Run(() =>
                         {
-                            userDatasManagerDictionary[userDataManagerKey].UpdateUSerData(userDataType.Value.ToString(), this.userDataCollection).Wait();
+                            string dataToJson = JsonConvert.SerializeObject(userDataType.Value);
+
+                            userDatasManagerDictionary[userDataManagerKey].UpdateUSerData(dataToJson, this.userDataCollection).Wait();
                         });
 
                         tasksUpdatedData.Add(taskUpdate);
@@ -114,7 +117,7 @@ namespace HustleFarmServer.Controllers.Model
 
             await Task.WhenAll(tasksRetrievedUserData);
 
-            return JsonSerializer.Serialize(userDatasDicionary, new JsonSerializerOptions());
+            return JsonConvert.SerializeObject(userDatasDicionary);
         }
     }
 }
