@@ -34,12 +34,17 @@ namespace HustleFarmServer.Controllers.Model
 
         public UserBag? UserBag { get; set; }
 
-        public string? UserInfors { get; set; }
+        public UserInfors? UserInfors { get; set; }
     }
 
     public class UserBag
     {
         public List<string>? Items { get; set; }
+    }
+
+    public class UserInfors
+    {
+        public string? Name { get; set; }
     }
 
 
