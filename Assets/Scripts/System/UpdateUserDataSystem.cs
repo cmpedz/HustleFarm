@@ -7,10 +7,21 @@ using UnityEngine.Networking;
 public class UpdateUserDataSystem : ServerRequestController
 {
     // Start is called before the first frame update
+
+    private static readonly string UpdateUserDataRouter = "UserDataUpdate";
+
     private Dictionary<string, object> userData;
 
     private static UpdateUserDataSystem instance;
     public static UpdateUserDataSystem Instance {  get { return instance; } }   
+
+    public void InitialUserData(object data, string id)
+    {
+        if (userData == null) return;
+
+        userData[id] = data;
+
+    }
    
 
     public void UpdateUserData(object data, string id)
@@ -18,6 +29,15 @@ public class UpdateUserDataSystem : ServerRequestController
         if (userData == null) return;
 
          userData[id] = data;
+
+        string userDataToJson = JsonConvert.SerializeObject(userData);
+
+
+        if (userDataToJson != null)
+        {
+
+            //StartCoroutine(SendPostRequest(UpdateUserDataRouter, userDataToJson));
+        }
 
     }
 
@@ -40,11 +60,4 @@ public class UpdateUserDataSystem : ServerRequestController
         
     }
 
-    private void OnDestroy()
-    {
-
-        string userDataToJson = JsonConvert.SerializeObject(userData);
-
-        Debug.Log("check update user data : " + userDataToJson);
-    }
 }

@@ -68,10 +68,9 @@ public class CustomThirdWebManager : MonoBehaviour
         WalletConnectButton.onClick.RemoveAllListeners();
         WalletConnectButton.onClick.AddListener(() =>
         {
-            //var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
-            //ConnectWallet(options);
-            UserData.Instance.UserId = "hungmnk";
-            changeSceneEvent.Invoke();
+            var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
+            ConnectWallet(options);
+            //changeSceneEvent.Invoke();
         });
     }
 
@@ -91,11 +90,13 @@ public class CustomThirdWebManager : MonoBehaviour
         //get address 
         var address = await wallet.GetAddress();
         Debug.Log("check address : " + address);
-     
+
+        UserData.Instance.UserId = address;
+
 
         //sign
-       /* var message = "Hello World!";
-        var signature = await wallet.PersonalSign(message); */
+        /* var message = "Hello World!";
+         var signature = await wallet.PersonalSign(message); */
         //Debug.Log("check signature : " + signature);
 
         //get balance
