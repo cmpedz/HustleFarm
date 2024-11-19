@@ -493,9 +493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b1d5a9bf7900e4391e936b6aa765f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despositeButton: {fileID: 0}
-  widthDrawButton: {fileID: 0}
-  balance: {fileID: 0}
+  despositeButton: {fileID: 2130985112}
+  widthDrawButton: {fileID: 1638438494}
+  balance: {fileID: 1423885160}
 --- !u!114 &292921416
 MonoBehaviour:
   m_ObjectHideFlags: 0

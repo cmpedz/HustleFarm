@@ -1,4 +1,4 @@
-// Assets/Scripts/WalletSystem/UserWalletController.cs
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +8,8 @@ using Thirdweb;
 using System.Numerics;
 using System.Threading.Tasks;
 using Thirdweb.Unity;
+
+using Nethereum.BlockchainProcessing.BlockStorage.Entities;
 
 public class UserWalletController : MonoBehaviour
 {
@@ -59,8 +61,10 @@ public class UserWalletController : MonoBehaviour
     {
         try 
         {
-            BigInteger _default = BigInteger.Pow(10,18);
-            await tokenContract.ERC20_Transfer(ThirdwebManager.Instance.ActiveWallet, DEV_WALLET_ADDRESS, _default);
+
+            string amount = "20";
+
+            await tokenContract.DropERC20_Claim(ThirdwebManager.Instance.ActiveWallet, UserData.Instance.UserId, amount);
 
         }
         catch (System.Exception e)
@@ -73,8 +77,10 @@ public class UserWalletController : MonoBehaviour
     {
         try
         {
-            BigInteger _default = BigInteger.Pow(10, 18);
-            await tokenContract.ERC20_Transfer(ThirdwebManager.Instance.ActiveWallet, ThirdwebManager.Instance.ActiveWallet.GetAddress().Result, _default);
+            BigInteger amount = 2 * BigInteger.Pow(10,18);
+
+            await tokenContract.ERC20_Transfer(ThirdwebManager.Instance.ActiveWallet, DEV_WALLET_ADDRESS, amount);
+
 
         }
         catch (System.Exception e)
