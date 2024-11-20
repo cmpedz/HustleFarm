@@ -1,9 +1,12 @@
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Thirdweb;
 using UnityEngine;
 
 
-public class BagMenu : Menu<string>
+public class BagMenu : Menu<string>, IEventDataChange
 {
 
     private Dictionary<string, Item> bagItems = new Dictionary<string, Item>();
@@ -15,17 +18,15 @@ public class BagMenu : Menu<string>
 
     private UserBag userBagData;
 
+    public event Action<object> DataChangeEvent;
+
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
 
-            updateUserDataSystem = UpdateUserDataSystem.Instance;
-
             userBagData = new UserBag();
-
-            updateUserDataSystem.UpdateUserData(userBagData, UserBag.Id);
 
         }
         else
@@ -39,6 +40,9 @@ public class BagMenu : Menu<string>
         string itemId = item.GetItemId();
 
         userBagData.Items.Add(itemId);
+
+        
+        DataChangeEvent.Invoke(userBagData);
 
         if(bagItems.ContainsKey(itemId))
         {
@@ -84,6 +88,8 @@ public class BagMenu : Menu<string>
             }
 
             userBagData.Items.Remove(itemId);
+
+            DataChangeEvent.Invoke(userBagData);
         }
      
     }

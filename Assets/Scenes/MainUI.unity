@@ -786,6 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237040339f84d724d8fd01dd4e70bb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bagMenu: {fileID: 1194115667}
 --- !u!4 &457080030
 Transform:
   m_ObjectHideFlags: 0

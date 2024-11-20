@@ -8,34 +8,35 @@ public class UserLoginController : ServerRequestController
 {
     private static readonly string USER_LOGIN_ROUTER = "UserLogin";
 
-    private static UserLoginController instance;
-    public static UserLoginController Instance
-    {
-        get { return instance; }
-    }
 
     [SerializeField] private RetrieveUserDataFromServer retrieveUserData;
 
     private bool isRetrieveDataEnd = false;
     public bool IsRetrieveDataEnd { get {  return isRetrieveDataEnd; } }
 
-    private void Start()
-    {
-        if (instance == null) {
+    private static UserLoginController instance;
 
+    public static UserLoginController Instance { get { return instance; } }
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
             instance = this;
 
-            string userWalletId = UserData.Instance.UserId;
+            string userWalletId = InstanceUserId.Instance.UserId;
 
             StartCoroutine(ConstructUserAccount(userWalletId));
 
-         
+            DontDestroyOnLoad(instance);
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
+  
 
     protected override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {

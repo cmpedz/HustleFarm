@@ -52,6 +52,8 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
 
           Debug.Log("check plant seed id : " + plantedSeed.GetComponent<PlantsDataManager>().Id);
 
+          
+
           SerializedPlantData initialPlantData = GachaStorageSystem.Instance.RetrieveItemGachaData(plantedSeed.GetComponent<PlantsDataManager>().Id);
 
           plantedSeed.GetComponent<PlantsDataManager>().RetrievePlantDataFromGachaStorageSystem(initialPlantData);

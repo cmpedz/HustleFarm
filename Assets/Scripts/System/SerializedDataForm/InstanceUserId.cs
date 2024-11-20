@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserData : Singleton<UserData>
+public class InstanceUserId : Singleton<InstanceUserId>
 {
     private string userId;
     public string UserId
@@ -10,5 +10,6 @@ public class UserData : Singleton<UserData>
         get { return this.userId; }
         set { this.userId = value; }
     }
+
    
 }

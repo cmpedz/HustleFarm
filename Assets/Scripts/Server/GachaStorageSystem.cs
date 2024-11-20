@@ -10,28 +10,27 @@ public class GachaStorageSystem : ServerRequestController
     // Start is called before the first frame update
     private static readonly string ROUTER_GACHA_ITEMS_STORAGE = "ItemsGachaData";
 
-    private static GachaStorageSystem instance;
-
-    public static GachaStorageSystem Instance
-    {
-        get { return instance; }
-    }
     
     private Dictionary<string, SerializedPlantData> itemsGachaDictionary = new Dictionary<string, SerializedPlantData>();
 
+    private static GachaStorageSystem instance;
+
+    public static GachaStorageSystem Instance { get { return instance; } }
+
     void Start()
     {
-        if (instance == null)
+
+        if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(instance);
             StartCoroutine(SendGetRequest(ROUTER_GACHA_ITEMS_STORAGE));
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(instance);
         }
-        
+      
     }
 
     // Update is called once per frame

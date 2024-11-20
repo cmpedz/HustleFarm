@@ -64,7 +64,7 @@ public class UserWalletController : MonoBehaviour
 
             string amount = "20";
 
-            await tokenContract.DropERC20_Claim(ThirdwebManager.Instance.ActiveWallet, UserData.Instance.UserId, amount);
+            await tokenContract.DropERC20_Claim(ThirdwebManager.Instance.ActiveWallet, InstanceUserId.Instance.UserId, amount);
 
         }
         catch (System.Exception e)
