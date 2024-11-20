@@ -31,7 +31,7 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
         this.timeBorn = timeBorn;
     }
 
-    public void RetrievePlantDataFromGachaStorageSystem(SerializedPlantData serializedPlantData)
+    public void SerializedPLantDataToPlantDataManager(SerializedPlantData serializedPlantData)
     {
 
 
@@ -47,7 +47,9 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
 
         this.SetLastTimeProvidingNutrition(DateTime.Parse(serializedPlantData.LastTimeProvidingNutrition));
 
-        
+        if (serializedPlantData.TimeBorn != null) { 
+            timeBorn = DateTime.Parse(serializedPlantData.TimeBorn);
+        }
 
     }
 }

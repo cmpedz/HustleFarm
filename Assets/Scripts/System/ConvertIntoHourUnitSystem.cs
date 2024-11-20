@@ -43,4 +43,9 @@ public static class ConvertIntoHourUnitSystem
         return time * EXCHANGE_VALUES.GetValueOrDefault(unit);
     }
 
+    public static string ConvertTimeIntoString(float time, string unit)
+    {
+        return time + " " + unit;
+    }
+
 }
