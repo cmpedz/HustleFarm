@@ -29,7 +29,7 @@
     "Parameters": [
       {
         "Name": "userData",
-        "Type": "HustleFarmServer.Controllers.Model.UserData",
+        "Type": "HustleFarmServer.Controllers.Model.UserDataForm.UserData",
         "IsRequired": true
       }
     ],

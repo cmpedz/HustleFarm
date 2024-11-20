@@ -46,6 +46,9 @@ namespace HustleFarmServer.Controllers.Model
 
         public async Task UpdateUSerData(string newJsonData, CollectionReference userData)
         {
+
+            if (newJsonData == "null" || userData == null || newJsonData == "" || newJsonData == null) return;
+
             Dictionary<string, object> updatedData = new Dictionary<string, object>();
 
             JObject newData = JObject.Parse(newJsonData);

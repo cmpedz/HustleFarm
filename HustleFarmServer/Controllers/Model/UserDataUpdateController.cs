@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using HustleFarmServer.Controllers.Model.UserDataForm;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -28,24 +29,6 @@ namespace HustleFarmServer.Controllers.Model
         }
     }
 
-    public class UserData {
-
-        public string? UserId { get; set; }
-
-        public UserBag? UserBag { get; set; }
-
-        public UserInfors? UserInfors { get; set; }
-    }
-
-    public class UserBag
-    {
-        public List<string>? Items { get; set; }
-    }
-
-    public class UserInfors
-    {
-        public string? Name { get; set; }
-    }
-
+   
 
 }

@@ -1,4 +1,6 @@
 ﻿
+using HustleFarmServer.Controllers.Model.UserDataForm;
+
 namespace HustleFarmServer.Controllers.Model
 {
     public class UserAccountBagDataManager : UserAccountDataManager
@@ -21,7 +23,7 @@ namespace HustleFarmServer.Controllers.Model
 
                 
 
-        initialData.Add("Items", initialItem);
+        initialData.Add(UserBag.ItemsField, initialItem);
         }
 
         

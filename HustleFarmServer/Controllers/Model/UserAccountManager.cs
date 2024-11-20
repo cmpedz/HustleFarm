@@ -32,6 +32,8 @@ namespace HustleFarmServer.Controllers.Model
 
             userDatasManagerDictionary.Add(KeysDataFB.EKeysDataFB.UserInfors.ToString(), new UserAccountInforsManager());
 
+            userDatasManagerDictionary.Add(KeysDataFB.EKeysDataFB.UserPlants.ToString(), new UserAccountPlantsDataManager());
+
             DocumentReference user = this.usersCollections.Document(userId);
 
             this.userDataCollection = user.Collection(USERS_DATA_COLLECTIONS);
@@ -77,9 +79,11 @@ namespace HustleFarmServer.Controllers.Model
                     {
                         Task taskUpdate = Task.Run(() =>
                         {
-                            string dataToJson = JsonConvert.SerializeObject(userDataType.Value);
+                               string dataToJson = JsonConvert.SerializeObject(userDataType.Value);
 
-                            userDatasManagerDictionary[userDataManagerKey].UpdateUSerData(dataToJson, this.userDataCollection).Wait();
+                                
+                               userDatasManagerDictionary[userDataManagerKey].UpdateUSerData(dataToJson, this.userDataCollection).Wait();
+                               
                         });
 
                         tasksUpdatedData.Add(taskUpdate);
