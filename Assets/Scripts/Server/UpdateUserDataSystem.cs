@@ -53,6 +53,8 @@ public class UpdateUserDataSystem : ServerRequestController
 
     public void UpdateUserData(object data)
     {
+        Debug.Log("on update user data process");
+
         if (data == null) return;
 
 

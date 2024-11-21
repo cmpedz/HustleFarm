@@ -28,7 +28,7 @@ public class GachaStorageSystem : ServerRequestController
         }
         else
         {
-            Destroy(instance);
+            Destroy(gameObject);
         }
       
     }

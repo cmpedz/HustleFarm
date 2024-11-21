@@ -84,6 +84,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
     public void RemoveQuantitiesSeedItemClicked() { 
         if(seedItemInBagClicked != null && userBag != null) {
             userBag.RemoveItem(seedItemInBagClicked);
+            userBag.UpdateItemsChangeIntoServer();
         }
     }
 

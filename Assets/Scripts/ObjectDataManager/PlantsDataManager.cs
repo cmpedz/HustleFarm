@@ -45,7 +45,11 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
 
         this.lifeSpans = ConvertIntoHourUnitSystem.ConvertStringIntoHourUnit(serializedPlantData.LifeSpan);
 
-        this.SetLastTimeProvidingNutrition(DateTime.Parse(serializedPlantData.LastTimeProvidingNutrition));
+        if (serializedPlantData.LastTimeProvidingNutrition != null) {
+            this.SetLastTimeProvidingNutrition(DateTime.Parse(serializedPlantData.LastTimeProvidingNutrition));
+        }
+
+        
 
         if (serializedPlantData.TimeBorn != null) { 
             timeBorn = DateTime.Parse(serializedPlantData.TimeBorn);

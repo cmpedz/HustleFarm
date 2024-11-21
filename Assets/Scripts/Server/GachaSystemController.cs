@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -19,17 +20,45 @@ public class GachaSystemController : ServerRequestController
         
     }
 
-    public void GetRateFromServer(int time) {
+    public void GetItemFromServer(int time) {
 
-        
 
-        for (int i = 0; i < time; i++) {
-            StartCoroutine(SendGetRequest(ROUTER_PROVIDING_GACHA_ITEM));
-        }
+        StartCoroutine(GetItemFromServerEnumrator(time));
+       
    
     }
 
-   
+    private IEnumerator GetItemFromServerEnumrator(int time)
+    {
+        List<IEnumerator> tasksGetIbItem = new List<IEnumerator>();
+
+        int quantitiesTasksDone = 0;
+
+        for (int i = 0; i < time; i++)
+        {
+            tasksGetIbItem.Add(SendGetRequest(ROUTER_PROVIDING_GACHA_ITEM));
+        }
+
+        foreach(IEnumerator task in tasksGetIbItem)
+        {
+            StartCoroutine(TrackTaskDone(task, () => { quantitiesTasksDone++; }));
+        }
+
+        yield return new WaitUntil(() => { return quantitiesTasksDone == time; });
+
+        BagMenu.Instance.UpdateItemsChangeIntoServer();
+
+    }
+
+    private IEnumerator TrackTaskDone(IEnumerator taskExecuted, Action onComplete)
+    {
+            yield return StartCoroutine(taskExecuted);
+
+            onComplete?.Invoke();
+    }
+
+
+
 
     protected override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {

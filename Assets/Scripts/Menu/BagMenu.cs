@@ -41,9 +41,6 @@ public class BagMenu : Menu<string>, IEventDataChange
 
         userBagData.Items.Add(itemId);
 
-        
-        DataChangeEvent.Invoke(userBagData);
-
         if(bagItems.ContainsKey(itemId))
         {
             int numberIncreasing = 1;
@@ -89,9 +86,14 @@ public class BagMenu : Menu<string>, IEventDataChange
 
             userBagData.Items.Remove(itemId);
 
-            DataChangeEvent.Invoke(userBagData);
         }
      
+    }
+
+    public void UpdateItemsChangeIntoServer()
+    {
+        Debug.Log("trigger update user bag data");
+        DataChangeEvent.Invoke(userBagData);
     }
 
     public override Item GetItem(string itemId)

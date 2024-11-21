@@ -557,10 +557,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1900910743}
+    - target: {fileID: 6438186424110242454, guid: 4202ba20c79891c459d1e469727468e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetItemFromServer
+      objectReference: {fileID: 0}
     - target: {fileID: 6660578670508134737, guid: 4202ba20c79891c459d1e469727468e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1900910743}
+    - target: {fileID: 6660578670508134737, guid: 4202ba20c79891c459d1e469727468e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetItemFromServer
+      objectReference: {fileID: 0}
     - target: {fileID: 9077251406461106731, guid: 4202ba20c79891c459d1e469727468e7, type: 3}
       propertyPath: m_Name
       value: GachaUI

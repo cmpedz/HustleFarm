@@ -12,7 +12,7 @@ public class SerializedPlantData
     public string Type;
     public float MaxHoursCanSurviveInBadStatus;
     public float MaxHourForNextProvidingNutritions;
-    public string LastTimeProvidingNutrition;
+    public string LastTimeProvidingNutrition = null;
     public string TimeBorn = null;
 
     public void CheckSerializedPlantData() {
