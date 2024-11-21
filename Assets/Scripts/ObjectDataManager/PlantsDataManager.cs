@@ -48,6 +48,10 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
         if (serializedPlantData.LastTimeProvidingNutrition != null) {
             this.SetLastTimeProvidingNutrition(DateTime.Parse(serializedPlantData.LastTimeProvidingNutrition));
         }
+        else
+        {
+            this.SetLastTimeProvidingNutrition(DEFAULT_LAST_TIME_PROVIDING_NUTRITIONS);
+        }
 
         
 

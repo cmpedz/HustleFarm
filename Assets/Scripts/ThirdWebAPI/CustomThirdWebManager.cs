@@ -35,7 +35,7 @@ public class CustomThirdWebManager : MonoBehaviour
     [field: SerializeField, Header("Change Scene Event")]
     private UnityEvent changeSceneEvent;
 
-
+    [SerializeField] private string userId;
     private void Awake()
     {
         InitializePanels();
@@ -70,7 +70,7 @@ public class CustomThirdWebManager : MonoBehaviour
         {
             //var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
             //ConnectWallet(options);
-            InstanceUserId.Instance.UserId = "hungmnk";
+            InstanceUserId.Instance.UserId = userId;
 
             changeSceneEvent.Invoke();
         });

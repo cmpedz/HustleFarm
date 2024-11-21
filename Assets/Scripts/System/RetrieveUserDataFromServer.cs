@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
@@ -26,6 +27,7 @@ public class RetrieveUserDataFromServer : Singleton<RetrieveUserDataFromServer>
     public void HandleDataRetrievedFromSever(string data)
     {
         JObject jsonToObject = JObject.Parse(data);
+
 
         foreach(var dataId in jsonToObject)
         {

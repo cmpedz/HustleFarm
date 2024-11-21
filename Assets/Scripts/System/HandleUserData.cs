@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,10 +9,13 @@ public abstract class HandleUserData<T> :  HandleUserDataFunction
 {
     public override void HandleData(string jsondata)
     {
+        Debug.Log("check json data before deserialized : " + jsondata);
         T jsonToTObject = JsonUtility.FromJson<T>(jsondata);
 
         if(jsonToTObject != null)
         {
+            
+
             HandleDataEvent(jsonToTObject);
         }
         else

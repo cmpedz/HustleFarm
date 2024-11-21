@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DirtStatusControllerSystem : MonoBehaviour
 {
-    [SerializeField] private List<PlantSeedsController> dirts = new List<PlantSeedsController>();
+    [SerializeField] private List<PlantSeedsProcessController> dirts = new List<PlantSeedsProcessController>();
 
-    [SerializeField] private List<PlantSeedsController> emptyDirts = new List<PlantSeedsController>();
+    [SerializeField] private List<PlantSeedsProcessController> emptyDirts = new List<PlantSeedsProcessController>();
 
     [SerializeField] private GameObject terminateFunctionButton;
 
@@ -46,7 +46,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
             terminateFunctionButton = FunctionBarController.Instance
                 .GetFunctionByName(FunctionBarController.EFunctionName.Terminate_Function);
 
-            foreach (PlantSeedsController dirt in dirts)
+            foreach (PlantSeedsProcessController dirt in dirts)
             {
                 if (dirt != null) {
 
@@ -73,7 +73,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
         
     }
 
-    public void RemoveDirtFromEmptyDirts(PlantSeedsController dirt) {
+    public void RemoveDirtFromEmptyDirts(PlantSeedsProcessController dirt) {
         
         emptyDirts.Remove(dirt);
 
@@ -90,7 +90,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
 
     public void ProvideSeedForEmptyDirt()
     {
-        foreach (PlantSeedsController emptyDirt in emptyDirts)
+        foreach (PlantSeedsProcessController emptyDirt in emptyDirts)
         {
 
             if (emptyDirt != null && seedProvided != null) emptyDirt.SeedProvided = SeedProvided;
@@ -107,7 +107,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
             ProvideSeedForEmptyDirt();
         }
 
-        foreach (PlantSeedsController emptyDirt in emptyDirts) {
+        foreach (PlantSeedsProcessController emptyDirt in emptyDirts) {
             
             if(emptyDirt != null) emptyDirt.Arrow.SetActive(active);
 
@@ -117,6 +117,9 @@ public class DirtStatusControllerSystem : MonoBehaviour
     }
 
 
-
+    public PlantSeedsProcessController GetSpecifiedDirt(int index)
+    {
+        return this.dirts[index];
+    }
 
 }

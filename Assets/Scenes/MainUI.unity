@@ -844,7 +844,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 544611892}
-  - component: {fileID: 544611891}
+  - component: {fileID: 544611893}
   m_Layer: 0
   m_Name: HandleUserBagFunction
   m_TagString: Untagged
@@ -852,7 +852,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &544611891
+--- !u!4 &544611892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544611890}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1257770870}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &544611893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -865,21 +880,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userBag: {fileID: 1194115667}
---- !u!4 &544611892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544611890}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 403.4921, y: 233.9777, z: 1.4339685}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &840329872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1414,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handleFucntions:
   - DataId: UserBag
-    handleFunction: {fileID: 544611891}
+    handleFunction: {fileID: 544611893}
+  - DataId: UserPlants
+    handleFunction: {fileID: 2089049314}
 --- !u!4 &1257770870
 Transform:
   m_ObjectHideFlags: 0
@@ -1427,7 +1429,9 @@ Transform:
   m_LocalPosition: {x: 403.4921, y: 233.9777, z: 1.4339685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 544611892}
+  - {fileID: 2089049313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1369830904
@@ -2129,6 +2133,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970360767}
   m_CullTransparentMesh: 1
+--- !u!1 &2089049312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2089049313}
+  - component: {fileID: 2089049314}
+  m_Layer: 0
+  m_Name: 'HandleUserPlantsFunction '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2089049313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089049312}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1257770870}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2089049314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089049312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c16c555ae81f62499a4a461522852b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plantsStorage:
+  - {fileID: 8764391817812012683, guid: 6d78075a417b9364fbc54e57ebe665b2, type: 3}
+  - {fileID: 8764391817812012683, guid: 48debcd3e22322d4582cf425dc77f3d7, type: 3}
 --- !u!1 &2118785103
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,7 +2621,6 @@ SceneRoots:
   - {fileID: 1040805936}
   - {fileID: 1257770870}
   - {fileID: 4746862771291031266}
-  - {fileID: 544611892}
   - {fileID: 1369830904}
   - {fileID: 457080030}
   - {fileID: 292921419}

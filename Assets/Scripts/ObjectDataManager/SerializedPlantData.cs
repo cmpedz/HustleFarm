@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -12,8 +9,9 @@ public class SerializedPlantData
     public string Type;
     public float MaxHoursCanSurviveInBadStatus;
     public float MaxHourForNextProvidingNutritions;
-    public string LastTimeProvidingNutrition = null;
-    public string TimeBorn = null;
+    public string LastTimeProvidingNutrition;
+    public string TimeBorn;
+
 
     public void CheckSerializedPlantData() {
         Debug.Log("check " + Id + " data : ");

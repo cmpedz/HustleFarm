@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
+public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
 {
 
     [SerializeField] private GameObject plantedSeed;
@@ -42,7 +42,7 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
         return true;
     }
 
-    private void PlantSeed(HarvestPlantsController seed) {
+    public void PlantSeed(HarvestPlantsController seed, SerializedPlantData plantsData) {
 
           Debug.Log("planted seed");
 
@@ -52,11 +52,7 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
 
           Debug.Log("check plant seed id : " + plantedSeed.GetComponent<PlantsDataManager>().Id);
 
-          
-
-          SerializedPlantData initialPlantData = GachaStorageSystem.Instance.RetrieveItemGachaData(plantedSeed.GetComponent<PlantsDataManager>().Id);
-
-          plantedSeed.GetComponent<PlantsDataManager>().SerializedPLantDataToPlantDataManager(initialPlantData);
+          plantedSeed.GetComponent<PlantsDataManager>().SerializedPLantDataToPlantDataManager(plantsData);
 
           plantedSeed.SetActive(true);
 
@@ -70,13 +66,16 @@ public class PlantSeedsController : MonoBehaviour, IPointerClickHandler
             
     }
 
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if(arrow != null && seedProvided != null) {
 
             if (arrow.activeSelf) {
 
-                PlantSeed(seedProvided);
+                SerializedPlantData initialPlantData = GachaStorageSystem.Instance.RetrieveItemGachaData(plantedSeed.GetComponent<PlantsDataManager>().Id);
+
+                PlantSeed(seedProvided, initialPlantData);
 
                 DirtStatusControllerSystem.Instance.ActiveSymbolOfEmptyDirt(false);
 

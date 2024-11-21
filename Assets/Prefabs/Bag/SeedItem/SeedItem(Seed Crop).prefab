@@ -124,7 +124,7 @@ MonoBehaviour:
   itemData: {fileID: 11400000, guid: 67a14c4a64d7d96439fced2394baae5c, type: 2}
   quantitiesDisplay: {fileID: 4068325866942440270}
   itemSpriteDisplay: {fileID: 8800040277747663188}
-  itemHolder: {fileID: 6228346746986245398, guid: 6d78075a417b9364fbc54e57ebe665b2, type: 3}
+  itemHolder: {fileID: 6228346746986245398, guid: 48debcd3e22322d4582cf425dc77f3d7, type: 3}
 --- !u!114 &4068325866942440270 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9112461755583808875, guid: d2713ae5ec22a304489216948567485c, type: 3}
