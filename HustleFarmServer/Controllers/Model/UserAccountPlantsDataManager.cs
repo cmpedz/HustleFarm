@@ -20,7 +20,8 @@ namespace HustleFarmServer.Controllers.Model
                 MaxHoursCanSurviveInBadStatus = 20,
                 PointEachDay = 2,
                 Type = "Common",
-                TimeBorn = DateTime.Now.ToString()
+                TimeBorn = DateTime.Now.ToString(),
+                LastTimeProvidingNutrition = DateTime.Now.ToString()
             };
 
             PlantData plant2 = new PlantData()
@@ -31,15 +32,16 @@ namespace HustleFarmServer.Controllers.Model
                 MaxHoursCanSurviveInBadStatus = 20,
                 PointEachDay = 2,
                 Type = "Common",
+                LastTimeProvidingNutrition = DateTime.Now.ToString(),
                 TimeBorn = DateTime.Now.ToString()
             };
 
-            List<PlantData> initialPlants = new List<PlantData>() { 
-                plant1,
-                plant2
+            List<string> initialPlants = new List<string>() {
+                JsonConvert.SerializeObject(plant1),
+                JsonConvert.SerializeObject(plant2)
             };
 
-            initialData.Add(UserPlants.PlantsField, JsonConvert.SerializeObject(initialPlants));
+            initialData.Add(UserPlants.PlantsField, initialPlants);
         }
     }
 }
