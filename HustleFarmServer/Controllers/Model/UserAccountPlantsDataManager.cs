@@ -1,5 +1,6 @@
 ﻿
 using HustleFarmServer.Controllers.Model.UserDataForm;
+using Newtonsoft.Json;
 
 namespace HustleFarmServer.Controllers.Model
 {
@@ -38,7 +39,7 @@ namespace HustleFarmServer.Controllers.Model
                 plant2
             };
 
-            initialData.Add(UserPlants.PlantsField, initialPlants);
+            initialData.Add(UserPlants.PlantsField, JsonConvert.SerializeObject(initialPlants));
         }
     }
 }

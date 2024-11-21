@@ -75,7 +75,7 @@ namespace HustleFarmServer.Controllers.Model
 
                 }
 
-                await userData.Document(this.documentId.ToString()).SetAsync(updatedData);
+                await userData.Document(this.documentId.ToString()).UpdateAsync(updatedData);
         }
 
 }
