@@ -13,7 +13,7 @@ namespace HustleFarmServer.Controllers.Model.UserDataForm
         public float MaxHourForNextProvidingNutritions;
         public string? LastTimeProvidingNutrition;
         public string? TimeBorn = null;
-
+        public bool IsTakenCare;
        
     }
 

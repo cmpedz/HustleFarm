@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HustleFarmServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8fa23d100fb5736c82089737f5b437f56f4cfe2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+639053c1f6ae134ff929c7a5194b2a3671c00cf0")]
 [assembly: System.Reflection.AssemblyProductAttribute("HustleFarmServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HustleFarmServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

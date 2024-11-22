@@ -16,24 +16,27 @@ namespace HustleFarmServer.Controllers.Model
             {
                 Id = "Crop",
                 LifeSpan = "5 days",
-                MaxHourForNextProvidingNutritions = 1,
-                MaxHoursCanSurviveInBadStatus = 20,
+                MaxHourForNextProvidingNutritions = 0.01f,
+                MaxHoursCanSurviveInBadStatus = 0.03f,
                 PointEachDay = 2,
                 Type = "Common",
                 TimeBorn = DateTime.Now.ToString(),
-                LastTimeProvidingNutrition = DateTime.Now.ToString()
+                LastTimeProvidingNutrition = DateTime.Now.ToString(),
+                IsTakenCare = false
+
             };
 
             PlantData plant2 = new PlantData()
             {
-                Id = "Crop",
+                Id = "Rice",
                 LifeSpan = "5 days",
-                MaxHourForNextProvidingNutritions = 1,
-                MaxHoursCanSurviveInBadStatus = 20,
+                MaxHourForNextProvidingNutritions = 0.01f,
+                MaxHoursCanSurviveInBadStatus = 0.03f,
                 PointEachDay = 2,
                 Type = "Common",
                 LastTimeProvidingNutrition = DateTime.Now.ToString(),
-                TimeBorn = DateTime.Now.ToString()
+                TimeBorn = DateTime.Now.ToString(),
+                IsTakenCare = true
             };
 
             List<string> initialPlants = new List<string>() {
