@@ -1392,7 +1392,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  userId: String1
+  userId: hungdz
 --- !u!4 &1626001159
 Transform:
   m_ObjectHideFlags: 0

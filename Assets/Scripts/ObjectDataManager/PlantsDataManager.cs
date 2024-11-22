@@ -59,6 +59,8 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
             timeBorn = DateTime.Parse(serializedPlantData.TimeBorn);
         }
 
+        this.IsTakenCare = serializedPlantData.IsTakenCare;
+
     }
 }
 

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1081456433502253349, guid: f58a042857c99284fbb9d386608e25d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2699331141639789243, guid: f58a042857c99284fbb9d386608e25d8, type: 3}
       propertyPath: lifeSpanToHours
       value: 0.01666667
@@ -116,6 +120,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300082, guid: bb607b3e08eb870419797e86501f8749, type: 3}
+    - target: {fileID: 6075892368456637669, guid: f58a042857c99284fbb9d386608e25d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300108, guid: bb607b3e08eb870419797e86501f8749, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

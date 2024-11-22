@@ -11,18 +11,8 @@ public class SerializedPlantData
     public float MaxHourForNextProvidingNutritions;
     public string LastTimeProvidingNutrition;
     public string TimeBorn;
+    public bool IsTakenCare;
 
-
-    public void CheckSerializedPlantData() {
-        Debug.Log("check " + Id + " data : ");
-        Debug.Log("Life span : " + LifeSpan);
-        Debug.Log("Point each day : " + PointEachDay);
-        Debug.Log("Type : " + Type);
-        Debug.Log("MaxHoursCanSurviveInBadStatus : " + MaxHoursCanSurviveInBadStatus);
-        Debug.Log("MaxHourForNextProvidingNutritions : " + MaxHoursCanSurviveInBadStatus);
-        Debug.Log("LastTimeProvidingNutrition : " + LastTimeProvidingNutrition);
-
-    }
 
     public void PlantDataManagerToSerializedPlantData(PlantsDataManager plantsDataManager)
     {
@@ -33,5 +23,6 @@ public class SerializedPlantData
         this.MaxHourForNextProvidingNutritions = plantsDataManager.GetMaxHourForNextProviding();
         this.MaxHoursCanSurviveInBadStatus = plantsDataManager.GetMaxHoursCanSurviveInBadStatus();
         this.LastTimeProvidingNutrition = plantsDataManager.GetLastTimeProvidingNutrition().ToString();
+        this.IsTakenCare = plantsDataManager.IsTakenCare;
     }
 }

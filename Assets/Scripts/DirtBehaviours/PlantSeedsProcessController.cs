@@ -50,6 +50,11 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
             
           plantedSeed = _seed;
 
+          if(plantsData == null && plantedSeed != null)
+          {
+             plantsData = GachaStorageSystem.Instance.RetrieveItemGachaData(plantedSeed.GetComponent<PlantsDataManager>().Id);
+        }
+
           Debug.Log("check plant seed id : " + plantedSeed.GetComponent<PlantsDataManager>().Id);
 
           plantedSeed.GetComponent<PlantsDataManager>().SerializedPLantDataToPlantDataManager(plantsData);
@@ -62,8 +67,8 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
 
           plantedSeed.transform.localScale = new Vector3(1, 1, 1);
 
-          
-            
+          DirtStatusControllerSystem.Instance.RemoveDirtFromEmptyDirts(this);
+
     }
 
 
@@ -73,15 +78,13 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
 
             if (arrow.activeSelf) {
 
-                SerializedPlantData initialPlantData = GachaStorageSystem.Instance.RetrieveItemGachaData(plantedSeed.GetComponent<PlantsDataManager>().Id);
-
-                PlantSeed(seedProvided, initialPlantData);
+                PlantSeed(seedProvided, null);
 
                 DirtStatusControllerSystem.Instance.ActiveSymbolOfEmptyDirt(false);
 
-                DirtStatusControllerSystem.Instance.RemoveDirtFromEmptyDirts(this);
-
                 DirtStatusControllerSystem.Instance.RemoveQuantitiesSeedItemClicked();
+
+                this.arrow.SetActive(false);
                 
             }
         }

@@ -37,10 +37,6 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     {
         if (CheckConditionsProvidingNutritions()) {
 
-            isTakenCare = true;
-
-            needNutritionsAnnoucement.SetActive(false);
-
             providingNutritionsProcess.SetLastTimeProvidingNutrition( DateTime.Now);
 
             if (provideNutritionsEffect != null)
@@ -68,7 +64,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
             providingNutritionsProcess = (IProvideNutritionsProcess) objectDataManager;
 
-
+           
         }
         else
         {
@@ -78,6 +74,11 @@ public abstract class ProvideNutritionsController : MonoBehaviour
         
 
         needNutritionsAnnoucement.SetActive(true);
+
+        if (objectDataManager.IsTakenCare)
+        {
+            ProvideNutritions();
+        }
     }
 
 
@@ -94,6 +95,10 @@ public abstract class ProvideNutritionsController : MonoBehaviour
     }
 
     private void ProvideNutritions() {
+
+        isTakenCare = true;
+
+        needNutritionsAnnoucement.SetActive(false);
 
         if (consumeBar != null)
         {

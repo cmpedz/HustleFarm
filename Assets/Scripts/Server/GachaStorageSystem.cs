@@ -84,11 +84,7 @@ public class GachaStorageSystem : ServerRequestController
                 
         }
 
-        foreach(string itemId in itemsGachaDictionary.Keys)
-        {
-            Debug.Log("check item id : " + itemId);
-            itemsGachaDictionary[itemId].CheckSerializedPlantData();
-        }
+      
 
        
     }

@@ -27,6 +27,8 @@ public class ObjectDataManager : MonoBehaviour, IProvideNutritionsProcess
         set { this.type = value; }
     }
 
+    public bool IsTakenCare { get; set; }
+
     [SerializeField] private string id;
     public string Id
     {
