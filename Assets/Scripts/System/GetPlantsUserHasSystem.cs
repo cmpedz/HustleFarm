@@ -16,7 +16,7 @@ public class GetPlantsUserHasSystem : MonoBehaviour
 
         int index = 0;
 
-        foreach(SerializedPlantData plantData in handleUserDataPlants.PlantUserHas)
+        foreach(SerializedPlantData plantData in handleUserDataPlants.GetObjectsHas())
         {
             HarvestPlantsController seedPlanted = handleUserDataPlants.GetSpecifiedSeed(plantData.Id);
 

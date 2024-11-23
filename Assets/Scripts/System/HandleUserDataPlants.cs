@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandleUserDataPlants : HandleUserData<UserPlants>
+public class HandleUserDataPlants : HandleUserData<UserPlants>, ICurrentObjectsUserHas<SerializedPlantData>
 {
 
     private List<SerializedPlantData> plantsUserHas = new List<SerializedPlantData>();
-    public List<SerializedPlantData> PlantUserHas { get { return this.plantsUserHas; } }
 
     [SerializeField] private List<PlantsDataManager> plantsStorage;
 
@@ -36,5 +35,10 @@ public class HandleUserDataPlants : HandleUserData<UserPlants>
     public HarvestPlantsController GetSpecifiedSeed(string plantId)
     {
         return this.plantsDictionary[plantId];
+    }
+
+    public List<SerializedPlantData> GetObjectsHas()
+    {
+        return this.plantsUserHas;
     }
 }

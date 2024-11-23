@@ -11,6 +11,8 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Transform plantingPos;
 
     [SerializeField] private GameObject arrow;
+
+    
     public GameObject Arrow
     {
         get { return arrow; }
@@ -27,6 +29,7 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
