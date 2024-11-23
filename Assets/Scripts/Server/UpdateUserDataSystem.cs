@@ -5,23 +5,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class UpdateUserDataSystem : ServerRequestController
+public class UpdateUserDataSystem : ServerRequestController, IOnDataChangeEvent
 {
     // Start is called before the first frame update
 
     private static readonly string UpdateUserDataRouter = "UserDataUpdate";
 
 
-    [SerializeField] private BagMenu bagMenu;
-
     private static UpdateUserDataSystem instance;
     public static UpdateUserDataSystem Instance { get { return instance; } }
+
+    [SerializeField] private DataChangeScriptTableObject dataChangeScriptTableObject;
 
     private  void Awake()
     {
         if(instance == null)
         {
             instance = this;
+
+            
             
             DontDestroyOnLoad(instance);
         }
@@ -37,19 +39,22 @@ public class UpdateUserDataSystem : ServerRequestController
     private void SubcribesToSubject()
     {
 
-        bagMenu.DataChangeEvent += UpdateUserData;
+        dataChangeScriptTableObject.AddEvent(this);
     }
 
     private void UnSubcribesToSubject()
     {
-        
 
-        bagMenu.DataChangeEvent -= UpdateUserData;
+
+        dataChangeScriptTableObject.RemoveEvent(this);
     }
 
 
-  
-   
+    public void OnDataChange(object dataChange)
+    {
+        UpdateUserData(dataChange);
+    }
+
 
     public void UpdateUserData(object data)
     {
@@ -100,4 +105,6 @@ public class UpdateUserDataSystem : ServerRequestController
     {
         UnSubcribesToSubject();
     }
+
+
 }

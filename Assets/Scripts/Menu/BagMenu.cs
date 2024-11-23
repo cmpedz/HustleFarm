@@ -6,7 +6,7 @@ using Thirdweb;
 using UnityEngine;
 
 
-public class BagMenu : Menu<string>, IEventDataChange
+public class BagMenu : Menu<string>
 {
 
     private Dictionary<string, Item> bagItems = new Dictionary<string, Item>();
@@ -18,7 +18,7 @@ public class BagMenu : Menu<string>, IEventDataChange
 
     private UserBag userBagData;
 
-    public event Action<object> DataChangeEvent;
+    [SerializeField] private DataChangeScriptTableObject dataChangeScriptTableObject;
 
     private void Awake()
     {
@@ -93,7 +93,7 @@ public class BagMenu : Menu<string>, IEventDataChange
     public void UpdateItemsChangeIntoServer()
     {
         Debug.Log("trigger update user bag data");
-        DataChangeEvent.Invoke(userBagData);
+        dataChangeScriptTableObject.OnDataChange(userBagData);
     }
 
     public override Item GetItem(string itemId)
