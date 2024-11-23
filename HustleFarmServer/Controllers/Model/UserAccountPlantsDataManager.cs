@@ -22,7 +22,8 @@ namespace HustleFarmServer.Controllers.Model
                 Type = "Common",
                 TimeBorn = DateTime.Now.ToString(),
                 LastTimeProvidingNutrition = DateTime.Now.ToString(),
-                IsTakenCare = false
+                IsTakenCare = false,
+                DirtOrder = 0
 
             };
 
@@ -36,7 +37,8 @@ namespace HustleFarmServer.Controllers.Model
                 Type = "Common",
                 LastTimeProvidingNutrition = DateTime.Now.ToString(),
                 TimeBorn = DateTime.Now.ToString(),
-                IsTakenCare = true
+                IsTakenCare = true,
+                DirtOrder = 1
             };
 
             List<string> initialPlants = new List<string>() {

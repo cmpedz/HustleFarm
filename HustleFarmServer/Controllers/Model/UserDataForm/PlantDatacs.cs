@@ -14,7 +14,8 @@ namespace HustleFarmServer.Controllers.Model.UserDataForm
         public string? LastTimeProvidingNutrition;
         public string? TimeBorn = null;
         public bool IsTakenCare;
-       
+        public int DirtOrder;
+
     }
 
 }
