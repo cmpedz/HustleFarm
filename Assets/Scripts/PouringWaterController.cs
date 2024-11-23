@@ -12,11 +12,19 @@ public class PouringWaterController : ProvideNutritionsController
 
     [SerializeField] private UserPLantsChangeControllerSystem plantsChangeControllerSystem;
 
+    private PlantSeedsProcessController dirtContains;
+
+    private PlantsDataManager plantsDataManager;
+
     new protected void Start()
     {
         base.Start();
 
+        plantsDataManager = GetComponent<PlantsDataManager>();
+
         plantsChangeControllerSystem = FindAnyObjectByType<UserPLantsChangeControllerSystem>();
+
+        dirtContains = transform.parent.gameObject.GetComponent<PlantSeedsProcessController>();
     }
     public override bool CheckConditionsProvidingNutritions()
     {
@@ -30,23 +38,16 @@ public class PouringWaterController : ProvideNutritionsController
 
     public override void OnLastTimeProvidingNutritionChange()
     {
-        PlantSeedsProcessController dirtContains = transform.parent.gameObject.GetComponent<PlantSeedsProcessController>();
+        if (dirtContains != null && plantsDataManager != null) {
+            int indexOfDirtContains = plantsDataManager.DirtIndex;
 
-        if (dirtContains != null) {
-
-            DirtStatusControllerSystem garden = FindAnyObjectByType<DirtStatusControllerSystem>();
-
-            if (garden != null) {
-
-                int indexOfDirtContains = garden.GetIndexOfSpecifideDirt(dirtContains);
-
-                Debug.Log("index of dirt having changed plant : " + indexOfDirtContains);
-            }
+            plantsChangeControllerSystem.OnObjectDataChanging(indexOfDirtContains, GetComponent<PlantsDataManager>());
 
         }
         else
         {
-            Debug.Log("dirt contains is null");
+            Debug.Log("plant data manager los dirt contains is null");
         }
+
     }
 }

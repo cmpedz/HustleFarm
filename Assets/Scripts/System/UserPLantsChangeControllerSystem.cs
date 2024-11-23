@@ -55,13 +55,20 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
         Debug.Log(ConvertUserPlantsDataIntoJson());
     }
 
-    public void OnObjectDataChanging(int plantIndex, PlantsDataManager newPlantData)
+    public void OnObjectDataChanging(int dirtOrder, PlantsDataManager newPlantData)
     {
         SerializedPlantData serializedPlantData = new SerializedPlantData();
 
         serializedPlantData.PlantDataManagerToSerializedPlantData(newPlantData);
 
-        handleUserDataPlants.GetObjectsHas()[plantIndex] = serializedPlantData;
+        for(int i =0; i< handleUserDataPlants.GetObjectsHas().Count; i++)
+        {
+            if(handleUserDataPlants.GetObjectsHas()[i].DirtOrder == dirtOrder)
+            {
+                handleUserDataPlants.GetObjectsHas()[i] = serializedPlantData;
+                break;
+            }
+        }
 
         Debug.Log(ConvertUserPlantsDataIntoJson());
     }

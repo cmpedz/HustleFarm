@@ -14,15 +14,15 @@ public class GetPlantsUserHasSystem : MonoBehaviour
     {
         handleUserDataPlants = FindAnyObjectByType<HandleUserDataPlants>();
 
-        int index = 0;
 
         foreach(SerializedPlantData plantData in handleUserDataPlants.GetObjectsHas())
         {
+            int dirtIndex = plantData.DirtOrder;
+
             HarvestPlantsController seedPlanted = handleUserDataPlants.GetSpecifiedSeed(plantData.Id);
 
-            dirtStatusControllerSystem.GetSpecifiedDirt(index).PlantSeed(seedPlanted, plantData);
+            dirtStatusControllerSystem.GetSpecifiedDirt(dirtIndex).PlantSeed(seedPlanted, plantData);
 
-            index++;
         }
     }
 

@@ -18,7 +18,7 @@ public class UserWalletController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI balance;
 
     private ThirdwebContract tokenContract;
-    private const string TOKEN_CONTRACT_ADDRESS = "0xb99192491aB525d7b1775b95A2560b8095B89B89";
+    private const string TOKEN_CONTRACT_ADDRESS = "0x59526d97bdd2450ba8c246d58434d8942256ee39";
     private const string DEV_WALLET_ADDRESS = "0x9eD54f75893Fa84f1aAC8a3a883fdDaF42c79Dae";
     private const int CHAIN_ID = 56; // BSC Mainnet
 
@@ -77,7 +77,12 @@ public class UserWalletController : MonoBehaviour
     {
         try
         {
+
+            // deposit function :
+
             BigInteger amount = 2 * BigInteger.Pow(10,18);
+
+            
 
             await tokenContract.ERC20_Transfer(ThirdwebManager.Instance.ActiveWallet, DEV_WALLET_ADDRESS, amount);
 

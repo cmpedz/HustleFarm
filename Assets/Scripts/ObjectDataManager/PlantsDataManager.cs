@@ -11,6 +11,8 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
 
     private float maxHoursCanSurviveInBadStatus;
 
+    private int dirtIndex;
+    public int DirtIndex;
     public float GetLifeSpan()
     {
         return lifeSpans;
@@ -44,6 +46,8 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
         this.PointEachDay = serializedPlantData.PointEachDay;   
 
         this.lifeSpans = ConvertIntoHourUnitSystem.ConvertStringIntoHourUnit(serializedPlantData.LifeSpan);
+
+        this.dirtIndex = serializedPlantData.DirtOrder;
 
         if (serializedPlantData.LastTimeProvidingNutrition != null) {
             this.SetLastTimeProvidingNutrition(DateTime.Parse(serializedPlantData.LastTimeProvidingNutrition));

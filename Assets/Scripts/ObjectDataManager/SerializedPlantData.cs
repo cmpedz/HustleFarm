@@ -12,6 +12,7 @@ public class SerializedPlantData
     public string LastTimeProvidingNutrition;
     public string TimeBorn;
     public bool IsTakenCare;
+    public int DirtOrder;
 
 
     public void PlantDataManagerToSerializedPlantData(PlantsDataManager plantsDataManager)
@@ -24,5 +25,6 @@ public class SerializedPlantData
         this.MaxHoursCanSurviveInBadStatus = plantsDataManager.GetMaxHoursCanSurviveInBadStatus();
         this.LastTimeProvidingNutrition = plantsDataManager.GetLastTimeProvidingNutrition().ToString();
         this.IsTakenCare = plantsDataManager.IsTakenCare;
+        this.DirtOrder = plantsDataManager.DirtIndex;
     }
 }
