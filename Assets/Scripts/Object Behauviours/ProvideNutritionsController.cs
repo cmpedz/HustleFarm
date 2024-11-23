@@ -39,6 +39,8 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
             providingNutritionsProcess.SetLastTimeProvidingNutrition( DateTime.Now);
 
+            OnLastTimeProvidingNutritionChange();
+
             if (provideNutritionsEffect != null)
             {
                 provideNutritionsEffect.gameObject.SetActive(true);
@@ -55,6 +57,8 @@ public abstract class ProvideNutritionsController : MonoBehaviour
         }
         
     }
+
+    public abstract void OnLastTimeProvidingNutritionChange();
 
     protected void Start()
     {

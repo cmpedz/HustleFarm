@@ -74,4 +74,9 @@ public class FeedingAnimalController : ProvideNutritionsController
 
         return isSatisfiedAnimalDemand;
     }
+
+    public override void OnLastTimeProvidingNutritionChange()
+    {
+        
+    }
 }

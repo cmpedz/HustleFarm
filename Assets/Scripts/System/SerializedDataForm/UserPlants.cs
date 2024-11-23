@@ -9,4 +9,6 @@ public class UserPlants
 
     public List<string> Plants;
 
+    public UserPlants() { Plants = new List<string>(); }
+
 }

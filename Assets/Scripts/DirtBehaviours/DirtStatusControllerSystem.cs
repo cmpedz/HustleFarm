@@ -129,4 +129,9 @@ public class DirtStatusControllerSystem : MonoBehaviour
         return this.dirts[index];
     }
 
+    public int GetIndexOfSpecifideDirt(PlantSeedsProcessController dirt)
+    {
+        return dirts.IndexOf(dirt);
+    }
+
 }

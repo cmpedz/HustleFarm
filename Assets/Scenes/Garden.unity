@@ -8865,6 +8865,7 @@ GameObject:
   - component: {fileID: 249065827}
   - component: {fileID: 249065826}
   - component: {fileID: 249065828}
+  - component: {fileID: 249065829}
   m_Layer: 0
   m_Name: DirtStatusControllerSystem
   m_TagString: Untagged
@@ -8897,6 +8898,7 @@ MonoBehaviour:
   emptyDirts: []
   terminateFunctionButton: {fileID: 0}
   seedProvided: {fileID: 7062208382578379991, guid: 6d78075a417b9364fbc54e57ebe665b2, type: 3}
+  pLantsChangeControllerSystem: {fileID: 249065829}
   seedItemInBagClicked: {fileID: 0}
   userBag: {fileID: 0}
 --- !u!4 &249065827
@@ -8927,6 +8929,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirtStatusControllerSystem: {fileID: 249065826}
+  handleUserDataPlants: {fileID: 0}
+--- !u!114 &249065829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249065825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ac1c4130cc57a4aa11adf8dfd431f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   handleUserDataPlants: {fileID: 0}
 --- !u!1 &285234603
 GameObject:
