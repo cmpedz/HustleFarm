@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Animal
   - Obstacle
+  - Plant
+  - Dirt
   layers:
   - Default
   - TransparentFX
@@ -45,4 +47,7 @@ TagManager:
     locked: 0
   - name: FrontGround
     uniqueID: 2020653469
+    locked: 0
+  - name: TopLayer
+    uniqueID: 3264650489
     locked: 0

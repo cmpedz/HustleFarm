@@ -48,6 +48,13 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
         return true;
     }
 
+    public void RemoveCurrentOwnPlant()
+    {
+        pLantsChangeControllerSystem.OnRemovingOldObject(plantedSeed.GetComponent<PlantsDataManager>().DirtIndex);
+
+        Destroy(plantedSeed);
+    }
+
     public void PlantSeed(HarvestPlantsController seed, SerializedPlantData plantsData) {
 
           Debug.Log("planted seed");

@@ -16,4 +16,8 @@ public class ExtraIconController : MonoBehaviour
     {
         transform.position = pointFollow.position;
     }
+    private void OnEnable()
+    {
+        transform.position = pointFollow.position;
+    }
 }

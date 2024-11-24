@@ -17,11 +17,11 @@ GameObject:
   - component: {fileID: 3143444010815038858}
   m_Layer: 5
   m_Name: PLant
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5471448502685564066
 RectTransform:
   m_ObjectHideFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   harvestingAnnocement: {fileID: 1358499120777815137}
   needWaterAnnocement: {fileID: 1933593165756213126}
   userBag: {fileID: 0}
-  itemCollected: {fileID: 157790900821067122, guid: bc3fc529229b84c448de763785fb6cc2, type: 3}
+  itemCollected: {fileID: 8856193037779743845, guid: 116567d3e2bb3d14a96f712cdaea4124, type: 3}
   itemReceiveNotification: {fileID: 1338579704967173968}
 --- !u!114 &6953201552002062457
 MonoBehaviour:
@@ -118,6 +118,7 @@ MonoBehaviour:
   objectInforsDisplay: {fileID: 0}
   provideNutritionsEffect: {fileID: 4038177616477791685}
   harvestingAnnocement: {fileID: 1358499120777815137}
+  plantsChangeControllerSystem: {fileID: 0}
 --- !u!114 &2699331141639789243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3e0f7d812fc224c9aeaed520c68f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: Rice
 --- !u!1 &2424595891725294072
 GameObject:
   m_ObjectHideFlags: 0

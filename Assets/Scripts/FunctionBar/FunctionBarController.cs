@@ -14,7 +14,8 @@ public class FunctionBarController : Singleton<FunctionBarController>
         Go_Back_Home,
         User_Bag,
         Terminate_Function,
-        Gacha
+        Gacha,
+        Shovel
     }
 
     [System.Serializable]

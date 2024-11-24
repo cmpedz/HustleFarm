@@ -123,7 +123,6 @@ public class DirtStatusControllerSystem : MonoBehaviour
         terminateFunctionButton.SetActive(active);
     }
 
-
     public PlantSeedsProcessController GetSpecifiedDirt(int index)
     {
         return this.dirts[index];

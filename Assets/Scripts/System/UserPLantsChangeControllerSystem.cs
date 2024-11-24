@@ -61,9 +61,9 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
             }
         }
 
-        
+        dataChangeScriptTableObject.OnDataChange(GetUserPlantsData());
 
-        
+
     }
 
     public void OnObjectDataChanging(int dirtOrder, PlantsDataManager newPlantData)
