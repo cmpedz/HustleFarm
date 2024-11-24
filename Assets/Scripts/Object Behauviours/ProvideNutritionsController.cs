@@ -25,21 +25,11 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
     [SerializeField] private Animator provideNutritionsEffect;
 
-
-    protected bool isTakenCare;
-    public bool IsTakenCare
-    {
-        get { return isTakenCare;  }
-        
-    }
-
     public void ActiveClickEvent()
     {
         if (CheckConditionsProvidingNutritions()) {
 
             providingNutritionsProcess.SetLastTimeProvidingNutrition( DateTime.Now);
-
-            OnLastTimeProvidingNutritionChange();
 
             if (provideNutritionsEffect != null)
             {
@@ -100,7 +90,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
     private void ProvideNutritions() {
 
-        isTakenCare = true;
+        GetComponent<ObjectDataManager>().IsTakenCare = true;
 
         needNutritionsAnnoucement.SetActive(false);
 
@@ -108,6 +98,8 @@ public abstract class ProvideNutritionsController : MonoBehaviour
         {
             consumeBar.gameObject.SetActive(true);
         }
+
+        OnLastTimeProvidingNutritionChange();
 
         StartCoroutine(ConsumeNutritions());
 
@@ -149,7 +141,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
         }
 
-        isTakenCare = false;
+        GetComponent<ObjectDataManager>().IsTakenCare = false;
 
 
     }

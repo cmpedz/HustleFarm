@@ -5,6 +5,8 @@ using UnityEngine;
 public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeDataSystem<PlantsDataManager>
 {
     [SerializeField] private HandleUserDataPlants handleUserDataPlants;
+
+    [SerializeField] private DataChangeScriptTableObject dataChangeScriptTableObject;
     void Start()
     {
         handleUserDataPlants = FindAnyObjectByType<HandleUserDataPlants>();
@@ -18,7 +20,7 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
 
 
 
-    public string ConvertUserPlantsDataIntoJson()
+    public UserPlants GetUserPlantsData()
     {
         UserPlants userPlants = new UserPlants();
 
@@ -31,7 +33,7 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
             userPlants.Plants.Add(plantDataToJson);
         }
 
-        return JsonUtility.ToJson(userPlants);
+        return userPlants;
 
     }
 
@@ -45,14 +47,23 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
 
         handleUserDataPlants.GetObjectsHas().Add(serializedPlantData);
 
-        Debug.Log(ConvertUserPlantsDataIntoJson());
+        dataChangeScriptTableObject.OnDataChange(GetUserPlantsData());
     }
 
-    public void OnRemovingOldObject(int plantIndex)
+    public void OnRemovingOldObject(int dirtOrder)
     {
-        handleUserDataPlants.GetObjectsHas().RemoveAt(plantIndex);
+        for (int i = 0; i < handleUserDataPlants.GetObjectsHas().Count; i++)
+        {
+            if (handleUserDataPlants.GetObjectsHas()[i].DirtOrder == dirtOrder)
+            {
+                handleUserDataPlants.GetObjectsHas().RemoveAt(i);
+                break;
+            }
+        }
 
-        Debug.Log(ConvertUserPlantsDataIntoJson());
+        
+
+        
     }
 
     public void OnObjectDataChanging(int dirtOrder, PlantsDataManager newPlantData)
@@ -70,6 +81,6 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
             }
         }
 
-        Debug.Log(ConvertUserPlantsDataIntoJson());
+        dataChangeScriptTableObject.OnDataChange(GetUserPlantsData());
     }
 }

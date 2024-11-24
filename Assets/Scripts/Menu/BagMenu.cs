@@ -4,9 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Thirdweb;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 
-public class BagMenu : Menu<string>
+public class BagMenu : DynamicMenu<string>
 {
 
     private Dictionary<string, Item> bagItems = new Dictionary<string, Item>();
@@ -35,9 +36,10 @@ public class BagMenu : Menu<string>
         }
     }
 
-    public override void AddItem(Item item)
+    public override void AddItem(Item originItem, bool isNotifyChangingToServer)
     {
-        string itemId = item.GetItemId();
+
+        string itemId = originItem.GetItemId();
 
         userBagData.Items.Add(itemId);
 
@@ -47,10 +49,11 @@ public class BagMenu : Menu<string>
 
             bagItems.GetValueOrDefault(itemId).InscreaseQuantitiesItem(numberIncreasing);
 
+
         }
         else
         {
-            GameObject _item = Instantiate(item.gameObject);
+            Item _item = originItem.GetClone(); 
 
             bagItems.Add(itemId, _item.GetComponent<Item>());
 
@@ -61,9 +64,16 @@ public class BagMenu : Menu<string>
                 _item.GetComponent<SeedsItem>().UserBag = this;
             }
         }
+
+
+        if (isNotifyChangingToServer)
+        {
+            UpdateItemsChangeIntoServer();
+        }
+        
     }
 
-    public override void RemoveItem(Item item)
+    public override void RemoveItem(Item item, bool isNotifyChangingToServer)
     {
         string itemId = item.GetItemId();
 
@@ -85,6 +95,11 @@ public class BagMenu : Menu<string>
             }
 
             userBagData.Items.Remove(itemId);
+
+            if (isNotifyChangingToServer)
+            {
+                UpdateItemsChangeIntoServer();
+            }
 
         }
      

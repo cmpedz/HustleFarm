@@ -12,7 +12,7 @@ public class DirtStatusControllerSystem : MonoBehaviour
 
     [SerializeField] private HarvestPlantsController seedProvided;
 
-    [SerializeField] private UserPLantsChangeControllerSystem pLantsChangeControllerSystem;
+    
     public HarvestPlantsController SeedProvided
     {
         get { return seedProvided; }
@@ -87,11 +87,11 @@ public class DirtStatusControllerSystem : MonoBehaviour
 
         if(seedItemInBagClicked != null && userBag != null) {
 
-            userBag.RemoveItem(seedItemInBagClicked);
+            userBag.RemoveItem(seedItemInBagClicked, true);
 
             userBag.UpdateItemsChangeIntoServer();
 
-            pLantsChangeControllerSystem.OnHavingNewObject(seedProvided.GetComponent<PlantsDataManager>());
+            
         }
     }
 

@@ -12,7 +12,11 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
     private float maxHoursCanSurviveInBadStatus;
 
     private int dirtIndex;
-    public int DirtIndex;
+    public int DirtIndex
+    {
+        get { return dirtIndex; }
+        set { dirtIndex = value; }
+    }
     public float GetLifeSpan()
     {
         return lifeSpans;
@@ -58,9 +62,12 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
         }
 
         
-
-        if (serializedPlantData.TimeBorn != null) { 
+        if (serializedPlantData.TimeBorn != null && serializedPlantData.TimeBorn != "") { 
             timeBorn = DateTime.Parse(serializedPlantData.TimeBorn);
+        }
+        else
+        {
+            timeBorn = DateTime.Now;
         }
 
         this.IsTakenCare = serializedPlantData.IsTakenCare;

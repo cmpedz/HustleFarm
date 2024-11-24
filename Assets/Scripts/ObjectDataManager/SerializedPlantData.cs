@@ -26,5 +26,7 @@ public class SerializedPlantData
         this.LastTimeProvidingNutrition = plantsDataManager.GetLastTimeProvidingNutrition().ToString();
         this.IsTakenCare = plantsDataManager.IsTakenCare;
         this.DirtOrder = plantsDataManager.DirtIndex;
+        this.TimeBorn = plantsDataManager.GetTimeBorn().ToString();
+        
     }
 }

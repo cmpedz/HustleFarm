@@ -31,11 +31,7 @@ public class PutItemsGachaGetIntoUserBag : MonoBehaviour
 
         SeedsItem seeditem = seedItemsDictionary[seedItemId];
 
-        Debug.Log("check seed item : " + seeditem);
-
-        GameObject _seedItem = Instantiate(seeditem.gameObject);
-
-        userBag.AddItem(_seedItem.GetComponent<SeedsItem>());
+        userBag.AddItem(seeditem, true);
     }
 
    

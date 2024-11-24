@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,9 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
 
     [SerializeField] private GameObject arrow;
 
-    
+    [SerializeField] private UserPLantsChangeControllerSystem pLantsChangeControllerSystem;
+
+
     public GameObject Arrow
     {
         get { return arrow; }
@@ -29,7 +32,7 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
     // Start is called before the first frame update
     void Start()
     {
-        
+        pLantsChangeControllerSystem = FindAnyObjectByType<UserPLantsChangeControllerSystem>();
     }
 
     // Update is called once per frame
@@ -56,22 +59,30 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
           if(plantsData == null && plantedSeed != null)
           {
              plantsData = GachaStorageSystem.Instance.RetrieveItemGachaData(plantedSeed.GetComponent<PlantsDataManager>().Id);
-        }
 
-          Debug.Log("check plant seed id : " + plantedSeed.GetComponent<PlantsDataManager>().Id);
+             plantsData.DirtOrder = DirtStatusControllerSystem.Instance.GetIndexOfSpecifideDirt(this);
 
-          plantedSeed.GetComponent<PlantsDataManager>().SerializedPLantDataToPlantDataManager(plantsData);
+           }
 
-          plantedSeed.SetActive(true);
+          
 
-          plantedSeed.transform.parent = transform;
-
-          plantedSeed.transform.position = plantingPos.position;
-
-          plantedSeed.transform.localScale = new Vector3(1, 1, 1);
+          ConstructSeedAttributes(plantsData);
 
           DirtStatusControllerSystem.Instance.RemoveDirtFromEmptyDirts(this);
 
+    }
+
+    private void ConstructSeedAttributes(SerializedPlantData plantsData)
+    {
+        plantedSeed.GetComponent<PlantsDataManager>().SerializedPLantDataToPlantDataManager(plantsData);
+
+        plantedSeed.SetActive(true);
+
+        plantedSeed.transform.parent = transform;
+
+        plantedSeed.transform.position = plantingPos.position;
+
+        plantedSeed.transform.localScale = new Vector3(1, 1, 1);
     }
 
 
@@ -88,7 +99,9 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
                 DirtStatusControllerSystem.Instance.RemoveQuantitiesSeedItemClicked();
 
                 this.arrow.SetActive(false);
-                
+
+                pLantsChangeControllerSystem.OnHavingNewObject(plantedSeed.GetComponent<PlantsDataManager>());
+
             }
         }
     }

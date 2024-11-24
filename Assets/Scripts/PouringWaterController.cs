@@ -28,7 +28,7 @@ public class PouringWaterController : ProvideNutritionsController
     }
     public override bool CheckConditionsProvidingNutritions()
     {
-        return !isTakenCare && NeedNutritionsAnnoucement.activeSelf;
+        return !plantsDataManager.IsTakenCare && NeedNutritionsAnnoucement.activeSelf;
     }
 
     public override void EventAfterCompletingConsumingNutritions()
@@ -39,7 +39,10 @@ public class PouringWaterController : ProvideNutritionsController
     public override void OnLastTimeProvidingNutritionChange()
     {
         if (dirtContains != null && plantsDataManager != null) {
+
             int indexOfDirtContains = plantsDataManager.DirtIndex;
+
+            Debug.Log("check last time pouring water : " + plantsDataManager.GetLastTimeProvidingNutrition());
 
             plantsChangeControllerSystem.OnObjectDataChanging(indexOfDirtContains, GetComponent<PlantsDataManager>());
 

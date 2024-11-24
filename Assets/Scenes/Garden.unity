@@ -8743,6 +8743,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 1960751765}
   arrow: {fileID: 1089687316}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1 &86038821
 GameObject:
@@ -8898,7 +8899,6 @@ MonoBehaviour:
   emptyDirts: []
   terminateFunctionButton: {fileID: 0}
   seedProvided: {fileID: 7062208382578379991, guid: 6d78075a417b9364fbc54e57ebe665b2, type: 3}
-  pLantsChangeControllerSystem: {fileID: 249065829}
   seedItemInBagClicked: {fileID: 0}
   userBag: {fileID: 0}
 --- !u!4 &249065827
@@ -8943,6 +8943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handleUserDataPlants: {fileID: 0}
+  dataChangeScriptTableObject: {fileID: 11400000, guid: 839603070fdee544a9c8efaf7a718e70, type: 2}
 --- !u!1 &285234603
 GameObject:
   m_ObjectHideFlags: 0
@@ -9254,6 +9255,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 1609678203}
   arrow: {fileID: 1289670297}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!224 &433261775
 RectTransform:
@@ -9538,6 +9540,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 246174469}
   arrow: {fileID: 1668816782}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1001 &761576304
 PrefabInstance:
@@ -9706,6 +9709,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 2069210992}
   arrow: {fileID: 1751849123}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1 &991914632
 GameObject:
@@ -9761,6 +9765,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 596402373}
   arrow: {fileID: 285234603}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1 &1046264244
 GameObject:
@@ -10030,6 +10035,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 1641982673}
   arrow: {fileID: 1363150920}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1 &1264086380
 GameObject:
@@ -10085,6 +10091,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 2009502807}
   arrow: {fileID: 1905763083}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1 &1289670297
 GameObject:
@@ -10675,6 +10682,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 1085079942}
   arrow: {fileID: 1670046321}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1 &1576501364
 GameObject:
@@ -11778,6 +11786,7 @@ MonoBehaviour:
   plantedSeed: {fileID: 0}
   plantingPos: {fileID: 1046264245}
   arrow: {fileID: 637704065}
+  pLantsChangeControllerSystem: {fileID: 0}
   seedProvided: {fileID: 0}
 --- !u!1 &2069210991
 GameObject:

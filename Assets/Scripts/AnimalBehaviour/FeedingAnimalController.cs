@@ -14,6 +14,8 @@ public class FeedingAnimalController : ProvideNutritionsController
 
     [SerializeField] private NotificationController notificationController;
 
+    [SerializeField] private ObjectDataManager objectDataManager;
+
     new void Start()
     {
         base.Start();
@@ -21,6 +23,8 @@ public class FeedingAnimalController : ProvideNutritionsController
         foodNeed = GetFoodNeed();
 
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
+
+        objectDataManager = GetComponent<ObjectDataManager>();
 
     }
 
@@ -37,7 +41,7 @@ public class FeedingAnimalController : ProvideNutritionsController
     public override bool CheckConditionsProvidingNutritions()
     {
         Debug.Log("prodvide food for animal");
-        return MeetAnimalDemand() && !isTakenCare && NeedNutritionsAnnoucement.activeSelf;
+        return MeetAnimalDemand() && !objectDataManager.IsTakenCare && NeedNutritionsAnnoucement.activeSelf;
     }
 
     public override void EventAfterCompletingConsumingNutritions()
@@ -59,7 +63,7 @@ public class FeedingAnimalController : ProvideNutritionsController
 
         if (isSatisfiedAnimalDemand)
         {
-            userBag.RemoveItem(foodNeed);
+            userBag.RemoveItem(foodNeed, true);
         }
         else {
 

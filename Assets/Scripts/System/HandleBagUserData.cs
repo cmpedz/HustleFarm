@@ -17,7 +17,7 @@ public class HandleBagUserData : HandleUserData<UserBag>
 
             GameObject item = ItemStorageSystem.Instance.ConvertItemFromItemId(itemId);
 
-            userBag.AddItem(item.GetComponent<Item>());
+            userBag.AddItem(item.GetComponent<Item>(), false);
         }
 
 

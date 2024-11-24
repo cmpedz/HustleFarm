@@ -40,7 +40,7 @@ public class HarvestPlantsController : MonoBehaviour
 
             for(int i = 0; i < quantitiesItemReceived; i++)
             {
-                userBag.AddItem(itemCollected.GetClone());
+                userBag.AddItem(itemCollected,true);
             }
 
             if(itemReceiveNotification != null )
