@@ -5,6 +5,6 @@
     public class UserPlants
     {
         public static readonly string PlantsField = "Plants";
-        public List<PlantData>? Plants {  get; set; }
+        public List<string>? Plants {  get; set; }
     }
 }
