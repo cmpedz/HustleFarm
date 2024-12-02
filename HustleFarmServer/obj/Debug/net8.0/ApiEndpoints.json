@@ -20,6 +20,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HustleFarmServer.Controllers.Model.LeaderBoardServerController",
+    "Method": "IncreaseUserPoint",
+    "RelativePath": "LeaderBoardServer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userPointData",
+        "Type": "HustleFarmServer.Controllers.Model.UserDataForm.UserPointDataReceive",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HustleFarmServer.Controllers.Model.LeaderBoardServerController",
+    "Method": "GetLeaderBoard",
+    "RelativePath": "LeaderBoardServer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HustleFarmServer.Controllers.Model.UserDataUpdateController",
     "Method": "UpdateUserData",
     "RelativePath": "UserDataUpdate",
@@ -45,7 +71,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "HustleFarmServer.Controllers.Model.User",
+        "Type": "HustleFarmServer.Controllers.Model.UserDataForm.IntitialUserInfors",
         "IsRequired": true
       }
     ],

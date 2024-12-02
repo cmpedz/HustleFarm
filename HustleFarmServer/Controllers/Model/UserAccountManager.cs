@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using HustleFarmServer.Controllers.Model.UserDataForm;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.Json;
@@ -22,6 +23,8 @@ namespace HustleFarmServer.Controllers.Model
 
         private Dictionary<string, UserAccountDataManager> userDatasManagerDictionary = new Dictionary<string, UserAccountDataManager>();
 
+        
+
         public UserAccountManager(string userId)
         {
             this.firestoreDb =FireStoreController.GetInstace().FireStoreDb;
@@ -38,13 +41,18 @@ namespace HustleFarmServer.Controllers.Model
 
             this.userDataCollection = user.Collection(USERS_DATA_COLLECTIONS);
 
+            
+
         }
-        public async Task<string> CreateAccount()
+        public async Task<string> CreateAccount(IntitialUserInfors intitialUserInfors)
         {
 
             QuerySnapshot documentSnapshots = await userDataCollection.GetSnapshotAsync();
 
             bool isAccountCreated = documentSnapshots.Documents.Count > 0;
+
+
+            LeaderBoardDataController.Instance.AddingUserIntoLeaderBoard(intitialUserInfors.UserId, intitialUserInfors.UserName);
 
             if (isAccountCreated)
             {
@@ -56,7 +64,7 @@ namespace HustleFarmServer.Controllers.Model
             foreach(string userDataManagerKey in userDatasManagerDictionary.Keys)
             {
 
-                taskExecuted.Add(userDatasManagerDictionary[userDataManagerKey].SetUpData(this.userDataCollection));
+                taskExecuted.Add(userDatasManagerDictionary[userDataManagerKey].SetUpData(this.userDataCollection, intitialUserInfors));
             }
 
             await Task.WhenAll(taskExecuted);

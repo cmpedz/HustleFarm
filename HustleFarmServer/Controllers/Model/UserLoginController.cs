@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HustleFarmServer.Controllers.Model.UserDataForm;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace HustleFarmServer.Controllers.Model
     {
         private UserAccountManager _userAccountManager;
         [HttpPost]
-        public IActionResult HandleUserLogin([FromBody] User user)
+        public IActionResult HandleUserLogin([FromBody] IntitialUserInfors user)
         {
             if (user == null)
             {
@@ -22,12 +23,12 @@ namespace HustleFarmServer.Controllers.Model
             {
                 string userDataToJson = "Hello World";
 
-                if(user.UserId != null)
+                if(user != null && user.UserId != null)
                 {
 
                     _userAccountManager = new UserAccountManager(user.UserId);
 
-                    userDataToJson = _userAccountManager.CreateAccount().Result;
+                    userDataToJson = _userAccountManager.CreateAccount(user).Result;
 
                 }
                 
@@ -38,8 +39,5 @@ namespace HustleFarmServer.Controllers.Model
         }
     }
 
-    public class User
-    {
-        public string? UserId { get; set; }
-    }
+
 }

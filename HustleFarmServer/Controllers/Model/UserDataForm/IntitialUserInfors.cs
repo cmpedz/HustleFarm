@@ -1,9 +1,9 @@
 ﻿namespace HustleFarmServer.Controllers.Model.UserDataForm
 {
-    [System.Serializable]
-    public class UserInfors
+    public class IntitialUserInfors
     {
-        public static readonly string UserNameField = "UserName";
+        public string? UserId { get; set; }
+
         public string? UserName { get; set; }
     }
 }

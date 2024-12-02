@@ -10,7 +10,7 @@ namespace HustleFarmServer.Controllers.Model
         {
         }
 
-        protected override void ConstructInitialData(Dictionary<string, object> initialData)
+        protected override void ConstructInitialData(Dictionary<string, object> initialData, IntitialUserInfors intitialUserInfors)
         {
             PlantData plant1 = new PlantData()
             {

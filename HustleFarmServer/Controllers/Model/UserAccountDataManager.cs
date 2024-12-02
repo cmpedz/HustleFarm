@@ -1,5 +1,6 @@
 ﻿using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
+using HustleFarmServer.Controllers.Model.UserDataForm;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Newtonsoft.Json;
@@ -19,19 +20,19 @@ namespace HustleFarmServer.Controllers.Model
             this.documentId = documentId;
         }
 
-        public async Task SetUpData(CollectionReference userData)
+        public async Task SetUpData(CollectionReference userData, IntitialUserInfors intitialUserInfors)
         {
 
             Dictionary<string, object> initialData = new Dictionary<string, object>();
 
-            ConstructInitialData(initialData);
+            ConstructInitialData(initialData, intitialUserInfors);
 
             await userData.Document(this.documentId.ToString()).SetAsync(initialData);
 
 
         }
 
-        protected abstract void ConstructInitialData(Dictionary<string, object> initialData);
+        protected abstract void ConstructInitialData(Dictionary<string, object> initialData, IntitialUserInfors intitialUserInfors);
 
         public async Task<KeyValuePair<string, string>> GetUserData(CollectionReference userData)
         {
