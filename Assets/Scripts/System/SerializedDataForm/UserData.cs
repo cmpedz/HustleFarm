@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class UserData 
 {   
-   public string UserId = InstanceUserId.Instance.UserId;
+   public string UserId = InstanceUserGeneralInfors.Instance.UserId;
 
    public UserBag UserBag { get; set; }
 

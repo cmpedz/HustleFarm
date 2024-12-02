@@ -32,10 +32,11 @@ public class CustomThirdWebManager : MonoBehaviour
 
     private ThirdwebChainData _chainDetails;
 
-    [field: SerializeField, Header("Change Scene Event")]
-    private UnityEvent changeSceneEvent;
-
+  
     [SerializeField] private string userId;
+
+    [SerializeField] private GameObject userInputName;
+
     private void Awake()
     {
         InitializePanels();
@@ -70,9 +71,9 @@ public class CustomThirdWebManager : MonoBehaviour
         {
             //var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
             //ConnectWallet(options);
-            InstanceUserId.Instance.UserId = userId;
+            InstanceUserGeneralInfors.Instance.UserId = userId;
 
-            changeSceneEvent.Invoke();
+            userInputName.SetActive(true);
         });
     }
 
@@ -93,7 +94,7 @@ public class CustomThirdWebManager : MonoBehaviour
         var address = await wallet.GetAddress();
         Debug.Log("check address : " + address);
 
-        InstanceUserId.Instance.UserId = address;
+        InstanceUserGeneralInfors.Instance.UserId = address;
 
 
         //sign
@@ -106,9 +107,6 @@ public class CustomThirdWebManager : MonoBehaviour
         Debug.Log("check balance : " + balance);
         var balanceEth = Utils.ToEth(wei: balance.ToString(), decimalsToDisplay: 4, addCommas: true);
 
-
-        //change scene
-        changeSceneEvent.Invoke();
 
     
     }

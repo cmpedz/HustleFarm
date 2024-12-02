@@ -28,7 +28,6 @@ public class UserWalletController : MonoBehaviour
         {
             // Kết nối với smart contract token thông qua ThirdwebManager
             tokenContract = await ThirdwebManager.Instance.GetContract(TOKEN_CONTRACT_ADDRESS, CHAIN_ID);
-
             // Thêm listener cho các button
             despositeButton.onClick.AddListener(OnDepositButtonClicked);
             widthDrawButton.onClick.AddListener(OnWithdrawButtonClicked);
@@ -64,7 +63,7 @@ public class UserWalletController : MonoBehaviour
 
             string amount = "20";
 
-            await tokenContract.DropERC20_Claim(ThirdwebManager.Instance.ActiveWallet, InstanceUserId.Instance.UserId, amount);
+            await tokenContract.DropERC20_Claim(ThirdwebManager.Instance.ActiveWallet, InstanceUserGeneralInfors.Instance.UserId, amount);
 
         }
         catch (System.Exception e)

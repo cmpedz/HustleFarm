@@ -24,7 +24,7 @@ public class UserLoginController : ServerRequestController
         {
             instance = this;
 
-            string userWalletId = InstanceUserId.Instance.UserId;
+            string userWalletId = InstanceUserGeneralInfors.Instance.UserId;
 
             StartCoroutine(ConstructUserAccount(userWalletId));
 
