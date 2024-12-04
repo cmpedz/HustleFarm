@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace HustleFarmServer.Controllers.Model
 {
-    public class FireStoreController
+    public class FireStoreSetup
     {
 
         private readonly FirestoreDb _firestoreDb;
@@ -15,18 +15,18 @@ namespace HustleFarmServer.Controllers.Model
             get { return _firestoreDb; }
         }
 
-        private static FireStoreController? instance;
+        private static FireStoreSetup? instance;
 
-        private FireStoreController() {
+        private FireStoreSetup() {
 
             _firestoreDb = FirestoreDb.Create("hustlefarm-fb89d");
 
         }
 
-        public static FireStoreController GetInstace() {
+        public static FireStoreSetup GetInstace() {
 
             if (instance == null) { 
-                instance = new FireStoreController();
+                instance = new FireStoreSetup();
             }
 
             return instance;

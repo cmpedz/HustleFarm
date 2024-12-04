@@ -12,7 +12,7 @@ namespace HustleFarmServer.Controllers.Model
         protected override void ConstructInitialData(Dictionary<string, object> initialData, IntitialUserInfors intitialUserInfors)
         {
 
-            initialData.Add(UserInfors.UserNameField, intitialUserInfors.UserName);
+            
         }
     }
 }

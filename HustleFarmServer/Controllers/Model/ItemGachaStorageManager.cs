@@ -17,29 +17,17 @@ namespace HustleFarmServer.Controllers.Model
         public async Task GetItemsGachaFromFireBaseAsync()
         {
 
-            firestoreDb = FireStoreController.GetInstace().FireStoreDb;
+            List<Dictionary<string, object>> itemsGachaDataList = await
+                RetrieveGameObjectDataFromServer.Instance.GetItemsGachaFromFireBaseAsync(KeysDataFB.EKeysDataFB.Plants);
 
-            string keyPlants = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.Plants);
-
-            Query gachaItemsQuery = firestoreDb.Collection(keyPlants);
-
-            QuerySnapshot gachaItemsQuerySnapShot = await gachaItemsQuery.GetSnapshotAsync();
-
-            foreach (DocumentSnapshot gachaItemDocumentSnapShot in gachaItemsQuerySnapShot.Documents)
+            foreach(Dictionary<string, object> itemGachaDataDictionary in itemsGachaDataList )
             {
-
-                if (gachaItemDocumentSnapShot != null)
-                {
-                    Dictionary<string, object> itemGachaDataDictionary = [];
-
-                    await FormatItemGachaDataToDictionary(gachaItemDocumentSnapShot, itemGachaDataDictionary);
-
-                    AddNewItemIntoItemsGachaStorage(itemGachaDataDictionary);
-                }
+                AddNewItemIntoItemsGachaStorage(itemGachaDataDictionary);
             }
 
 
         }
+
 
         private void AddNewItemIntoItemsGachaStorage(Dictionary<string, object> itemDatas) {
 
@@ -47,26 +35,13 @@ namespace HustleFarmServer.Controllers.Model
 
                 if (itemDatas.TryGetValue(keyItemType, out var itemType)) {
 
-                    itemsGachaStorage.AddNewItemGachaIntoStorage((string)itemType, itemDatas);
+                    itemsGachaStorage.AddItemGachaDataIntoStorage((string)itemType, itemDatas);
 
                 }
             
         }
 
-        private async Task FormatItemGachaDataToDictionary(DocumentSnapshot itemGachaData, Dictionary<string, object> itemGachaDataDictionary)
-        {
-
-            if (itemGachaData == null) return;
-
-            foreach (KeyValuePair<string, object> pair in itemGachaData.ToDictionary())
-            {
-
-                itemGachaDataDictionary.Add(pair.Key, pair.Value);
-            }
-
-
-        }
-
+        
         public static ItemGachaStorageManager GetInstance() { 
 
             if(instance == null)

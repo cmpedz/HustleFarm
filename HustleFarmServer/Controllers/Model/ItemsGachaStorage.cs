@@ -27,7 +27,7 @@ namespace HustleFarmServer.Controllers.Model
             checkItemExistFlag = [];
         }
 
-        public void AddNewItemGachaIntoStorage(string typeItemGet, Dictionary<string, object> itemGet) {
+        public void AddItemGachaDataIntoStorage(string typeItemGet, Dictionary<string, object> itemGet) {
 
             string keyItemId = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.Id);
 

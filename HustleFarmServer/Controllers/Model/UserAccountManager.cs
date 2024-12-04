@@ -27,7 +27,7 @@ namespace HustleFarmServer.Controllers.Model
 
         public UserAccountManager(string userId)
         {
-            this.firestoreDb =FireStoreController.GetInstace().FireStoreDb;
+            this.firestoreDb =FireStoreSetup.GetInstace().FireStoreDb;
 
             this.usersCollections = firestoreDb.Collection(USERS_COLLECTIONS);
 
@@ -52,7 +52,7 @@ namespace HustleFarmServer.Controllers.Model
             bool isAccountCreated = documentSnapshots.Documents.Count > 0;
 
 
-            LeaderBoardDataController.Instance.AddingUserIntoLeaderBoard(intitialUserInfors.UserId, intitialUserInfors.UserName);
+            LeaderBoardDataController.Instance.AddingUserIntoLeaderBoard(intitialUserInfors.UserId);
 
             if (isAccountCreated)
             {

@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "HustleFarmServer.Controllers.Model.AnimalsDataController",
+    "Method": "GetAnimalsData",
+    "RelativePath": "AnimalsData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HustleFarmServer.Controllers.Model.GachaServerController",
     "Method": "GiveGachaItemToClientsSide",
     "RelativePath": "GachaServer",
@@ -29,7 +39,7 @@
     "Parameters": [
       {
         "Name": "userPointData",
-        "Type": "HustleFarmServer.Controllers.Model.UserDataForm.UserPointDataReceive",
+        "Type": "HustleFarmServer.Controllers.Model.UserDataForm.UserPointData",
         "IsRequired": true
       }
     ],

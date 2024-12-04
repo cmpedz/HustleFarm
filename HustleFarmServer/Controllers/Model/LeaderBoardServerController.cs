@@ -10,7 +10,7 @@ namespace HustleFarmServer.Controllers.Model
     public class LeaderBoardServerController : ControllerBase
     {
         [HttpPost]
-        public IActionResult IncreaseUserPoint([FromBody] UserPointDataReceive userPointData)
+        public IActionResult IncreaseUserPoint([FromBody] UserPointData userPointData)
         {
 
             LeaderBoardDataController.Instance.IncreaseUserPoint(userPointData.Id, userPointData.Point);

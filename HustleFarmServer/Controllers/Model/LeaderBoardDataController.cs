@@ -11,7 +11,7 @@ namespace HustleFarmServer.Controllers.Model
    
     public class LeaderBoardDataController
     {
-        private FirestoreDb firestoreDb = FireStoreController.GetInstace().FireStoreDb;
+        private FirestoreDb firestoreDb = FireStoreSetup.GetInstace().FireStoreDb;
 
         private static LeaderBoardDataController? instance;
 
@@ -58,7 +58,7 @@ namespace HustleFarmServer.Controllers.Model
 
         }
 
-        public async void AddingUserIntoLeaderBoard(string userId, string userName)
+        public async void AddingUserIntoLeaderBoard(string userId)
         {
 
             // Check if the document exists
@@ -68,11 +68,7 @@ namespace HustleFarmServer.Controllers.Model
             {
                 Dictionary<string, object> user = new Dictionary<string, object>()
                  {
-                     { "UserName" , userName},
-
                      { "Point" , 0}
-
-                
                  };
 
                 await leaderBoardCollection.Document(userId).SetAsync(user);
@@ -98,13 +94,13 @@ namespace HustleFarmServer.Controllers.Model
 
             QuerySnapshot leaderBoardUsers = await someHighestScoreUsers.GetSnapshotAsync();
 
-            List<UserPointDataSend> sortedLeaderBoardUsers = new List<UserPointDataSend>();
+            List<UserPointData> sortedLeaderBoardUsers = new List<UserPointData>();
 
             foreach (DocumentSnapshot user in leaderBoardUsers.Documents)
             {
-                UserPointDataSend userPoint = new UserPointDataSend()
+                UserPointData userPoint = new UserPointData()
                 {
-                    Name = user.ToDictionary()[documentNameField].ToString(),
+                    Id = user.Id,
 
                     Point = int.Parse(user.ToDictionary()[documentPointField].ToString())
                 };

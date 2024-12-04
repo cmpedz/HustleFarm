@@ -1,8 +1,8 @@
 ﻿namespace HustleFarmServer.Controllers.Model.UserDataForm
 {
-    public class UserPointDataSend
+    public class UserPointData
     {
-        public string? Name { get; set; }
+        public string? Id { get; set; }
         public int Point { get; set; }
     }
 }

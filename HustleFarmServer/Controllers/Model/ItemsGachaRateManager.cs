@@ -11,7 +11,7 @@ namespace HustleFarmServer.Controllers.Model
             get { return itemsGachaRateRange; }
         }
 
-        private FireStoreController firestoreDbController = FireStoreController.GetInstace();
+        private FireStoreSetup firestoreDbController = FireStoreSetup.GetInstace();
 
         private static ItemsGachaRateManager? instance;
 
