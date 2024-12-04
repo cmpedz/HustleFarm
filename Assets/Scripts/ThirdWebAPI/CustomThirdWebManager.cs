@@ -35,7 +35,7 @@ public class CustomThirdWebManager : MonoBehaviour
   
     [SerializeField] private string userId;
 
-    [SerializeField] private GameObject userInputName;
+    [SerializeField] private UnityEvent changeSceneEvent;
 
     private void Awake()
     {
@@ -73,7 +73,7 @@ public class CustomThirdWebManager : MonoBehaviour
             //ConnectWallet(options);
             InstanceUserGeneralInfors.Instance.UserId = userId;
 
-            userInputName.SetActive(true);
+            changeSceneEvent.Invoke();
         });
     }
 
@@ -107,8 +107,8 @@ public class CustomThirdWebManager : MonoBehaviour
         Debug.Log("check balance : " + balance);
         var balanceEth = Utils.ToEth(wei: balance.ToString(), decimalsToDisplay: 4, addCommas: true);
 
+        changeSceneEvent.Invoke();
 
-    
     }
 
 

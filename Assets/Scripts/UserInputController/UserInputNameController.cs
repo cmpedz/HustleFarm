@@ -19,7 +19,7 @@ public class UserInputNameController : MonoBehaviour
     {
         InstanceUserGeneralInfors.Instance.UserName = userName.text;
 
-        changeSceneEvent.Invoke();
+        
         
     }
 

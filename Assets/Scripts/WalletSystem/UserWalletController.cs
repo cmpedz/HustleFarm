@@ -10,86 +10,85 @@ using System.Threading.Tasks;
 using Thirdweb.Unity;
 
 using Nethereum.BlockchainProcessing.BlockStorage.Entities;
+using Newtonsoft.Json;
 
-public class UserWalletController : MonoBehaviour
+public class UserWalletController : Singleton<UserWalletController>
 {
-    [SerializeField] private Button despositeButton;
-    [SerializeField] private Button widthDrawButton;
-    [SerializeField] private TextMeshProUGUI balance;
 
     private ThirdwebContract tokenContract;
-    private const string TOKEN_CONTRACT_ADDRESS = "0x59526d97bdd2450ba8c246d58434d8942256ee39";
+    private ThirdwebContract nftContract;
+    private const string TOKEN_CONTRACT_ADDRESS = "0xb99192491aB525d7b1775b95A2560b8095B89B89";
+    private const string NFT_CONTRACT_ADDRESS = "0x59526D97Bdd2450Ba8C246d58434d8942256eE39";
     private const string DEV_WALLET_ADDRESS = "0x9eD54f75893Fa84f1aAC8a3a883fdDaF42c79Dae";
     private const int CHAIN_ID = 56; // BSC Mainnet
 
+    private string activeWalletAddress;
+
+    private const int MAX_NFT_TYPE = 8;
+
     async void Start()
     {
-        try 
-        {
-            // Kết nối với smart contract token thông qua ThirdwebManager
-            tokenContract = await ThirdwebManager.Instance.GetContract(TOKEN_CONTRACT_ADDRESS, CHAIN_ID);
-            // Thêm listener cho các button
-            despositeButton.onClick.AddListener(OnDepositButtonClicked);
-            widthDrawButton.onClick.AddListener(OnWithdrawButtonClicked);
+        //try
+        //{
+        //    // Kết nối với smart contract token thông qua ThirdwebManager
+        //    tokenContract = await ThirdwebManager.Instance.GetContract(TOKEN_CONTRACT_ADDRESS, CHAIN_ID);
 
-            // Cập nhật số dư ban đầu
-            await UpdateBalance();
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Error initializing contract: {e.Message}");
-        }
+        //    activeWalletAddress = await ThirdwebManager.Instance.GetActiveWallet().GetAddress(); 
+           
+        //}
+        //catch (System.Exception e)
+        //{
+        //    Debug.LogError($"Error initializing contract: {e.Message}");
+        //}
+
+        //List<int> result = await GetNftOwn();
+
+        //Debug.Log(JsonConvert.SerializeObject(result));
     }
 
-    private async void OnDepositButtonClicked()
-    {
-        await DepositToken();
-    }
-
-    private async void OnWithdrawButtonClicked()
-    {
-        await WithdrawToken();
-    }
-
-    private async Task UpdateBalance()
-    {
-       
-    }
-
-    private async Task DepositToken()
-    {
-        try 
-        {
-
-            string amount = "20";
-
-            await tokenContract.DropERC20_Claim(ThirdwebManager.Instance.ActiveWallet, InstanceUserGeneralInfors.Instance.UserId, amount);
-
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Error minting tokens: {e.Message}");
-        }
-    }
-
-    private async Task WithdrawToken()
+    public async Task<bool> DepositToken(int cost)
     {
         try
         {
-
-            // deposit function :
-
-            BigInteger amount = 2 * BigInteger.Pow(10,18);
-
-            
-
+            BigInteger amount = cost * BigInteger.Pow(10, 18);
+            //token
             await tokenContract.ERC20_Transfer(ThirdwebManager.Instance.ActiveWallet, DEV_WALLET_ADDRESS, amount);
-
 
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Error minting tokens: {e.Message}");
+            return false;
         }
+
+        return true;
     }
+
+    public async Task<List<int>> GetNftOwn()
+    {
+        List<int> nftOwned = new List<int>();
+
+        try
+        {
+            nftContract = await ThirdwebManager.Instance.GetContract(NFT_CONTRACT_ADDRESS, CHAIN_ID);
+
+            for(int i =0; i < MAX_NFT_TYPE; i++)
+            {
+                string addressWalletOwn = await nftContract.ERC721_OwnerOf(i);
+
+                if (addressWalletOwn == activeWalletAddress)
+                {
+                    nftOwned.Add(i);
+                }
+            }
+
+          
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log("error when get nft : " + e.Message);
+        }
+
+        return nftOwned;
+    }
+
 }

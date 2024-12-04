@@ -17,6 +17,13 @@ public class PlantsDataManager : ObjectDataManager, IDeathProcess
         get { return dirtIndex; }
         set { dirtIndex = value; }
     }
+
+    private float pointEachDay;
+    public float PointEachDay
+    {
+        get { return this.pointEachDay; }
+        set { this.pointEachDay = value; }
+    }
     public float GetLifeSpan()
     {
         return lifeSpans;

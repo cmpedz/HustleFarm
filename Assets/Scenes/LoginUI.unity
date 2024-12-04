@@ -180,7 +180,9 @@ MonoBehaviour:
   WalletConnectButton: {fileID: 92925011}
   WalletPanels: []
   userId: 
-  userInputName: {fileID: 0}
+  changeSceneEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &92925011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,7 +993,9 @@ MonoBehaviour:
   WalletConnectButton: {fileID: 771709693}
   WalletPanels: []
   userId: 
-  userInputName: {fileID: 0}
+  changeSceneEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &880444625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,7 +2237,21 @@ MonoBehaviour:
   WalletPanels:
   - Identifier: WalletConnectWallet
   userId: Hungmnk
-  userInputName: {fileID: 0}
+  changeSceneEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1971195523}
+        m_TargetAssemblyTypeName: ButtonEventsFactory, Assembly-CSharp
+        m_MethodName: MoveToSpecifiedScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1626001159
 Transform:
   m_ObjectHideFlags: 0
@@ -2927,6 +2945,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b2e17e50bb9797409d995539adec7f6, type: 3}
+--- !u!114 &1971195523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4769995430917198548, guid: 5b2e17e50bb9797409d995539adec7f6, type: 3}
+  m_PrefabInstance: {fileID: 1971195522}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd5cd30bce11c84dbb9ef710a88275f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

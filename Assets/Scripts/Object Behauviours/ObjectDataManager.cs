@@ -13,13 +13,6 @@ public class ObjectDataManager : MonoBehaviour, IProvideNutritionsProcess
 
     [SerializeField]  private DateTime lastTimeProvidedNutritions;
 
-    private float pointEachDay;
-    public float PointEachDay
-    {
-        get { return this.pointEachDay; }
-        set { this.pointEachDay = value; }
-    }
-
     private string type;
     public string Type
     {
@@ -33,6 +26,7 @@ public class ObjectDataManager : MonoBehaviour, IProvideNutritionsProcess
     public string Id
     {
         get { return this.id; }
+        set { this.id = value; }
        
     }
 

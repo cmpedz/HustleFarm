@@ -1,16 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Thirdweb.Unity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using static NBitcoin.Scripting.PubKeyProvider;
 
 public class GachaSystemController : ServerRequestController
 {
     // Start is called before the first frame update
     private static readonly string ROUTER_PROVIDING_GACHA_ITEM = "GachaServer";
 
-    
+    private const int COST_EACH_DRAW = 100;
 
     [SerializeField] private GachaItemDisplaySystem itemsDisplaySystem;
 
@@ -20,16 +23,24 @@ public class GachaSystemController : ServerRequestController
         
     }
 
-    public void GetItemFromServer(int time) {
+    public async void GetItemFromServer(int time) {
 
 
-        StartCoroutine(GetItemFromServerEnumrator(time));
-       
+        bool didPayForDraw = await UserWalletController.Instance.DepositToken(COST_EACH_DRAW * time);
+
+        if (didPayForDraw) {
+            Debug.Log("transposit successfully");
+            StartCoroutine(GetItemFromServerEnumrator(time));
+        }
+        
    
     }
 
+
+
     private IEnumerator GetItemFromServerEnumrator(int time)
     {
+
         List<IEnumerator> tasksGetIbItem = new List<IEnumerator>();
 
         int quantitiesTasksDone = 0;

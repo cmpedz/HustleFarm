@@ -6,21 +6,30 @@ public class FeedingAnimalController : ProvideNutritionsController
 {
     [SerializeField] private List<Item> foodsNeed = new List<Item>();
 
-    [SerializeField] private BagMenu userBag;
+    [SerializeField] private BagMenu userBag = BagMenu.Instance;
 
     private Item foodNeed;
 
     [SerializeField] private SpriteRenderer foodNeedDisplay;
 
     [SerializeField] private NotificationController notificationController;
+    public NotificationController NotificationController
+    {
+        get { return this.notificationController; }
+
+        set { this.notificationController = value; }
+    }
 
     [SerializeField] private ObjectDataManager objectDataManager;
+
 
     new void Start()
     {
         base.Start();
 
         foodNeed = GetFoodNeed();
+
+        userBag = FindAnyObjectByType<BagMenu>();
 
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
 
