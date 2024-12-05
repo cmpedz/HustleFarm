@@ -11,8 +11,10 @@ namespace HustleFarmServer.Controllers.Model
         }
         protected override void ConstructInitialData(Dictionary<string, object> initialData, IntitialUserInfors intitialUserInfors)
         {
+            initialData.Add(UserInfors.GachaTicketsField, 10);
 
-            
+            initialData.Add(UserInfors.UserPointField, 0);
+
         }
     }
 }

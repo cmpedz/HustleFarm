@@ -2,6 +2,7 @@
 using Google.Cloud.Firestore.V1;
 using HustleFarmServer.Controllers.Model.UserDataForm;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Reflection.Metadata;
@@ -57,7 +58,6 @@ namespace HustleFarmServer.Controllers.Model
             documentNameField = KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserName);
 
         }
-
         public async void AddingUserIntoLeaderBoard(string userId)
         {
 
@@ -80,8 +80,23 @@ namespace HustleFarmServer.Controllers.Model
             
         }
 
+
+        private async void UpdatePointIntoUserInfors(string userId, int point)
+        {
+            CollectionReference userCollection = firestoreDb.Collection(KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.Users));
+
+            CollectionReference userDataCollection = userCollection.Document(userId).Collection(KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserData));
+
+            DocumentReference userInfor = userDataCollection.Document(KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserInfors));
+
+            await userInfor.UpdateAsync(UserInfors.UserPointField, FieldValue.Increment(point));
+        }
+
+
         public async void IncreaseUserPoint(string userId, int point)
         {
+            UpdatePointIntoUserInfors(userId, point);
+
             await leaderBoardCollection.Document(userId).UpdateAsync(documentPointField, FieldValue.Increment(point));
         }
 
