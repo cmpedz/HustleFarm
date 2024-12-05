@@ -23,7 +23,8 @@ namespace HustleFarmServer.Controllers.Model
             Point,
             UserName,
             Animals,
-            AnimalId
+            AnimalId,
+            UserAnimals
         }
 
         private static Dictionary<EKeysDataFB, string> keysDataFBDictionary = new Dictionary<EKeysDataFB, string>()
@@ -59,7 +60,9 @@ namespace HustleFarmServer.Controllers.Model
 
             { EKeysDataFB.Animals, "Animals"},
 
-            { EKeysDataFB.AnimalId, "NftId"}
+            { EKeysDataFB.AnimalId, "NftId"},
+
+            { EKeysDataFB.UserAnimals, "UserAnimals"}
 
         };
 

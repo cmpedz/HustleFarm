@@ -10,5 +10,7 @@
         public UserInfors? UserInfors { get; set; }
 
         public UserPlants? UserPlants { get; set; }
+
+        public UserAnimals? UserAnimals { get; set; }
     }
 }

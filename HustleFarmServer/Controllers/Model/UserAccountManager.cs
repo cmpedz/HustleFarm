@@ -37,6 +37,8 @@ namespace HustleFarmServer.Controllers.Model
 
             userDatasManagerDictionary.Add(KeysDataFB.EKeysDataFB.UserPlants.ToString(), new UserAccountPlantsDataManager());
 
+            userDatasManagerDictionary.Add(KeysDataFB.EKeysDataFB.UserAnimals.ToString(), new UserAccountAnimalsDataManager());
+
             DocumentReference user = this.usersCollections.Document(userId);
 
             this.userDataCollection = user.Collection(USERS_DATA_COLLECTIONS);
