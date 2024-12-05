@@ -15,6 +15,8 @@ public class UserData
 
    public UserPlants UserPlants { get; set; }
 
+   public UserAnimals UserAnimals { get; set; }
+
    private Dictionary<Type, object> userDatasStorage;
 
    public T GetDataRelyOnDataType<T>()
@@ -42,6 +44,8 @@ public class UserData
         userDatasStorage.Add(typeof(UserBag), this.UserBag);
 
         userDatasStorage.Add(typeof(UserPlants), this.UserPlants);
+
+        userDatasStorage.Add(typeof(UserAnimals), this.UserAnimals);
     }
 
     public string ConvertToJson()
@@ -51,6 +55,8 @@ public class UserData
         this.UserInfors = GetDataRelyOnDataType<UserInfors>();
 
         this.UserPlants = GetDataRelyOnDataType<UserPlants>();
+
+        this.UserAnimals = GetDataRelyOnDataType<UserAnimals>();
 
         return JsonConvert.SerializeObject(this);
 

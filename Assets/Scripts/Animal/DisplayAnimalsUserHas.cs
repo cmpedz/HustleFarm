@@ -37,11 +37,17 @@ public class DisplayAnimalsUserHas : MonoBehaviour
         foreach (AnimalDataManager animal in animalsOwned)
         {
 
-            if(animal.Position == null)
+            if(animal.Position == null || animal.Position == Vector3.zero)
             {
+                Debug.Log("check location animal before retrieved : " + animal.transform.position);
 
                 animal.transform.position = GetRandomLocation();
+
                 Debug.Log("check random location animal retrieved : " + animal.transform.position);
+            }
+            else
+            {
+                Debug.Log("animal has previous position : " + animal.transform.position);
             }
 
             animal.GetComponent<FeedingAnimalController>().NotificationController = notificationController;

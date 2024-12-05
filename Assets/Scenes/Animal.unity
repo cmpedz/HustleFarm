@@ -7950,6 +7950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   convertAnimalIdToAnimalObject: {fileID: 1856400792}
   displayAnimalsHas: {fileID: 1417432580}
+  animalDataChangeManager: {fileID: 2055861817}
 --- !u!1001 &1460799538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8288,7 +8289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b8ce662bd44494ba6698c2aa037da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalsHas: []
+  handleUserAnimalsData: {fileID: 0}
+  dataChangeScriptTable: {fileID: 11400000, guid: 839603070fdee544a9c8efaf7a718e70, type: 2}
 --- !u!4 &2055861818
 Transform:
   m_ObjectHideFlags: 0

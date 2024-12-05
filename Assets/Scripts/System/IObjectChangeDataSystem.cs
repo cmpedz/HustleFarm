@@ -6,7 +6,8 @@ public interface IObjectChangeDataSystem<T>
 {
     public void OnHavingNewObject(T newObject);
 
-    public void OnRemovingOldObject(int objectIndex);
+    public void OnRemovingOldObject(string objectId);
 
-    public void OnObjectDataChanging(int objectIndex, T newObjectData);
+    public void OnObjectDataChanging(string objectId, T newObjectData);
+
 }

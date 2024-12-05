@@ -14,16 +14,21 @@ public class AnimalDataManager : ObjectDataManager
         position = transform.position;
     }
 
-    private int pointBonusRate;
+    private void Update()
+    {
+        position = transform.position;
+    }
 
-         public int PointBonusRate
+    private float pointBonusRate;
+
+         public float PointBonusRate
          {
              get { return pointBonusRate; }
              set { pointBonusRate = value; }
          }
 
-        private int pointGachaBonusRate;
-        public int PointGachaBonusRate
+        private float pointGachaBonusRate;
+        public float PointGachaBonusRate
         {
             get { return pointGachaBonusRate;}
             set { pointGachaBonusRate = value; }

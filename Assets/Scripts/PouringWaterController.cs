@@ -44,7 +44,7 @@ public class PouringWaterController : ProvideNutritionsController
 
             Debug.Log("check last time pouring water : " + plantsDataManager.GetLastTimeProvidingNutrition());
 
-            plantsChangeControllerSystem.OnObjectDataChanging(indexOfDirtContains, GetComponent<PlantsDataManager>());
+            plantsChangeControllerSystem.OnObjectDataChanging(indexOfDirtContains.ToString(), GetComponent<PlantsDataManager>());
 
         }
         else

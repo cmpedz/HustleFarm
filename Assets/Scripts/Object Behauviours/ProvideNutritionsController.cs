@@ -50,6 +50,7 @@ public abstract class ProvideNutritionsController : MonoBehaviour
 
     public abstract void OnLastTimeProvidingNutritionChange();
 
+
     protected void Start()
     {
         ObjectDataManager objectDataManager = GetComponent<ObjectDataManager>();

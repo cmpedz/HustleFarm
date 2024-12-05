@@ -13,6 +13,8 @@ public class FeedingAnimalController : ProvideNutritionsController
     [SerializeField] private SpriteRenderer foodNeedDisplay;
 
     [SerializeField] private NotificationController notificationController;
+
+    [SerializeField] private PlayerPointChangeScriptableObject playerPointChangeScriptableObject;
     public NotificationController NotificationController
     {
         get { return this.notificationController; }
@@ -62,6 +64,12 @@ public class FeedingAnimalController : ProvideNutritionsController
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
 
         NeedNutritionsAnnoucement.SetActive(true);
+    }
+
+    private void IncreaseUserPoint()
+    {
+        string userId = InstanceUserGeneralInfors.Instance.UserId;
+
     }
 
     private bool MeetAnimalDemand() {

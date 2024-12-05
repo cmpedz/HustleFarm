@@ -50,8 +50,10 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
         dataChangeScriptTableObject.OnDataChange(GetUserPlantsData());
     }
 
-    public void OnRemovingOldObject(int dirtOrder)
+    public void OnRemovingOldObject(string dirtOrderToString)
     {
+        int dirtOrder = int.Parse(dirtOrderToString);
+
         for (int i = 0; i < handleUserDataPlants.GetObjectsHas().Count; i++)
         {
             if (handleUserDataPlants.GetObjectsHas()[i].DirtOrder == dirtOrder)
@@ -66,9 +68,11 @@ public class UserPLantsChangeControllerSystem : MonoBehaviour, IObjectChangeData
 
     }
 
-    public void OnObjectDataChanging(int dirtOrder, PlantsDataManager newPlantData)
+    public void OnObjectDataChanging(string dirtOrderToString, PlantsDataManager newPlantData)
     {
         SerializedPlantData serializedPlantData = new SerializedPlantData();
+
+        int dirtOrder = int.Parse(dirtOrderToString);
 
         serializedPlantData.PlantDataManagerToSerializedPlantData(newPlantData);
 

@@ -50,7 +50,7 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
 
     public void RemoveCurrentOwnPlant()
     {
-        pLantsChangeControllerSystem.OnRemovingOldObject(plantedSeed.GetComponent<PlantsDataManager>().DirtIndex);
+        pLantsChangeControllerSystem.OnRemovingOldObject(plantedSeed.GetComponent<PlantsDataManager>().DirtIndex.ToString());
 
         Destroy(plantedSeed);
     }

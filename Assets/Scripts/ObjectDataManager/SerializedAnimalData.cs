@@ -11,8 +11,8 @@ namespace Assets.Scripts.ObjectDataManager
     {
         public float MaxHoursForNextProvidedNutritions;
         public string NftId;
-        public int PointBonusRate;
-        public int PointGachaBonusRate;
+        public float PointBonusRate;
+        public float PointGachaBonusRate;
         public string Type;
         public string Position = "";
         public string LastTimeProvidingNutrition;

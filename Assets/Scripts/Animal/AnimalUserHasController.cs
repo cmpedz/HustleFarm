@@ -9,7 +9,11 @@ public class AnimalUserHasController : MonoBehaviour
 
     [SerializeField] private DisplayAnimalsUserHas displayAnimalsHas;
 
+    [SerializeField] private AnimalDataChangeManager animalDataChangeManager;
+
     private List<AnimalDataManager> animalsOwned = new List<AnimalDataManager>();
+
+    private const float MAX_TIME_UPDATE_ANIMALS_POSTION = 10f;
 
 
     void Start()
@@ -23,12 +27,22 @@ public class AnimalUserHasController : MonoBehaviour
         {
             displayAnimalsHas.EnableAnimalsUserHas(animalsOwned);
         }
+
+        InvokeRepeating("UpdateAnimalsPostion",0, MAX_TIME_UPDATE_ANIMALS_POSTION);
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void UpdateAnimalsPostion()
+    {
+        Debug.Log("update animal postions");
+         animalDataChangeManager.OnAnimalsPositionChanging(animalsOwned);
+        
         
     }
 }
