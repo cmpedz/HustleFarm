@@ -12,8 +12,9 @@ public class UserLoginController : ServerRequestController
 
     [SerializeField] private RetrieveUserDataFromServer retrieveUserData;
 
-    private bool isRetrieveDataEnd = false;
-    public bool IsRetrieveDataEnd { get {  return isRetrieveDataEnd; } }
+    [SerializeField] private GettingDailyGiftController gettingDailyGiftController;
+
+  
 
     private static UserLoginController instance;
 
@@ -56,7 +57,7 @@ public class UserLoginController : ServerRequestController
 
         yield return StartCoroutine(SendPostRequest(USER_LOGIN_ROUTER ,userIdToJson));
 
-        isRetrieveDataEnd = true;
+        gettingDailyGiftController.gameObject.SetActive(true);
         
     }
 }

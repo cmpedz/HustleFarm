@@ -11,9 +11,11 @@ public class CurrentUserPointController : Singleton<CurrentUserPointController>
 
     public void IncreaseCurrentUserPoint(string userId, float pointBonus, float pointBonusRate)
     {
+        Debug.Log("point bonus get : " + pointBonus + currentUserPoint * pointBonusRate);
+
         currentUserPoint += pointBonus + currentUserPoint * pointBonusRate;
 
-        playerPointChangeScriptable.OnPlayerPointChanges(userId, pointBonus.ToString());
+        playerPointChangeScriptable.OnPlayerPointChanges(userId, currentUserPoint.ToString());
     }
 
 

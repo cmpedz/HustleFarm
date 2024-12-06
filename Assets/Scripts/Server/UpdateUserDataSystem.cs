@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -5,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class UpdateUserDataSystem : ServerRequestController, IOnDataChangeEvent
+public class UpdateUserDataSystem : ServerRequestController, IOnDataChangeEvent, IOnGachaTicketsChange
 {
     // Start is called before the first frame update
 
@@ -16,6 +17,8 @@ public class UpdateUserDataSystem : ServerRequestController, IOnDataChangeEvent
     public static UpdateUserDataSystem Instance { get { return instance; } }
 
     [SerializeField] private DataChangeScriptTableObject dataChangeScriptTableObject;
+
+    [SerializeField] private GachaTicketsChangeScriptableObject gachaTicketsChangeScriptable;
 
     private  void Awake()
     {
@@ -40,6 +43,7 @@ public class UpdateUserDataSystem : ServerRequestController, IOnDataChangeEvent
     {
 
         dataChangeScriptTableObject.AddEvent(this);
+        gachaTicketsChangeScriptable.AddListener(this);
     }
 
     private void UnSubcribesToSubject()
@@ -47,6 +51,7 @@ public class UpdateUserDataSystem : ServerRequestController, IOnDataChangeEvent
 
 
         dataChangeScriptTableObject.RemoveEvent(this);
+        gachaTicketsChangeScriptable.RemoveListener(this);  
     }
 
 
@@ -106,5 +111,13 @@ public class UpdateUserDataSystem : ServerRequestController, IOnDataChangeEvent
         UnSubcribesToSubject();
     }
 
+    public void OnGachaTicketsChange(int quantities)
+    {
+        UserInfors userInfors = new UserInfors()
+        {
+            GachaTickets = quantities,
+        };
 
+        UpdateUserData(userInfors);
+    }
 }

@@ -94,6 +94,7 @@ public class LeaderBoardController : ServerRequestController, IOnPlayerPointChan
 
     public void OnPlayerPointChange(string userId, string pointAdd)
     {
+        Debug.Log("check user id : " + userId + " has bonus point : " + pointAdd);
         PlayerRankData userPointData = new PlayerRankData() { 
             Id = userId,
             Point = pointAdd

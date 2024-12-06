@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,7 +14,12 @@ public class PlayerRank : MonoBehaviour
     public void SetPlayerRank(string playerId, string playerPoint)
     {
         this.playerId.text = playerId;
-        this.playerPoint.text = playerPoint;    
+
+        float playerPointToFloat = float.Parse(playerPoint);
+
+        string playerPointAfterFixLength = Math.Round(playerPointToFloat, 2).ToString();
+
+        this.playerPoint.text = playerPointAfterFixLength;    
     }
     void Start()
     {
