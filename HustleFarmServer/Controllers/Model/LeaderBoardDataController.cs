@@ -77,7 +77,7 @@ namespace HustleFarmServer.Controllers.Model
 
 
 
-        public async void IncreaseUserPoint(string userId, int point)
+        public async void IncreaseUserPoint(string userId, float point)
         { 
 
             await leaderBoardCollection.Document(userId).UpdateAsync(documentPointField, FieldValue.Increment(point));
@@ -100,7 +100,7 @@ namespace HustleFarmServer.Controllers.Model
                 {
                     Id = user.Id,
 
-                    Point = int.Parse(user.ToDictionary()[documentPointField].ToString())
+                    Point = float.Parse(user.ToDictionary()[documentPointField].ToString())
                 };
 
                 sortedLeaderBoardUsers.Add(userPoint);

@@ -13,7 +13,7 @@ namespace HustleFarmServer.Controllers.Model
         public IActionResult IncreaseUserPoint([FromBody] UserPointData userPointData)
         {
 
-            LeaderBoardDataController.Instance.IncreaseUserPoint(userPointData.Id, userPointData.Point);
+            LeaderBoardDataController.Instance.IncreaseUserPoint(userPointData.Id, (float)Math.Round(userPointData.Point, 2));
 
             return Ok(LeaderBoardDataController.Instance.GetSortedHighestUsers().Result);
 

@@ -3,6 +3,6 @@
     public class UserPointData
     {
         public string? Id { get; set; }
-        public int Point { get; set; }
+        public float Point { get; set; }
     }
 }

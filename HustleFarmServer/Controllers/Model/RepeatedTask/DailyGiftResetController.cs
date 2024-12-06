@@ -12,7 +12,7 @@ namespace HustleFarmServer.Controllers.Model.RepeatedTask
 
         private static DailyGiftResetController instance;
 
-        private const float durationReset = 60000;
+        private const float durationReset = 24*60*60*1000;
 
         public static DailyGiftResetController Instance
         {

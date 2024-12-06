@@ -8,9 +8,9 @@ namespace HustleFarmServer.Controllers.Model.DailyGift
     public class DailyGiftGettingStatusController : ControllerBase
     {
         [HttpPost]
-        public IActionResult CheckIsPlayerReceivedDailyGift([FromBody] string userId)
+        public IActionResult CheckIsPlayerReceivedDailyGift([FromBody] IntitialUserInfors user)
         {
-            bool isReceived = DailyGiftController.Instance.IsUserReceivedDailyGifts(userId).Result;
+            bool isReceived = DailyGiftController.Instance.IsUserReceivedDailyGifts(user.UserId).Result;
 
             if (isReceived)
             {
