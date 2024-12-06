@@ -82,6 +82,14 @@ public class DirtStatusControllerSystem : MonoBehaviour
 
     }
 
+    public void AddDirtIntoEmptyDirts(PlantSeedsProcessController dirt)
+    {
+
+        emptyDirts.Add(dirt);
+
+
+    }
+
 
     public void RemoveQuantitiesSeedItemClicked() { 
 

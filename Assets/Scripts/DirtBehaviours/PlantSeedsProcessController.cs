@@ -52,6 +52,8 @@ public class PlantSeedsProcessController : MonoBehaviour, IPointerClickHandler
     {
         pLantsChangeControllerSystem.OnRemovingOldObject(plantedSeed.GetComponent<PlantsDataManager>().DirtIndex.ToString());
 
+        DirtStatusControllerSystem.Instance.AddDirtIntoEmptyDirts(this);
+
         Destroy(plantedSeed);
     }
 

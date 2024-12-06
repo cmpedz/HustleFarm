@@ -48,7 +48,7 @@ public class LeaderBoardController : ServerRequestController, IOnPlayerPointChan
             DontDestroyOnLoad(gameObject);
             GetPlayersRankList();
 
-            gameObject.SetActive(false);
+            
 
             SubcribesToSubject();
 

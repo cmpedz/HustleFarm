@@ -7492,11 +7492,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972143875}
   m_CullTransparentMesh: 1
---- !u!1 &981329807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7398299738398171335, guid: 5d5f21702c3b671469e7cfb8a9346731, type: 3}
-  m_PrefabInstance: {fileID: 1265385417629305683}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1004639294
 GameObject:
   m_ObjectHideFlags: 0
@@ -8672,6 +8667,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 892906070210105408, guid: 5d5f21702c3b671469e7cfb8a9346731, type: 3}
       propertyPath: m_SizeDelta.y
+      value: -308.6357
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191003108752581419, guid: 5d5f21702c3b671469e7cfb8a9346731, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5042049245129153685, guid: 5d5f21702c3b671469e7cfb8a9346731, type: 3}
@@ -8767,6 +8766,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d5f21702c3b671469e7cfb8a9346731, type: 3}
+--- !u!1 &1265385417629305684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4191003108752581419, guid: 5d5f21702c3b671469e7cfb8a9346731, type: 3}
+  m_PrefabInstance: {fileID: 1265385417629305683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4746862771291031266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9207,7 +9211,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 981329807}
+      - m_Target: {fileID: 1265385417629305684}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
