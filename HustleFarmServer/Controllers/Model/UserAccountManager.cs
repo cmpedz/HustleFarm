@@ -53,9 +53,6 @@ namespace HustleFarmServer.Controllers.Model
 
             bool isAccountCreated = documentSnapshots.Documents.Count > 0;
 
-
-            LeaderBoardDataController.Instance.AddingUserIntoLeaderBoard(intitialUserInfors.UserId);
-
             if (isAccountCreated)
             {
                 return GetUserData().Result;
@@ -70,6 +67,8 @@ namespace HustleFarmServer.Controllers.Model
             }
 
             await Task.WhenAll(taskExecuted);
+
+            LeaderBoardDataController.Instance.AddingUserIntoLeaderBoard(intitialUserInfors.UserId);
 
             return GetUserData().Result;
 

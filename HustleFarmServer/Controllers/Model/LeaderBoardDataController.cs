@@ -25,11 +25,7 @@ namespace HustleFarmServer.Controllers.Model
         private static readonly int MAX_HIGHEST_USERS_DISPLAYED = 100;
 
         private string documentPointField;
-        public string DocumentPointField
-        {
-            get { return this.documentPointField; }
-        }
-
+       
         private string documentNameField;
 
 
@@ -74,28 +70,15 @@ namespace HustleFarmServer.Controllers.Model
                 await leaderBoardCollection.Document(userId).SetAsync(user);
             }
            
-
-           
-
             
         }
 
 
-        private async void UpdatePointIntoUserInfors(string userId, int point)
-        {
-            CollectionReference userCollection = firestoreDb.Collection(KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.Users));
 
-            CollectionReference userDataCollection = userCollection.Document(userId).Collection(KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserData));
-
-            DocumentReference userInfor = userDataCollection.Document(KeysDataFB.GetKeysDataFB(KeysDataFB.EKeysDataFB.UserInfors));
-
-            await userInfor.UpdateAsync(UserInfors.UserPointField, FieldValue.Increment(point));
-        }
 
 
         public async void IncreaseUserPoint(string userId, int point)
-        {
-            UpdatePointIntoUserInfors(userId, point);
+        { 
 
             await leaderBoardCollection.Document(userId).UpdateAsync(documentPointField, FieldValue.Increment(point));
         }

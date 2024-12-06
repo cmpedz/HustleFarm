@@ -13,7 +13,7 @@ namespace HustleFarmServer.Controllers.Model
         {
             initialData.Add(UserInfors.GachaTicketsField, 10);
 
-            initialData.Add(UserInfors.UserPointField, 0);
+            
 
         }
     }
