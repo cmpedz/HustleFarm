@@ -9,6 +9,8 @@ public class HandleUserAnimalsData : HandleUserData<UserAnimals>
 
     private Dictionary<string, SerializedAnimalData> animalsUserHas = new Dictionary<string, SerializedAnimalData>();
 
+    [SerializeField] private List<float> bonusGachaPointsRate = new List<float>();
+
     public void ChangeDataOfSpecifiedAnimal(string animalIndex, SerializedAnimalData newData)
     {
         animalsUserHas[animalIndex] = newData;  
@@ -17,6 +19,18 @@ public class HandleUserAnimalsData : HandleUserData<UserAnimals>
     public Dictionary<string, SerializedAnimalData> GetAnimalsUserHas()
     {
         return this.animalsUserHas;
+    }
+
+    public float GetBonusGachaPointRate() {
+
+        float sumBonusGachaPointRate = 0;
+
+        foreach(float bonusGachaPointRate in bonusGachaPointsRate)
+        {
+            sumBonusGachaPointRate += bonusGachaPointRate;  
+        }
+
+        return sumBonusGachaPointRate;
     }
 
     public SerializedAnimalData GetAnimalDataFromServer(string animalId)
@@ -31,15 +45,21 @@ public class HandleUserAnimalsData : HandleUserData<UserAnimals>
 
     public override void HandleDataEvent(UserAnimals data)
     {
+        bonusGachaPointsRate.Clear();
+
         foreach (string animal in data.Animals)
         {
-            SerializedAnimalData jsonStringToObject = JsonUtility.FromJson<SerializedAnimalData>(animal);
+            SerializedAnimalData animalDataJsonStringToObject = JsonUtility.FromJson<SerializedAnimalData>(animal);
 
-            animalsUserHas.Add(jsonStringToObject.NftId, jsonStringToObject);
+            animalsUserHas.Add(animalDataJsonStringToObject.NftId, animalDataJsonStringToObject);
+
+            if (animalDataJsonStringToObject.PointGachaBonusRate != 0) {
+                bonusGachaPointsRate.Add(animalDataJsonStringToObject.PointGachaBonusRate);
+            }
         }
 
         Debug.Log("check animal data from server : " + JsonConvert.SerializeObject(animalsUserHas));
-
+        
     }
 
    

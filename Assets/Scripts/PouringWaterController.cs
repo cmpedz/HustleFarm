@@ -12,9 +12,13 @@ public class PouringWaterController : ProvideNutritionsController
 
     [SerializeField] private UserPLantsChangeControllerSystem plantsChangeControllerSystem;
 
+    [SerializeField] private CurrentUserPointController currentUserPointController;
+
     private PlantSeedsProcessController dirtContains;
 
     private PlantsDataManager plantsDataManager;
+
+    private float pointPlus;
 
     new protected void Start()
     {
@@ -22,9 +26,14 @@ public class PouringWaterController : ProvideNutritionsController
 
         plantsDataManager = GetComponent<PlantsDataManager>();
 
+        pointPlus = plantsDataManager.PointEachDay;
+
         plantsChangeControllerSystem = FindAnyObjectByType<UserPLantsChangeControllerSystem>();
 
         dirtContains = transform.parent.gameObject.GetComponent<PlantSeedsProcessController>();
+
+        currentUserPointController = FindAnyObjectByType<CurrentUserPointController>();
+        
     }
     public override bool CheckConditionsProvidingNutritions()
     {
@@ -34,7 +43,11 @@ public class PouringWaterController : ProvideNutritionsController
     public override void EventAfterCompletingConsumingNutritions()
     {
         harvestingAnnocement.SetActive(true);
+
+        currentUserPointController.IncreaseCurrentUserPoint(InstanceUserGeneralInfors.Instance.UserId, pointPlus, 0);
     }
+
+   
 
     public override void OnLastTimeProvidingNutritionChange()
     {

@@ -91,6 +91,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d8eda26ece7a04ca40b36618d57c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6865495748852635767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1903888477007735342}
+  m_Layer: 0
+  m_Name: HandleUserInforsFunction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1903888477007735342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865495748852635767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1326021364412803104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8025306103408627119
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +155,7 @@ Transform:
   - {fileID: 6453763258358755908}
   - {fileID: 3155998881946479297}
   - {fileID: 7522615947140012918}
+  - {fileID: 1903888477007735342}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6142999056703304042
@@ -143,6 +175,8 @@ MonoBehaviour:
     handleFunction: {fileID: 4561580115134112401}
   - DataId: UserPlants
     handleFunction: {fileID: 8542847880801161797}
+  - DataId: UserAnimals
+    handleFunction: {fileID: 8700780926711607953}
 --- !u!1 &8346391699384112949
 GameObject:
   m_ObjectHideFlags: 0

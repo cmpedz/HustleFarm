@@ -7,7 +7,8 @@ public class PlayerPointChangeScriptableObject : ScriptableObject
 {
    private List<IOnPlayerPointChange> onPlayerPointChanges = new List<IOnPlayerPointChange>();
 
-   public void AddListener(IOnPlayerPointChange listener)
+
+    public void AddListener(IOnPlayerPointChange listener)
    {
 
         if (!onPlayerPointChanges.Contains(listener))

@@ -11,7 +11,8 @@ public class PlayersRankListController : MonoBehaviour
 
     [SerializeField] private List<PlayerRank> playersRankList = new List<PlayerRank>();
 
-    [SerializeField] private Color currentUserColor;
+    [SerializeField] private CurrentUserPointController currentUserRankController;
+    
 
     public void AddPlayerRankIntoLeaderBoard(PlayerRankData playerData, int index)
     {
@@ -27,7 +28,7 @@ public class PlayersRankListController : MonoBehaviour
 
             newPlayer.gameObject.SetActive(true);
 
-            SetSpecialColorForCurrentUser(newPlayer, playerData);
+            currentUserRankController.SetUpDataForCurrentUserPointExhibition(newPlayer, playerData);
 
             if (isPlayerRankIndexOutRange) { 
                 playersRankList.Add(newPlayer);
@@ -46,12 +47,6 @@ public class PlayersRankListController : MonoBehaviour
 
     }
 
-    private void SetSpecialColorForCurrentUser(PlayerRank playerRank, PlayerRankData playerRankData)
-    {
-        if (playerRankData.Id == InstanceUserGeneralInfors.Instance.UserId) {
-            Debug.Log("set color for current user !");
-            playerRank.GetComponent<Image>().color = currentUserColor;
-        }
-    }
+  
     
 }

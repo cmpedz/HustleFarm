@@ -7,4 +7,6 @@ using UnityEngine;
 public class UserInfors
 {
     public static readonly string Id = "UserInfors";
+    public int UserPoint;
+    public int GachaTickets;
 }

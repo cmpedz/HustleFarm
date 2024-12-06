@@ -15,27 +15,42 @@ public class GachaSystemController : ServerRequestController
 
     private const int COST_EACH_DRAW = 100;
 
+    private const int GACHA_POINT_GET = 1;
+
     [SerializeField] private GachaItemDisplaySystem itemsDisplaySystem;
 
     [SerializeField] private PutItemsGachaGetIntoUserBag putItemsGachaGetIntoUserBagSystem;
+
+    [SerializeField] private CurrentUserPointController currentUserPointController;
+
+    [SerializeField] private HandleUserAnimalsData handleUserAnimalsData;
+
     void Start()
     {
-        
+        currentUserPointController = FindAnyObjectByType<CurrentUserPointController>();
+
+        handleUserAnimalsData = FindAnyObjectByType<HandleUserAnimalsData>();
     }
 
     public async void GetItemFromServer(int time) {
 
 
-        bool didPayForDraw = await UserWalletController.Instance.DepositToken(COST_EACH_DRAW * time);
+        //bool didPayForDraw = await UserWalletController.Instance.DepositToken(COST_EACH_DRAW * time);
 
-        if (didPayForDraw) {
-            Debug.Log("transposit successfully");
-            StartCoroutine(GetItemFromServerEnumrator(time));
-        }
-        
-   
+        //if (didPayForDraw) {
+        //    Debug.Log("transposit successfully");
+        //    StartCoroutine(GetItemFromServerEnumrator(time));
+        //}
+
+
+        StartCoroutine(GetItemFromServerEnumrator(time));
+
+        float sumGachaBonusRateGet = handleUserAnimalsData.GetBonusGachaPointRate();
+
+        currentUserPointController.IncreaseCurrentUserPoint(InstanceUserGeneralInfors.Instance.UserId
+            , GACHA_POINT_GET, sumGachaBonusRateGet);
+
     }
-
 
 
     private IEnumerator GetItemFromServerEnumrator(int time)

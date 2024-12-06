@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +14,8 @@ public class FeedingAnimalController : ProvideNutritionsController
     [SerializeField] private NotificationController notificationController;
 
     [SerializeField] private PlayerPointChangeScriptableObject playerPointChangeScriptableObject;
+
+    [SerializeField] private CurrentUserPointController currentUserRankController;
     public NotificationController NotificationController
     {
         get { return this.notificationController; }
@@ -22,7 +23,9 @@ public class FeedingAnimalController : ProvideNutritionsController
         set { this.notificationController = value; }
     }
 
-    [SerializeField] private ObjectDataManager objectDataManager;
+    [SerializeField] private AnimalDataManager animalDataManager;
+
+    private float pointRate;
 
 
     new void Start()
@@ -35,7 +38,11 @@ public class FeedingAnimalController : ProvideNutritionsController
 
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
 
-        objectDataManager = GetComponent<ObjectDataManager>();
+        animalDataManager = GetComponent<AnimalDataManager>();
+
+        currentUserRankController = FindAnyObjectByType<CurrentUserPointController>();
+
+        pointRate = animalDataManager.PointBonusRate;
 
     }
 
@@ -52,7 +59,7 @@ public class FeedingAnimalController : ProvideNutritionsController
     public override bool CheckConditionsProvidingNutritions()
     {
         Debug.Log("prodvide food for animal");
-        return MeetAnimalDemand() && !objectDataManager.IsTakenCare && NeedNutritionsAnnoucement.activeSelf;
+        return MeetAnimalDemand() && !animalDataManager.IsTakenCare && NeedNutritionsAnnoucement.activeSelf;
     }
 
     public override void EventAfterCompletingConsumingNutritions()
@@ -64,13 +71,12 @@ public class FeedingAnimalController : ProvideNutritionsController
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
 
         NeedNutritionsAnnoucement.SetActive(true);
+
+        currentUserRankController.IncreaseCurrentUserPoint(InstanceUserGeneralInfors.Instance.UserId, 
+            0, pointRate);
     }
 
-    private void IncreaseUserPoint()
-    {
-        string userId = InstanceUserGeneralInfors.Instance.UserId;
-
-    }
+   
 
     private bool MeetAnimalDemand() {
 

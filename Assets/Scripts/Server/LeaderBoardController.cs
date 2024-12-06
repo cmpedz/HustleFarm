@@ -18,6 +18,7 @@ public class LeaderBoardController : ServerRequestController, IOnPlayerPointChan
 
     [SerializeField] private PlayerPointChangeScriptableObject playerPointChangeScriptableObject;
 
+
     private void SubcribesToSubject()
     {
         playerPointChangeScriptableObject.AddListener(this);
@@ -97,7 +98,6 @@ public class LeaderBoardController : ServerRequestController, IOnPlayerPointChan
             Id = userId,
             Point = pointAdd
         };
-
 
         string userPointDataToJson = JsonUtility.ToJson(userPointData);
 
