@@ -1,3 +1,5 @@
+using HustleFarmServer.Controllers.Model.RepeatedTask;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +20,8 @@ if (app.Environment.IsDevelopment())
 
 //put this class in here to prepare resource, data before execute reply to clients side requests
 ServerSetUp.ConfigureServices(app.Services);
+
+DailyGiftResetController.Instance.ResetDailyGifts();
 
 app.UseHttpsRedirection();
 

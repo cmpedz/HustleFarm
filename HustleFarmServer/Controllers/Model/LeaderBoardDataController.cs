@@ -10,7 +10,7 @@ using System.Reflection.Metadata;
 namespace HustleFarmServer.Controllers.Model
 {
    
-    public class LeaderBoardDataController
+    public class LeaderBoardDataController : IOnAccountCreatedEvent
     {
         private FirestoreDb firestoreDb = FireStoreSetup.GetInstace().FireStoreDb;
 
@@ -108,8 +108,10 @@ namespace HustleFarmServer.Controllers.Model
 
             return JsonConvert.SerializeObject(sortedLeaderBoardUsers);
         }
-        
 
-       
+        public void OnAccountCreated(string userId)
+        {
+            AddingUserIntoLeaderBoard(userId);
+        }
     }
 }

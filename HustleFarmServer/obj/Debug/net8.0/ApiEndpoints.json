@@ -10,6 +10,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "HustleFarmServer.Controllers.Model.DailyGiftChangeingStatusController",
+    "Method": "ChangeReceivedStatusOfUser",
+    "RelativePath": "DailyGiftChangeingStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDailyGiftStatus",
+        "Type": "HustleFarmServer.Controllers.Model.UserDataForm.UserDailyGiftStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HustleFarmServer.Controllers.Model.DailyGift.DailyGiftGettingStatusController",
+    "Method": "CheckIsPlayerReceivedDailyGift",
+    "RelativePath": "DailyGiftGettingStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "HustleFarmServer.Controllers.Model.GachaServerController",
     "Method": "GiveGachaItemToClientsSide",
     "RelativePath": "GachaServer",

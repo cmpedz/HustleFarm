@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Firestore;
+using HustleFarmServer.Controllers.Model.DailyGift;
 using HustleFarmServer.Controllers.Model.UserDataForm;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -68,7 +69,7 @@ namespace HustleFarmServer.Controllers.Model
 
             await Task.WhenAll(taskExecuted);
 
-            LeaderBoardDataController.Instance.AddingUserIntoLeaderBoard(intitialUserInfors.UserId);
+            OnAccountCreatedEvents.Instance.Invoke(intitialUserInfors.UserId);
 
             return GetUserData().Result;
 
