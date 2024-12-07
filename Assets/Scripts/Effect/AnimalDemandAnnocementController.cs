@@ -15,12 +15,8 @@ public class AnimalDemandAnnocementController : MonoBehaviour
 
     [SerializeField] private SpriteRenderer demandFood;
 
+    [SerializeField] private string foodDemandTag;
 
-
-    void OnMouseDown(){
-        Debug.Log("mouse down");
-        clickedEvent?.Invoke();
-    }
 
 
 
@@ -34,6 +30,28 @@ public class AnimalDemandAnnocementController : MonoBehaviour
 
 
         UpdateOrderSpriteRenderer();
+
+        FeedAnimal();
+    }
+
+    private void FeedAnimal()
+    {
+
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+            if(hit.collider != null)
+            {
+                if (hit.collider.tag == foodDemandTag && hit.collider.gameObject == gameObject)
+                {
+                    clickedEvent?.Invoke();
+
+                }
+            }
+           
+        }
     }
 
     private void UpdateOrderSpriteRenderer()

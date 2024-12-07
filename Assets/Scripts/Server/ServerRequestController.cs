@@ -8,11 +8,11 @@ public abstract class ServerRequestController : MonoBehaviour
 {
     private static readonly string SERVER_URL = "https://localhost:7218";
 
-    [SerializeField] private ErrorNotificationController errorNotificationController ;
+    [SerializeField] private GameNotificationController errorNotificationController ;
 
     protected void Start()
     {
-        errorNotificationController = FindAnyObjectByType<ErrorNotificationController>();
+        errorNotificationController = FindAnyObjectByType<GameNotificationController>();
     }
 
     protected  IEnumerator SendGetRequest(string router) { 
@@ -63,12 +63,12 @@ public abstract class ServerRequestController : MonoBehaviour
 
         if (request.result == UnityWebRequest.Result.ConnectionError)
         {
-            errorNotificationController.NotifyError("No Connection !",false);
+            errorNotificationController.NotifyMessage("No Connection !",false);
         }
 
         if (request.result == UnityWebRequest.Result.ProtocolError)
         {
-            errorNotificationController.NotifyError("Error 404 !", true);
+            errorNotificationController.NotifyMessage("Error 404 !", true);
 
         }
         else

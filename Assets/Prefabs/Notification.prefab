@@ -30,11 +30,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5659929950258850564}
+  m_Father: {fileID: 3491336427580649695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.048492, y: -0.00076103}
+  m_AnchoredPosition: {x: 38.135624, y: 41.116837}
   m_SizeDelta: {x: 522.9362, y: 215.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4144649250449423579
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Not Satisfied Animal Food Demand
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 13cf7ab8313983c4b8f9463e4c3954f6, type: 2}
+  m_sharedMaterial: {fileID: -981811750030312108, guid: 13cf7ab8313983c4b8f9463e4c3954f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -159,14 +159,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649327104264424744}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7090803275336674952}
-  - {fileID: 6922684195107784669}
-  - {fileID: 5659929950258850564}
+  m_Children: []
   m_Father: {fileID: 3491336427580649695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -237,18 +234,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4766265961847440886}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 429216656206012528}
-  m_Father: {fileID: 7805869415756243371}
+  m_Children: []
+  m_Father: {fileID: 3491336427580649695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17975001, y: 0.393}
   m_AnchorMax: {x: 0.85875005, y: 0.77229136}
-  m_AnchoredPosition: {x: -5.3128967, y: 3.3733902}
-  m_SizeDelta: {x: 5.7979736, y: -0.034103394}
+  m_AnchoredPosition: {x: -5.312866, y: 3.3733902}
+  m_SizeDelta: {x: 5.7979736, y: -0.034088135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7691796022890176878
 CanvasRenderer:
@@ -313,12 +309,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6133058414861016392}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 7805869415756243371}
+  m_Father: {fileID: 3491336427580649695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.386, y: 0}
   m_AnchorMax: {x: 0.61883026, y: 0.393}
@@ -389,17 +385,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7188368723977492803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7805869415756243371}
+  m_Father: {fileID: 3491336427580649695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9244236, y: 0.8564762}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0440979, y: -2.2286072}
-  m_SizeDelta: {x: -0.08810043, y: 4.4572983}
+  m_AnchoredPosition: {x: 0.044158936, y: -2.2285767}
+  m_SizeDelta: {x: -0.08810425, y: 4.4572983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &546684044454992205
 CanvasRenderer:
@@ -528,6 +524,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7805869415756243371}
+  - {fileID: 7090803275336674952}
+  - {fileID: 6922684195107784669}
+  - {fileID: 5659929950258850564}
+  - {fileID: 429216656206012528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -14,11 +14,16 @@ public class GetNftAnimalUserHas : Singleton<GetNftAnimalUserHas>
 
     void Start()
     {
-          List<int> testIntialAnimalsHas = new List<int>();
-        testIntialAnimalsHas.Add(0);
-        testIntialAnimalsHas.Add(1);
+          List<int> nftAnimalsUserOwned = new List<int>();
 
-        foreach(int i in testIntialAnimalsHas)
+          for(int i = 0; i < 8; i++)
+           {
+            nftAnimalsUserOwned.Add(i);
+            
+          }
+       
+
+        foreach(int i in nftAnimalsUserOwned)
         {
             idNftOwned.Add(i);
         }

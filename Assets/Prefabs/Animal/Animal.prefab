@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1099978398907399763
 Transform:
   m_ObjectHideFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2486527752838782987}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.9142854, y: 3.9142854, z: 3.9142854}
   m_ConstrainProportionsScale: 0
@@ -299,7 +299,9 @@ MonoBehaviour:
   userBag: {fileID: 0}
   foodNeedDisplay: {fileID: 3799121091884654557}
   notificationController: {fileID: 0}
-  objectDataManager: {fileID: 2682872287984597561}
+  playerPointChangeScriptableObject: {fileID: 0}
+  currentUserRankController: {fileID: 0}
+  animalDataManager: {fileID: 0}
 --- !u!114 &2682872287984597561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +331,10 @@ PrefabInstance:
       propertyPath: animal
       value: 
       objectReference: {fileID: 2486527752838782987}
+    - target: {fileID: 4223104103008951576, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
+      propertyPath: foodDemandTag
+      value: FoodDemand
+      objectReference: {fileID: 0}
     - target: {fileID: 4223104103008951576, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
       propertyPath: clickedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -381,9 +387,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7888238985367981534, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
+      propertyPath: m_TagString
+      value: FoodDemand
+      objectReference: {fileID: 0}
     - target: {fileID: 8766811006275279577, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766811006275279577, guid: 72a363d96cc828b46aaf93aaf7cb81fe, type: 3}
+      propertyPath: m_TagString
+      value: Food
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

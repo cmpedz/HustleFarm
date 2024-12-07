@@ -12,6 +12,7 @@ public class DisplayAnimalsUserHas : MonoBehaviour
     [SerializeField] private Transform endPointSummon;
 
     [SerializeField] private NotificationController notificationController;
+
     void Start()
     {
         

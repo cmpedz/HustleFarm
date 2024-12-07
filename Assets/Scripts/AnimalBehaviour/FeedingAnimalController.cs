@@ -5,7 +5,7 @@ public class FeedingAnimalController : ProvideNutritionsController
 {
     [SerializeField] private List<Item> foodsNeed = new List<Item>();
 
-    [SerializeField] private BagMenu userBag = BagMenu.Instance;
+    [SerializeField] private BagMenu userBag;
 
     private Item foodNeed;
 
@@ -34,8 +34,6 @@ public class FeedingAnimalController : ProvideNutritionsController
 
         foodNeed = GetFoodNeed();
 
-        userBag = FindAnyObjectByType<BagMenu>();
-
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
 
         animalDataManager = GetComponent<AnimalDataManager>();
@@ -43,6 +41,8 @@ public class FeedingAnimalController : ProvideNutritionsController
         currentUserRankController = FindAnyObjectByType<CurrentUserPointController>();
 
         pointRate = animalDataManager.PointBonusRate;
+
+        userBag = BagMenu.Instance;
 
     }
 
@@ -66,6 +66,7 @@ public class FeedingAnimalController : ProvideNutritionsController
     {
         Debug.Log("animal has consumed energy!");
 
+
         foodNeed = GetFoodNeed();
 
         foodNeedDisplay.sprite = foodNeed.GetItemSprite();
@@ -86,15 +87,21 @@ public class FeedingAnimalController : ProvideNutritionsController
 
         if (isSatisfiedAnimalDemand)
         {
+            Debug.Log("feeding animal !" + foodNeed.ToString());
             userBag.RemoveItem(foodNeed, true);
+     
         }
         else {
 
-            string message = "Not Satisfied Animal Food Demand";
+
+            Debug.Log("Not Satisfied Animal Food Demand");
+
+            string message = "Not Satisfied Animal Food Demand !";
 
             if (notificationController != null) {
 
                 notificationController.NotifyMessage(message);
+                
             }
             
         }

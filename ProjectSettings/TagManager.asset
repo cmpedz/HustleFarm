@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Plant
   - Dirt
+  - Food
+  - FoodDemand
   layers:
   - Default
   - TransparentFX

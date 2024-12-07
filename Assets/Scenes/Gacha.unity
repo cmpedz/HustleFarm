@@ -260,6 +260,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2199107632331299705, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: plantSeeds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199107632331299705, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: plantSeeds.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4fe7f6e914bf16a46be1c2b984993db9, type: 2}
+    - target: {fileID: 2199107632331299705, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: plantSeeds.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: ef7fdb2d15cdaf94db2da38ba2047ada, type: 2}
+    - target: {fileID: 2199107632331299705, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: plantSeeds.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 02f21ca6888083d41b9160518033af47, type: 2}
     - target: {fileID: 3227826662691564208, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -328,6 +344,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6158784643253889718, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: seedItems.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158784643253889718, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: seedItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 4896751459244427500, guid: e229f06eab9884749bab68e73cf31981, type: 3}
+    - target: {fileID: 6158784643253889718, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: seedItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 3681237497162683752, guid: d26598865175e67459e94b6267854fad, type: 3}
+    - target: {fileID: 6158784643253889718, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
+      propertyPath: seedItems.Array.data[4]
+      value: 
+      objectReference: {fileID: 1666239959964409982, guid: cfa5ced997b57c742b7999b8adf61a74, type: 3}
     - target: {fileID: 8741984699631860104, guid: 17a4aa98a02612a468dc3756b2d9a205, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -2.4489136
