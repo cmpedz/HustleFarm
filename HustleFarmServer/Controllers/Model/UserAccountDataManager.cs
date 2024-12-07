@@ -54,23 +54,23 @@ namespace HustleFarmServer.Controllers.Model
 
             JObject newData = JObject.Parse(newJsonData);
 
-            foreach (var newDataType in newData)
+            foreach (var newDataKey in newData)
             {
-
-                try
+                if(newDataKey.Value.Type == JTokenType.Array)
                 {
-
-                    JArray newDataToJArray = JArray.Parse(newDataType.Value.ToString());
+                    JArray newDataToJArray = JArray.Parse(newDataKey.Value.ToString());
 
                     object[] newDataToArray = newDataToJArray.ToObject<object[]>();
 
-                    updatedData.Add(newDataType.Key, newDataToArray);
+                    updatedData.Add(newDataKey.Key, newDataToArray);
                 }
-                catch (JsonReaderException)
+                else
                 {
-
-                    updatedData.Add(newDataType.Key, newDataType.Value);
+                    
+                    updatedData.Add(newDataKey.Key, newDataKey.Value.ToObject<object>());
                 }
+
+               
 
 
 
