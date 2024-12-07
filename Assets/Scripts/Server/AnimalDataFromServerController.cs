@@ -22,8 +22,10 @@ public class AnimalDataFromServerController : ServerRequestController
         }
     }
 
-    void Start()
+    protected new void Start()
     {
+
+        base.Start();
 
         if (instance == null)
         {

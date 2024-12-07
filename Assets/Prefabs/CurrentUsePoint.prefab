@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785a79dfad7db854da23072b6a49ed4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentUserColor: {r: 0.20777638, g: 0.59748423, b: 0.0018787552, a: 0}
+  currentUserColor: {r: 0.19660123, g: 0.52201253, b: 0.018056976, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
   currentUserPoint: 0
   playerPointChangeScriptable: {fileID: 11400000, guid: 29dd83e04ac422e428dc8565412359f5, type: 2}

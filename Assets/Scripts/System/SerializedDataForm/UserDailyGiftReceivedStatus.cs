@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 [System.Serializable]
 public class UserDailyGiftReceivedStatus
 {
-    public string userId { get; set; }
+    public string UserId;
 
-    public bool isReceived { get; set; }
+    public bool IsReceived;
 }
 

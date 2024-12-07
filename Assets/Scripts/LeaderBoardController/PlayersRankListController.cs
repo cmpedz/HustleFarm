@@ -28,8 +28,6 @@ public class PlayersRankListController : MonoBehaviour
 
             newPlayer.gameObject.SetActive(true);
 
-            currentUserRankController.SetUpDataForCurrentUserPointExhibition(newPlayer, playerData);
-
             if (isPlayerRankIndexOutRange) { 
                 playersRankList.Add(newPlayer);
             }
@@ -42,6 +40,8 @@ public class PlayersRankListController : MonoBehaviour
 
             
         }
+
+        currentUserRankController.MarkCurrentUserInLeaderBoard(playersRankList[index], playerData);
 
         playersRankList[index].SetPlayerRank(playerData.Id, playerData.Point);
 

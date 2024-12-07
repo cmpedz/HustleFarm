@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Thirdweb.Unity;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 using static NBitcoin.Scripting.PubKeyProvider;
@@ -15,6 +16,8 @@ public class GachaSystemController : ServerRequestController
 
     private const int COST_EACH_DRAW = 100;
 
+    private const int GACHA_TICKET_NEEDED_EACH_DRAW = 1;
+
     private const int GACHA_POINT_GET = 1;
 
     [SerializeField] private GachaItemDisplaySystem itemsDisplaySystem;
@@ -25,11 +28,17 @@ public class GachaSystemController : ServerRequestController
 
     [SerializeField] private HandleUserAnimalsData handleUserAnimalsData;
 
-    void Start()
+    [SerializeField] private HandleUserInforsData userGachaTickets;
+
+    protected new void Start()
     {
+        base.Start();
+
         currentUserPointController = FindAnyObjectByType<CurrentUserPointController>();
 
         handleUserAnimalsData = FindAnyObjectByType<HandleUserAnimalsData>();
+
+        userGachaTickets = FindAnyObjectByType<HandleUserInforsData>();
     }
 
     public async void GetItemFromServer(int time) {
@@ -42,14 +51,43 @@ public class GachaSystemController : ServerRequestController
         //    StartCoroutine(GetItemFromServerEnumrator(time));
         //}
 
+       
 
-        StartCoroutine(GetItemFromServerEnumrator(time));
+        if (CheckCapableOfDrawing(time))
+        {
+            StartCoroutine(GetItemFromServerEnumrator(time));
 
-        float sumGachaBonusRateGet = handleUserAnimalsData.GetBonusGachaPointRate();
+            float sumGachaBonusRateGet = handleUserAnimalsData.GetBonusGachaPointRate();
 
-        currentUserPointController.IncreaseCurrentUserPoint(InstanceUserGeneralInfors.Instance.UserId
-            , GACHA_POINT_GET, sumGachaBonusRateGet);
+            currentUserPointController.IncreaseCurrentUserPoint(InstanceUserGeneralInfors.Instance.UserId
+                , GACHA_POINT_GET, sumGachaBonusRateGet);
+        }
 
+       
+
+    }
+
+    private bool CheckCapableOfDrawing(int time)
+    {
+        
+
+        int currentQuantitiesGachaTicketsHas = userGachaTickets.UserTicket;
+
+        int quantitiesGachaTicketsNeeded = GACHA_TICKET_NEEDED_EACH_DRAW * time;
+
+        if (currentQuantitiesGachaTicketsHas >= quantitiesGachaTicketsNeeded)
+        {
+            userGachaTickets.DescreaseUserTickets(quantitiesGachaTicketsNeeded);
+            return  true;
+
+        }
+        else
+        {
+            Debug.Log("lack of gacha tickets, pay to gacha");
+            return false;
+        }
+
+        
     }
 
 

@@ -26,6 +26,9 @@ public class RetrieveUserDataFromServer : Singleton<RetrieveUserDataFromServer>
     }
     public void HandleDataRetrievedFromSever(string data)
     {
+        Debug.Log("check data receive : " + data);
+        if (data == null || data == "") { return; }
+
         JObject jsonToObject = JObject.Parse(data);
 
 

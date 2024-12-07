@@ -39,8 +39,9 @@ public class LeaderBoardController : ServerRequestController, IOnPlayerPointChan
         UnSubcribesToSubject();
     }
 
-    private void Start()
+    protected new void Start()
     {
+        base.Start();
 
         if(instance == null)
         {

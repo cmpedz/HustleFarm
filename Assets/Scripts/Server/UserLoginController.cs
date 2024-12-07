@@ -12,9 +12,6 @@ public class UserLoginController : ServerRequestController
 
     [SerializeField] private RetrieveUserDataFromServer retrieveUserData;
 
-    [SerializeField] private GettingDailyGiftController gettingDailyGiftController;
-
-  
 
     private static UserLoginController instance;
 
@@ -57,7 +54,7 @@ public class UserLoginController : ServerRequestController
 
         yield return StartCoroutine(SendPostRequest(USER_LOGIN_ROUTER ,userIdToJson));
 
-        gettingDailyGiftController.gameObject.SetActive(true);
+        
         
     }
 }

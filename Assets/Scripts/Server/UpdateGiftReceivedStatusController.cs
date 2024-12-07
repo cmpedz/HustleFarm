@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine.Networking;
 
 public class UpdateGiftReceivedStatusController : ServerRequestController
 {
-    private static readonly string GETTING_STATUS_ROUTER = "DailyGiftChangingStatus";
+    private static readonly string GETTING_STATUS_ROUTER = "DailyGiftChangeingStatus";
+
+    [SerializeField] private DailyGiftController dailyGiftController;
     protected override void HandleDataRetrievedFromServer(UnityWebRequest request)
     {
         
@@ -15,10 +18,21 @@ public class UpdateGiftReceivedStatusController : ServerRequestController
     {
         UserDailyGiftReceivedStatus newChange = new UserDailyGiftReceivedStatus()
         {
-            userId = InstanceUserGeneralInfors.Instance.UserId,
-            isReceived = true
+            UserId = InstanceUserGeneralInfors.Instance.UserId,
+            IsReceived = true
         };
 
-        StartCoroutine(SendPostRequest(GETTING_STATUS_ROUTER, JsonUtility.ToJson(newChange)));
+        Debug.Log(JsonUtility.ToJson(newChange));
+
+        StartCoroutine(SendChangingStatusToServer(newChange));
+    }
+
+    private IEnumerator SendChangingStatusToServer(UserDailyGiftReceivedStatus newChange)
+    {
+
+
+        yield return StartCoroutine(SendPostRequest(GETTING_STATUS_ROUTER, JsonUtility.ToJson(newChange)));
+
+        dailyGiftController.gameObject.SetActive(false);
     }
 }

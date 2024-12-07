@@ -15,6 +15,8 @@ public class HandleUserInforsData : HandleUserData<UserInfors>
         
         this.userTicket = data.GachaTickets;
 
+        Debug.Log("check user ticket : " + this.userTicket);
+
         ticketsChangeScriptableObject.OnGachaTicketsChange(this.userTicket);
     }
 

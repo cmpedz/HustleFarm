@@ -17,8 +17,9 @@ public class GachaStorageSystem : ServerRequestController
 
     public static GachaStorageSystem Instance { get { return instance; } }
 
-    void Start()
+    protected new void Start()
     {
+        base.Start();
 
         if(instance == null)
         {

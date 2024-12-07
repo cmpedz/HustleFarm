@@ -8,6 +8,12 @@ public abstract class ServerRequestController : MonoBehaviour
 {
     private static readonly string SERVER_URL = "https://localhost:7218";
 
+    [SerializeField] private ErrorNotificationController errorNotificationController ;
+
+    protected void Start()
+    {
+        errorNotificationController = FindAnyObjectByType<ErrorNotificationController>();
+    }
 
     protected  IEnumerator SendGetRequest(string router) { 
 
@@ -47,9 +53,22 @@ public abstract class ServerRequestController : MonoBehaviour
     
         yield return request.SendWebRequest();
 
-        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+        HandleError(request);
+  
+    }
+
+
+    private void HandleError(UnityWebRequest request)
+    {
+
+        if (request.result == UnityWebRequest.Result.ConnectionError)
         {
-            Debug.LogError("Error when connecting : " + request.error);
+            errorNotificationController.NotifyError("No Connection !",false);
+        }
+
+        if (request.result == UnityWebRequest.Result.ProtocolError)
+        {
+            errorNotificationController.NotifyError("Error 404 !", true);
 
         }
         else
@@ -57,11 +76,8 @@ public abstract class ServerRequestController : MonoBehaviour
             HandleDataRetrievedFromServer(request);
         }
 
-  
-        
-        
-    }
 
+    }
     protected  abstract void HandleDataRetrievedFromServer(UnityWebRequest request);
 
 

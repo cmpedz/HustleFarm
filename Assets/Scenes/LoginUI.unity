@@ -2236,7 +2236,7 @@ MonoBehaviour:
   WalletConnectButton: {fileID: 771709693}
   WalletPanels:
   - Identifier: WalletConnectWallet
-  userId: Account
+  userId: Errors
   changeSceneEvent:
     m_PersistentCalls:
       m_Calls:
