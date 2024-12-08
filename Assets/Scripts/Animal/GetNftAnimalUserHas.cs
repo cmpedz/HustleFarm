@@ -12,21 +12,17 @@ public class GetNftAnimalUserHas : Singleton<GetNftAnimalUserHas>
         get { return this.idNftOwned; }
     }
 
-    void Start()
+    [SerializeField] private UserWalletController userWallet;
+
+    async void Start()
     {
-          List<int> nftAnimalsUserOwned = new List<int>();
+          List<int> nftAnimalsUserOwned = await userWallet.GetNftOwn();
 
-          for(int i = 0; i < 8; i++)
-           {
-            nftAnimalsUserOwned.Add(i);
-            
-          }
-       
-
-        foreach(int i in nftAnimalsUserOwned)
-        {
-            idNftOwned.Add(i);
-        }
+        
+            foreach(int i in nftAnimalsUserOwned)
+            {
+                idNftOwned.Add(i);
+            }
 
           
         

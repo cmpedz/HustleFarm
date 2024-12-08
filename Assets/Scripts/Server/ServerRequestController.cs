@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public abstract class ServerRequestController : MonoBehaviour
 {
-    private static readonly string SERVER_URL = "https://localhost:7218";
+    private static readonly string SERVER_URL = "https://048a-2402-800-62d0-e4b8-c5f8-ca76-34cc-8787.ngrok-free.app";
 
     [SerializeField] private GameNotificationController errorNotificationController ;
 
@@ -18,6 +18,8 @@ public abstract class ServerRequestController : MonoBehaviour
     protected  IEnumerator SendGetRequest(string router) { 
 
             string url = SERVER_URL + "/" + router;
+
+            Debug.Log("check server url : " +  url);    
 
             UnityWebRequest request = UnityWebRequest.Get(url);
 

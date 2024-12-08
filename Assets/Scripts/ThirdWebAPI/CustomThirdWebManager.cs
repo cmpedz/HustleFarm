@@ -69,11 +69,11 @@ public class CustomThirdWebManager : MonoBehaviour
         WalletConnectButton.onClick.RemoveAllListeners();
         WalletConnectButton.onClick.AddListener(() =>
         {
-            //var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
-            //ConnectWallet(options);
-            InstanceUserGeneralInfors.Instance.UserId = userId;
+            var options = GetWalletOptions(WalletProvider.WalletConnectWallet);
+            ConnectWallet(options);
+            //InstanceUserGeneralInfors.Instance.UserId = "Errors";
 
-            changeSceneEvent.Invoke();
+            //changeSceneEvent.Invoke();
         });
     }
 
