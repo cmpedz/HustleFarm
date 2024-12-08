@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: 
+    url('/image/784ca092-400b-43e7-96f8-3588b6f8cad0.jpg') no-repeat  center,
+    linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+  background-size: cover;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+h2 {
+  font-family: 'Press Start 2P', cursive;
+}
+button {
+  @apply bg-green-600 text-white font-bold py-2 px-4 rounded transition-all duration-300 ease-in-out transform;
+}
+
+
+header {
+  @apply bg-blue-600 text-white p-4 fixed top-0 w-full z-10;
+}
+
+nav a {
+  @apply text-white hover:underline cursor-pointer transition-all duration-300 ease-in-out;
+}
+
+.main-content {
+  @apply flex-grow flex flex-col justify-center items-center pt-20;
+}
+
+h2 {
+  @apply text-4xl font-bold mb-4;
+}
+
+/* Styles for paragraphs */
+p {
+  @apply text-lg mb-4;
+}
+
+/* Styles for lists */
+ul {
+  @apply list-disc text-left mb-8 mx-auto space-y-2;
+}
+
+li {
+  @apply text-lg;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 7680px) {
+  header {
+    @apply text-center;
+  }
+  
+  nav {
+    @apply flex-col space-y-4;
+  }
+}
+
+/* Styles for testimonials */
+blockquote {
+  @apply p-4 bg-white rounded shadow-md transition-transform duration-300 hover:scale-105;
+}
+
+/* Footer styles */
+footer {
+  @apply bg-blue-600 text-white py-4 mt-12;
+}
+
+footer a {
+  @apply hover:underline;
+}
+
+/* Styles for the FAQ section */
+.faq-item {
+  @apply bg-gray-100 p-4 rounded-md shadow-sm;
+}
+
+.faq-item:hover {
+  @apply shadow-lg; /* Use shadow-lg directly here without @apply */
+}
+
+/* Styles for community links */
+.community-link {
+  @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200;
+}
+
+/* Additional spacing and layout improvements */
+.pt-20 {
+  padding-top: 5rem;
+}
+
+/* Hover effects for links */
+nav a:hover {
+  @apply text-blue-300 transition duration-200 ease-in-out;
+}
+
+/* Improved responsive adjustments */
+@media (max-width: 6400px) {
+  h2 {
+    @apply text-3xl;
+  }
+}
+.community-link {
+  background-color: rgba(128, 128, 128, 0); /* Nền màu xám trong suốt 50% */
+  color: white; /* Màu chữ */
+  padding: 10px 20px; /* Khoảng cách */
+  border-radius: 5px; /* Bo tròn các góc */
+  transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển màu */
+  text-decoration: none; /* Loại bỏ gạch chân */
+}
+
+.community-link:hover {
+  background-color: rgba(128, 128, 128, 1 ); /* Màu nền khi di chuột qua */
+}
+
+.faq-item {
+  transition: transform 0.3s; /* Hiệu ứng phóng to */
+}
+
+.faq-item:hover {
+  transform: scale(1.05); /* Phóng to khi di chuột qua */
+}
+.community-link {
+  margin: 0 10px;
+}
+
+.community-icon{
+  width: 60px; /* Kích thước logo */
+  height: 60px;
+  transition: transform 0.3s;
+}
+.dex-icon {
+  width: 280px;
+  transition: transform 0.3s;
+}
+.community-icon,.dex-icon:hover {
+  transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+}
+
