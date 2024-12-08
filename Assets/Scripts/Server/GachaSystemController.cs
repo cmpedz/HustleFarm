@@ -7,6 +7,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Threading.Tasks;
 using static NBitcoin.Scripting.PubKeyProvider;
 
 public class GachaSystemController : ServerRequestController
@@ -41,19 +42,14 @@ public class GachaSystemController : ServerRequestController
         userGachaTickets = FindAnyObjectByType<HandleUserInforsData>();
     }
 
-    public async void GetItemFromServer(int time) {
+    public async void GetItemFromServer(int time)
+    {
 
+        bool isCapableOfDrawing = await CheckCapableOfDrawing(time);
 
-        //bool didPayForDraw = await UserWalletController.Instance.DepositToken(COST_EACH_DRAW * time);
+        Debug.Log("isCapableOfDrawing: " + isCapableOfDrawing);
 
-        //if (didPayForDraw) {
-        //    Debug.Log("transposit successfully");
-        //    StartCoroutine(GetItemFromServerEnumrator(time));
-        //}
-
-       
-
-        if (CheckCapableOfDrawing(time))
+        if (isCapableOfDrawing)
         {
             StartCoroutine(GetItemFromServerEnumrator(time));
 
@@ -62,14 +58,15 @@ public class GachaSystemController : ServerRequestController
             currentUserPointController.IncreaseCurrentUserPoint(InstanceUserGeneralInfors.Instance.UserId
                 , GACHA_POINT_GET, sumGachaBonusRateGet);
         }
+      
 
-       
+
 
     }
 
-    private bool CheckCapableOfDrawing(int time)
+    private async Task<bool> CheckCapableOfDrawing(int time)
     {
-        
+
 
         int currentQuantitiesGachaTicketsHas = userGachaTickets.UserTicket;
 
@@ -78,16 +75,17 @@ public class GachaSystemController : ServerRequestController
         if (currentQuantitiesGachaTicketsHas >= quantitiesGachaTicketsNeeded)
         {
             userGachaTickets.DescreaseUserTickets(quantitiesGachaTicketsNeeded);
-            return  true;
+            return true;
 
         }
         else
         {
+            bool didPayForDraw = await UserWalletController.Instance.DepositToken(COST_EACH_DRAW * time);
             Debug.Log("lack of gacha tickets, pay to gacha");
-            return false;
+            return didPayForDraw;
         }
 
-        
+
     }
 
 
@@ -103,7 +101,7 @@ public class GachaSystemController : ServerRequestController
             tasksGetIbItem.Add(SendGetRequest(ROUTER_PROVIDING_GACHA_ITEM));
         }
 
-        foreach(IEnumerator task in tasksGetIbItem)
+        foreach (IEnumerator task in tasksGetIbItem)
         {
             StartCoroutine(TrackTaskDone(task, () => { quantitiesTasksDone++; }));
         }
@@ -116,9 +114,9 @@ public class GachaSystemController : ServerRequestController
 
     private IEnumerator TrackTaskDone(IEnumerator taskExecuted, Action onComplete)
     {
-            yield return StartCoroutine(taskExecuted);
+        yield return StartCoroutine(taskExecuted);
 
-            onComplete?.Invoke();
+        onComplete?.Invoke();
     }
 
 
@@ -139,7 +137,8 @@ public class GachaSystemController : ServerRequestController
             itemsDisplaySystem.gameObject.SetActive(true);
         }
 
-        if (putItemsGachaGetIntoUserBagSystem != null) { 
+        if (putItemsGachaGetIntoUserBagSystem != null)
+        {
             putItemsGachaGetIntoUserBagSystem.PutItemsGachaIntoUserBag(plantIdToSeedId);
         }
     }

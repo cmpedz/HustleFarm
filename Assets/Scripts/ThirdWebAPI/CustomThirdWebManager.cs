@@ -19,7 +19,7 @@ public class WalletPanelUI
 public class CustomThirdWebManager : MonoBehaviour
 {
     [field: SerializeField, Header("Wallet Options")]
-    private ulong ActiveChainId = 421614;
+    private ulong ActiveChainId = 56;
 
     [field: SerializeField]
     private bool WebglForceMetamaskExtension = false;
@@ -30,7 +30,7 @@ public class CustomThirdWebManager : MonoBehaviour
     [field: SerializeField, Header("Wallet Panels")]
     private List<WalletPanelUI> WalletPanels;
 
-    private ThirdwebChainData _chainDetails;
+    private CustomThirdwebChainData _chainDetails;
 
   
     [SerializeField] private string userId;
@@ -46,17 +46,17 @@ public class CustomThirdWebManager : MonoBehaviour
     {
         try
         {
-            _chainDetails = await Utils.GetChainMetadata(client: ThirdwebManager.Instance.Client, chainId: ActiveChainId);
+            _chainDetails = await CustomUtils.GetChainMetadata(client: ThirdwebManager.Instance.Client, chainId: ActiveChainId);
         }
         catch
         {
-            _chainDetails = new ThirdwebChainData()
+            _chainDetails = new CustomThirdwebChainData()
             {
                 NativeCurrency = new ThirdwebChainNativeCurrency()
                 {
                     Decimals = 18,
-                    Name = "ETH",
-                    Symbol = "ETH"
+                    Name = "BNB",
+                    Symbol = "BNB"
                 }
             };
         }
@@ -111,7 +111,7 @@ public class CustomThirdWebManager : MonoBehaviour
                 var inAppWalletOptions = new InAppWalletOptions(authprovider: AuthProvider.Google);
                 return new WalletOptions(provider: WalletProvider.InAppWallet, chainId: ActiveChainId, inAppWalletOptions: inAppWalletOptions);
             case WalletProvider.WalletConnectWallet:
-                var externalWalletProvider =
+                var externalWalletProvider = 
                     Application.platform == RuntimePlatform.WebGLPlayer && WebglForceMetamaskExtension ? WalletProvider.MetaMaskWallet : WalletProvider.WalletConnectWallet;
                 return new WalletOptions(provider: externalWalletProvider, chainId: ActiveChainId);
             default:

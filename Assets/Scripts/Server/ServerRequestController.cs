@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public abstract class ServerRequestController : MonoBehaviour
 {
-    private static readonly string SERVER_URL = "https://048a-2402-800-62d0-e4b8-c5f8-ca76-34cc-8787.ngrok-free.app";
+    private static readonly string SERVER_URL = "https://bd7b-2402-800-62d0-e4b8-c5f8-ca76-34cc-8787.ngrok-free.app";
 
     [SerializeField] private GameNotificationController errorNotificationController ;
 

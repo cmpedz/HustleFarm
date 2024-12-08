@@ -28,18 +28,20 @@ public class UserWalletController : Singleton<UserWalletController>
 
     async void Start()
     {
-        //try
-        //{
-        //    // Kết nối với smart contract token thông qua ThirdwebManager
-        //    tokenContract = await ThirdwebManager.Instance.GetContract(TOKEN_CONTRACT_ADDRESS, CHAIN_ID);
+        try
+        {
+            // Kết nối với smart contract token thông qua ThirdwebManager
+            tokenContract = await ThirdwebManager.Instance.GetContract(TOKEN_CONTRACT_ADDRESS, CHAIN_ID);
 
-        //    activeWalletAddress = await ThirdwebManager.Instance.GetActiveWallet().GetAddress(); 
-           
-        //}
-        //catch (System.Exception e)
-        //{
-        //    Debug.LogError($"Error initializing contract: {e.Message}");
-        //}
+            activeWalletAddress = await ThirdwebManager.Instance.GetActiveWallet().GetAddress();
+
+            Debug.Log("check active wallet address : " + activeWalletAddress);
+
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Error initializing contract: {e.Message}");
+        }
 
         //List<int> result = await GetNftOwn();
 
@@ -50,6 +52,8 @@ public class UserWalletController : Singleton<UserWalletController>
     {
         try
         {
+            Debug.Log("check active wallet address : " + ThirdwebManager.Instance.ActiveWallet.GetAddress());
+
             BigInteger amount = cost * BigInteger.Pow(10, 18);
             //token
             await tokenContract.ERC20_Transfer(ThirdwebManager.Instance.ActiveWallet, DEV_WALLET_ADDRESS, amount);

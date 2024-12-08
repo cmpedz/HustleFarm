@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +17,9 @@ public class GetNftAnimalUserHas : Singleton<GetNftAnimalUserHas>
 
     async void Start()
     {
-          List<int> nftAnimalsUserOwned = await userWallet.GetNftOwn();
+            List<int> nftAnimalsUserOwned = await userWallet.GetNftOwn();
 
+            Debug.Log("Check nft own : " + JsonConvert.SerializeObject(nftAnimalsUserOwned));
         
             foreach(int i in nftAnimalsUserOwned)
             {
