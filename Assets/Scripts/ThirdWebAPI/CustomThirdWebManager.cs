@@ -96,17 +96,6 @@ public class CustomThirdWebManager : MonoBehaviour
 
         InstanceUserGeneralInfors.Instance.UserId = address;
 
-
-        //sign
-        /* var message = "Hello World!";
-         var signature = await wallet.PersonalSign(message); */
-        //Debug.Log("check signature : " + signature);
-
-        //get balance
-        var balance = await wallet.GetBalance(chainId: ActiveChainId);
-        Debug.Log("check balance : " + balance);
-        var balanceEth = Utils.ToEth(wei: balance.ToString(), decimalsToDisplay: 4, addCommas: true);
-
         changeSceneEvent.Invoke();
 
     }
